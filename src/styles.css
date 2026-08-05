@@ -1,1 +1,1239 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Inter', 'Noto Sans Devanagari', Arial, sans-serif;
+  background: #fff;
+}
+
+button {
+  font-family: inherit;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  width: 374px;
+  min-width: 374px;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 29px 39px 0;
+  color: #fff;
+  background:
+    radial-gradient(circle at 87% 65%, rgba(10, 183, 205, 0.38) 0 2px, transparent 3px),
+    radial-gradient(circle at 83% 72%, rgba(18, 194, 224, 0.25) 0 2px, transparent 3px),
+    linear-gradient(160deg, #06183f 0%, #062052 45%, #04336c 100%);
+}
+.sidebar::after {
+  position: absolute;
+  right: -120px;
+  bottom: -100px;
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border: 1px solid rgba(75, 210, 235, 0.15);
+  border-radius: 50%;
+  content: '';
+  box-shadow:
+    0 0 0 46px rgba(39, 151, 200, 0.04),
+    0 0 0 92px rgba(39, 151, 200, 0.025);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-logo {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.brand-logo img {
+  position: absolute;
+  top: -27px;
+  left: -98px;
+  display: block;
+  width: 253px;
+  max-width: none;
+  mix-blend-mode: screen;
+  filter: saturate(1.15) contrast(1.08);
+}
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.brand-copy strong {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+.brand-copy small {
+  color: #36d8aa;
+  font-size: 17px;
+  font-weight: 500;
+}
+.sidebar-message {
+  margin-top: 80px;
+}
+.sidebar-message h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 750;
+  line-height: 1.18;
+  letter-spacing: -1.4px;
+}
+.sidebar-message h1 span {
+  color: #2ed5b0;
+}
+.sidebar-message p {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.89);
+  font-size: 15.5px;
+  font-weight: 450;
+  line-height: 1.75;
+}
+.sidebar-rule {
+  display: block;
+  width: 41px;
+  height: 3px;
+  margin-top: 30px;
+  border-radius: 99px;
+  background: #31dbbb;
+}
+.benefits {
+  display: grid;
+  gap: 33px;
+  margin-top: 42px;
+}
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+}
+.benefit-icon {
+  display: grid;
+  width: 55px;
+  min-width: 55px;
+  height: 55px;
+  place-items: center;
+  border-radius: 12px;
+  color: #d9feff;
+  background: linear-gradient(145deg, rgba(27, 215, 221, 0.3), rgba(31, 124, 184, 0.27));
+  font-size: 23px;
+}
+.benefit p {
+  display: grid;
+  gap: 6px;
+  margin: 2px 0 0;
+}
+.benefit strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+.benefit p span {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 13.5px;
+  line-height: 1.68;
+}
+
+.security-note {
+  display: flex;
+  height: 75px;
+  min-height: 75px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 86px 22px 58px;
+  padding: 0 26px 0 21px;
+  border: 1px solid #e3e8f1;
+  border-radius: 9px;
+  color: #1a3c7c;
+  background: linear-gradient(105deg, #f9fbff, #fbfcff);
+}
+.security-message,
+.encryption-message {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.security-message p,
+.encryption-message p {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+.security-message strong {
+  font-size: 16px;
+  font-weight: 750;
+}
+.security-message p span,
+.encryption-message p span {
+  color: #536177;
+  font-size: 13.5px;
+}
+.security-icon {
+  display: grid;
+  width: 47px;
+  height: 47px;
+  place-items: center;
+  border: 1px solid #d9e9ec;
+  border-radius: 10px;
+  color: #16869a;
+  background: #fff;
+  font-size: 23px;
+}
+.encryption-message {
+  min-width: 277px;
+  padding-left: 24px;
+  border-left: 1px solid #e4e8ef;
+}
+.lock-icon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border-radius: 9px;
+  color: #0baa73;
+  background: #e9fbf4;
+  font-size: 18px;
+}
+.encryption-message strong {
+  color: #253a64;
+  font-size: 13.5px;
+  font-weight: 650;
+}
+
+/* Transparent shield-and-stethoscope artwork for the sidebar. */
+.health-illustration {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 284px;
+  align-items: flex-end;
+  justify-content: center;
+  margin: auto 0 0;
+  overflow: hidden;
+}
+.health-panel-image {
+  display: block;
+  width: 338px;
+  max-width: none;
+  margin-bottom: -10px;
+  filter: saturate(1.08) drop-shadow(0 12px 22px rgba(0, 8, 35, 0.28));
+}
+
+.medical-art {
+  position: absolute;
+  top: 30px;
+  right: 14px;
+  width: 310px;
+  height: 150px;
+  opacity: 0.2;
+  color: #15a6d0;
+}
+.medical-shield {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  display: grid;
+  width: 86px;
+  height: 112px;
+  place-items: center;
+  border: 2px solid #38b9de;
+  border-radius: 36px 36px 47px 47px;
+  font-size: 36px;
+  clip-path: polygon(50% 0, 96% 16%, 96% 62%, 50% 100%, 4% 62%, 4% 16%);
+}
+.medical-shield i {
+  margin-top: -11px;
+}
+.pulse-line {
+  position: absolute;
+  top: 79px;
+  left: 101px;
+  width: 207px;
+  height: 35px;
+  border-top: 2px solid #19bad4;
+  clip-path: polygon(
+    0 48%,
+    22% 48%,
+    30% 2%,
+    40% 96%,
+    52% 35%,
+    60% 48%,
+    100% 48%,
+    100% 54%,
+    64% 54%,
+    52% 44%,
+    40% 100%,
+    30% 8%,
+    22% 54%,
+    0 54%
+  );
+  background: #19bad4;
+}
+.medical-art .fa-circle {
+  position: absolute;
+  font-size: 7px;
+}
+.dot-a {
+  top: 27px;
+  right: 18px;
+}
+.dot-b {
+  top: 68px;
+  right: 92px;
+}
+.dot-c {
+  top: 18px;
+  right: 112px;
+}
+
+/* Patient login and OTP pages */
+.patient-auth-page {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  padding-bottom: 66px;
+  color: #08164a;
+  background: #fff;
+}
+.patient-auth-aside {
+  position: relative;
+  display: flex;
+  width: 36.8%;
+  min-width: 480px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 17px 42px 26px 48px;
+  background: linear-gradient(135deg, #fff 0%, #f2f8ff 67%, #e4f2ff 100%);
+}
+.patient-auth-aside:before {
+  position: absolute;
+  right: -32px;
+  top: 150px;
+  width: 158px;
+  height: 174px;
+  border: 7px solid rgba(70, 137, 233, 0.11);
+  border-radius: 42px 42px 58px 58px;
+  content: '';
+  clip-path: polygon(50% 0, 100% 18%, 94% 70%, 50% 100%, 6% 70%, 0 18%);
+}
+.patient-auth-brand {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.patient-auth-brand > span {
+  position: relative;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border: 3px solid #0d67dd;
+  border-radius: 48% 48% 43% 43%;
+  color: #0d67dd;
+  background: #fff;
+  font-size: 31px;
+}
+.patient-auth-brand > span:after {
+  position: absolute;
+  bottom: -13px;
+  width: 43px;
+  height: 25px;
+  border: 7px solid #17a66f;
+  border-top: 0;
+  border-radius: 0 0 32px 32px;
+  content: '';
+}
+.patient-auth-brand b {
+  position: absolute;
+  top: 16px;
+  font-size: 15px;
+}
+.patient-auth-brand .patient-auth-logo {
+  overflow: hidden;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.patient-auth-brand .patient-auth-logo::after {
+  display: none;
+}
+.patient-auth-brand .patient-auth-logo img {
+  position: absolute;
+  top: -27px;
+  left: -98px;
+  display: block;
+  width: 253px;
+  max-width: none;
+  mix-blend-mode: multiply;
+}
+.patient-auth-brand div {
+  display: grid;
+  gap: 2px;
+}
+.patient-auth-brand strong {
+  font-size: 30px;
+  letter-spacing: -1.2px;
+}
+.patient-auth-brand small {
+  color: #12955f;
+  font-size: 17px;
+  font-weight: 600;
+}
+.patient-auth-copy {
+  position: relative;
+  z-index: 1;
+  margin: 61px 0 26px;
+}
+.patient-auth-copy h1 {
+  margin: 0;
+  font-size: 43px;
+  line-height: 1.21;
+  letter-spacing: -2px;
+}
+.patient-auth-copy h1 em {
+  color: #176cec;
+  font-style: normal;
+}
+.patient-auth-copy h1 span {
+  color: #079566;
+}
+.patient-auth-copy p {
+  max-width: 320px;
+  margin: 17px 0 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.patient-auth-benefits {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 25px;
+}
+.patient-auth-benefits article {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.patient-auth-benefits article > i {
+  display: grid;
+  width: 61px;
+  height: 61px;
+  flex: 0 0 61px;
+  place-items: center;
+  border: 1px solid #d5dfef;
+  border-radius: 15px;
+  color: #0f6aea;
+  background: linear-gradient(145deg, #f1f7ff, #eaf0ff);
+  font-size: 26px;
+}
+.patient-auth-benefits article:nth-child(2) > i {
+  color: #14a47b;
+  background: linear-gradient(145deg, #f2fbf8, #e8f8f2);
+}
+.patient-auth-benefits article:nth-child(3) > i {
+  color: #7649de;
+  background: linear-gradient(145deg, #faf6ff, #f3edff);
+}
+.patient-auth-benefits p {
+  display: grid;
+  gap: 6px;
+  margin: 3px 0 0;
+}
+.patient-auth-benefits strong {
+  color: #0b54bf;
+  font-size: 16px;
+}
+.patient-auth-benefits article:nth-child(2) strong {
+  color: #10895e;
+}
+.patient-auth-benefits article:nth-child(3) strong {
+  color: #4c25ba;
+}
+.patient-auth-benefits p span {
+  max-width: 280px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.patient-auth-family {
+  position: relative;
+  height: 246px;
+  margin-top: auto;
+  overflow: hidden;
+}
+.auth-person {
+  position: absolute;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 49% 49% 14% 14%;
+  color: #fff;
+  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.12);
+}
+.auth-person i {
+  font-size: 58px;
+}
+.auth-person-one {
+  left: 44px;
+  width: 115px;
+  height: 181px;
+  background: linear-gradient(140deg, #334e7e, #7eabd5);
+}
+.auth-person-two {
+  left: 152px;
+  width: 126px;
+  height: 194px;
+  background: linear-gradient(140deg, #c5795c, #eac0a1);
+}
+.auth-person-three {
+  left: 135px;
+  width: 79px;
+  height: 112px;
+  background: linear-gradient(140deg, #168885, #87d4c4);
+}
+.auth-person-three i {
+  font-size: 34px;
+}
+.auth-shield {
+  position: absolute;
+  right: 11px;
+  bottom: 27px;
+  display: grid;
+  width: 115px;
+  height: 141px;
+  place-items: center;
+  border: 4px solid #fff;
+  border-radius: 35px 35px 49px 49px;
+  color: #fff;
+  background: linear-gradient(145deg, #b6d8f3, #6c9cd4);
+  font-size: 43px;
+  opacity: 0.8;
+  clip-path: polygon(50% 0, 95% 16%, 92% 68%, 50% 100%, 8% 68%, 5% 16%);
+}
+.auth-cross {
+  position: absolute;
+  right: 90px;
+  top: 5px;
+  color: #fff;
+  font-size: 49px;
+  text-shadow: 0 0 0 #fff;
+}
+.patient-auth-trust {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 -13px;
+  padding: 15px 20px;
+  border: 1px solid #cfdfef;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 8px 21px rgba(52, 90, 132, 0.13);
+}
+.patient-auth-trust > i {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  color: #119b6f;
+  background: #e9faf1;
+  font-size: 20px;
+}
+.patient-auth-trust p {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+}
+.patient-auth-trust strong {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.patient-auth-trust p span {
+  color: #53627b;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.patient-auth-trust div {
+  display: flex;
+  margin-left: auto;
+}
+.patient-auth-trust b {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background: #5d7797;
+  font-size: 8px;
+  margin-left: -7px;
+}
+.patient-auth-trust b:nth-child(2) {
+  background: #d1826d;
+}
+.patient-auth-trust b:nth-child(3) {
+  background: #168b81;
+}
+.patient-auth-trust b:last-child {
+  width: 44px;
+  border: 0;
+  color: #1864d6;
+  background: #edf5ff;
+  margin-left: 7px;
+}
+.patient-auth-main {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 54px;
+}
+.patient-auth-topbar {
+  display: flex;
+  height: 88px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  font-size: 13px;
+}
+.patient-auth-topbar button {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 43px;
+  padding: 0 16px;
+  border: 1px solid #dce3ed;
+  border-radius: 8px;
+  color: #101c4b;
+  background: #fff;
+  font: inherit;
+}
+.patient-auth-topbar button .fa-globe {
+  font-size: 19px;
+}
+.patient-auth-topbar button .fa-chevron-down {
+  margin-left: 5px;
+  font-size: 10px;
+}
+.patient-auth-topbar span {
+  padding-left: 20px;
+  border-left: 1px solid #e2e5eb;
+}
+.patient-auth-topbar a {
+  padding: 12px 16px;
+  border: 1px solid #c5d9f4;
+  border-radius: 8px;
+  color: #0b5fd0;
+  background: #f7fbff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.patient-auth-card {
+  width: min(902px, 100%);
+  margin: 0 auto;
+  padding: 32px 93px 35px;
+  border: 1px solid #e4eaf2;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 9px 29px rgba(31, 57, 111, 0.09);
+  text-align: center;
+}
+.auth-welcome-icon {
+  display: grid;
+  width: 84px;
+  height: 84px;
+  place-items: center;
+  margin: 0 auto 13px;
+  border-radius: 50%;
+  color: #0864db;
+  background: linear-gradient(145deg, #e6e5ff, #f5f8ff);
+  font-size: 39px;
+}
+.patient-auth-card h1 {
+  margin: 0;
+  color: #09164a;
+  font-size: 28px;
+  letter-spacing: -1px;
+}
+.auth-subtitle {
+  margin: 8px 0 30px;
+  color: #606b84;
+  font-size: 15px;
+}
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #dbe3ed;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.auth-tabs button {
+  height: 58px;
+  border: 0;
+  border-right: 1px solid #e1e5eb;
+  color: #17224d;
+  background: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+}
+.auth-tabs button:last-child {
+  border-right: 0;
+}
+.auth-tabs i {
+  margin-right: 14px;
+  color: #5d6880;
+  font-size: 21px;
+}
+.auth-tabs button.active {
+  border-bottom: 3px solid #1268ec;
+  color: #0b62d9;
+}
+.auth-tabs button.active i {
+  color: #0b68dc;
+}
+.auth-login-form {
+  display: grid;
+  margin-top: 29px;
+  text-align: left;
+}
+.auth-login-form label {
+  margin-bottom: 12px;
+  color: #101b4a;
+  font-size: 14px;
+  font-weight: 600;
+}
+.auth-input {
+  display: flex;
+  height: 57px;
+  align-items: center;
+  margin-bottom: 18px;
+  border: 1px solid #d6dfe9;
+  border-radius: 8px;
+  background: #fff;
+}
+.auth-input > i {
+  width: 55px;
+  color: #52617f;
+  font-size: 20px;
+}
+.auth-input input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  color: #17234d;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+}
+.auth-input input::placeholder {
+  color: #707b91;
+}
+.auth-input.phone b {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 0 17px;
+  border-right: 1px solid #dce2e9;
+  font-size: 15px;
+}
+.auth-input.phone b i {
+  font-size: 10px;
+  color: #617087;
+}
+.auth-input.phone > i {
+  width: 50px;
+  text-align: center;
+}
+.password-toggle {
+  width: 48px;
+  border: 0;
+  color: #5f6b82;
+  background: transparent;
+  font-size: 16px;
+}
+.forgot-link {
+  justify-self: end;
+  margin: -7px 0 18px;
+  color: #0b62d9;
+  font-size: 12px;
+  text-decoration: none;
+}
+.auth-primary {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(100deg, #075de9, #176bf0);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(21, 98, 219, 0.23);
+}
+.auth-primary i {
+  font-size: 20px;
+}
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 33px 0;
+}
+.auth-divider:before,
+.auth-divider:after {
+  height: 1px;
+  flex: 1;
+  background: #e0e3e8;
+  content: '';
+}
+.auth-divider span {
+  color: #637087;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.auth-socials {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 29px;
+}
+.auth-socials button {
+  display: flex;
+  height: 57px;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  border: 1px solid #d7dfe9;
+  border-radius: 8px;
+  color: #13204e;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+}
+.google-letter {
+  color: #4285f4;
+  font-size: 29px;
+  font-family: Arial;
+}
+.microsoft-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.microsoft-mark i {
+  background: #f25022;
+}
+.microsoft-mark i:nth-child(2) {
+  background: #7fba00;
+}
+.microsoft-mark i:nth-child(3) {
+  background: #00a4ef;
+}
+.microsoft-mark i:nth-child(4) {
+  background: #ffb900;
+}
+.auth-assurance {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 30px -33px 28px;
+  padding: 17px 20px;
+  border: 1px solid #e6eaf0;
+  border-radius: 10px;
+  background: linear-gradient(105deg, #f9fcff, #fdfefe);
+}
+.auth-assurance article {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 0 15px;
+  border-right: 1px solid #e4e8ee;
+  text-align: left;
+}
+.auth-assurance article:last-child {
+  border: 0;
+}
+.auth-assurance article > i {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border-radius: 50%;
+  color: #0969de;
+  background: #e8f1ff;
+  font-size: 21px;
+}
+.auth-assurance article:nth-child(2) > i {
+  color: #149769;
+  background: #eaf9f2;
+}
+.auth-assurance article:nth-child(3) > i {
+  color: #149769;
+  background: #edfbf4;
+}
+.auth-assurance p {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+}
+.auth-assurance strong {
+  color: #128262;
+  font-size: 12px;
+}
+.auth-assurance p span {
+  color: #45516b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.auth-terms {
+  margin: 0;
+  color: #6b7487;
+  font-size: 12px;
+}
+.auth-terms a {
+  color: #0e61cf;
+  text-decoration: none;
+}
+.patient-auth-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 66px;
+  align-items: center;
+  justify-content: center;
+  gap: min(25vw, 350px);
+  border-top: 1px solid #e5ebf2;
+  color: #69738a;
+  background: #f9fbff;
+  font-size: 12px;
+}
+.patient-auth-footer > span {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.patient-auth-footer > span > i {
+  color: #52617c;
+}
+.patient-auth-footer a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #0760ce;
+  text-decoration: none;
+  font-weight: 600;
+}
+.patient-auth-footer a i {
+  font-size: 18px;
+}
+.otp-card {
+  max-width: 700px;
+  margin-top: 40px;
+  padding: 48px 90px;
+}
+.otp-card .auth-subtitle {
+  margin-bottom: 34px;
+}
+.otp-card .auth-subtitle strong {
+  color: #0b61d6;
+}
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin-bottom: 23px;
+}
+.otp-inputs input {
+  width: 56px;
+  height: 62px;
+  border: 1px solid #cad7e7;
+  border-radius: 9px;
+  outline: 0;
+  color: #0b62dc;
+  background: #fff;
+  font: inherit;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+.otp-inputs input:focus {
+  border-color: #0865dc;
+  box-shadow: 0 0 0 3px rgba(8, 101, 220, 0.11);
+}
+.otp-resend {
+  margin: 0 0 25px;
+  color: #68758b;
+  font-size: 13px;
+}
+.otp-resend button {
+  border: 0;
+  color: #0963d5;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+}
+.otp-change-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 27px 0 20px;
+  color: #125fc8;
+  font-size: 13px;
+  text-decoration: none;
+}
+.otp-security-note {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 16px;
+  border-radius: 8px;
+  color: #38725e;
+  background: #f0fbf6;
+  text-align: left;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.otp-security-note i {
+  color: #13976a;
+  font-size: 18px;
+}
+@media (max-width: 1200px) {
+  .patient-auth-aside {
+    min-width: 400px;
+    padding-right: 30px;
+    padding-left: 32px;
+  }
+  .patient-auth-main {
+    padding-right: 28px;
+    padding-left: 28px;
+  }
+  .patient-auth-card {
+    padding-right: 55px;
+    padding-left: 55px;
+  }
+  .patient-auth-copy h1 {
+    font-size: 39px;
+  }
+  .patient-auth-trust {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .auth-assurance {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+  .patient-auth-footer {
+    gap: 130px;
+  }
+}
+@media (max-width: 900px) {
+  .patient-auth-page {
+    padding-bottom: 0;
+  }
+  .patient-auth-aside {
+    display: none;
+  }
+  .patient-auth-main {
+    min-height: 100dvh;
+    padding: 0 22px;
+  }
+  .patient-auth-topbar {
+    height: 72px;
+  }
+  .patient-auth-footer {
+    position: static;
+    display: none;
+  }
+  .patient-auth-card {
+    margin: auto;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+}
+@media (max-width: 600px) {
+  .patient-auth-main {
+    padding: 0 12px;
+  }
+  .patient-auth-topbar {
+    gap: 10px;
+    font-size: 11px;
+  }
+  .patient-auth-topbar span {
+    display: none;
+  }
+  .patient-auth-topbar button {
+    height: 38px;
+    padding: 0 10px;
+  }
+  .patient-auth-topbar a {
+    padding: 10px 12px;
+  }
+  .patient-auth-card,
+  .otp-card {
+    padding: 24px 18px;
+  }
+  .auth-welcome-icon {
+    width: 67px;
+    height: 67px;
+    font-size: 30px;
+  }
+  .patient-auth-card h1 {
+    font-size: 24px;
+  }
+  .auth-subtitle {
+    margin-bottom: 23px;
+    font-size: 13px;
+  }
+  .auth-tabs button {
+    height: 50px;
+    font-size: 12px;
+  }
+  .auth-tabs i {
+    margin-right: 7px;
+    font-size: 16px;
+  }
+  .auth-input {
+    height: 51px;
+  }
+  .auth-socials {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .auth-socials button {
+    height: 49px;
+    font-size: 13px;
+  }
+  .auth-assurance {
+    grid-template-columns: 1fr;
+    margin: 23px 0;
+    padding: 8px;
+  }
+  .auth-assurance article {
+    padding: 11px;
+    border-right: 0;
+    border-bottom: 1px solid #e4e8ee;
+  }
+  .auth-assurance article:last-child {
+    border-bottom: 0;
+  }
+  .otp-card {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .otp-inputs {
+    gap: 7px;
+  }
+  .otp-inputs input {
+    width: 43px;
+    height: 52px;
+  }
+  .otp-security-note {
+    font-size: 11px;
+  }
+}
+
+/* Compact one-screen patient login and OTP view for laptop-height displays. */
+@media (min-width: 901px) and (max-height: 900px) {
+  .patient-auth-page {
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .patient-auth-main {
+    height: calc(100dvh - 54px);
+    padding-right: 38px;
+    padding-left: 38px;
+  }
+
+  .patient-auth-topbar {
+    height: 58px;
+  }
+
+  .patient-auth-card {
+    width: 125%;
+    max-width: none;
+    margin-top: 0;
+    margin-left: -12.5%;
+    zoom: 0.8;
+  }
+
+  .otp-card {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .patient-auth-aside {
+    min-width: 390px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+
+  .patient-auth-copy {
+    margin-top: 34px;
+    margin-bottom: 16px;
+  }
+
+  .patient-auth-copy h1 {
+    font-size: 35px;
+  }
+
+  .patient-auth-benefits {
+    gap: 14px;
+  }
+
+  .patient-auth-benefits article > i {
+    width: 47px;
+    height: 47px;
+    flex-basis: 47px;
+    font-size: 20px;
+  }
+
+  .patient-auth-benefits strong {
+    font-size: 13px;
+  }
+
+  .patient-auth-benefits p span {
+    font-size: 11px;
+  }
+
+  .patient-auth-family {
+    height: 140px;
+  }
+
+  .patient-auth-trust {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .patient-auth-footer {
+    height: 54px;
+  }
+}

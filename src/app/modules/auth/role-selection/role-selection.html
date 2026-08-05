@@ -1,1 +1,91 @@
-<p>role-selection works!</p>
+<div class="role-page">
+  <aside class="sidebar" [attr.aria-label]="'Jeevandan ' + text.language + ' overview'">
+    <div>
+      <div class="brand" aria-label="Jeevandan Digital Health Card">
+        <span class="brand-logo" aria-hidden="true">
+          <img src="/assets/images/roles/logo.png" alt="">
+        </span>
+        <span class="brand-copy">
+          <strong>Jeevandan</strong>
+          <small>Digital Health Card</small>
+        </span>
+      </div>
+
+      <div class="sidebar-message">
+        <h1>{{ text.onePlatform }}<br><span>{{ text.sevenRoles }}</span></h1>
+        <p>{{ text.sidebarIntro }}</p>
+      </div>
+
+      <span class="sidebar-rule" aria-hidden="true"></span>
+
+      <div class="benefits">
+        <article class="benefit">
+          <span class="benefit-icon"><i class="fa-solid fa-shield-heart"></i></span>
+          <p><strong>{{ text.securePrivate }}</strong><span>{{ text.securePrivateDetail }}</span></p>
+        </article>
+        <article class="benefit">
+          <span class="benefit-icon"><i class="fa-solid fa-users"></i></span>
+          <p><strong>{{ text.roleBasedAccess }}</strong><span>{{ text.roleBasedAccessDetail }}</span></p>
+        </article>
+        <article class="benefit">
+          <span class="benefit-icon"><i class="fa-solid fa-handshake-angle"></i></span>
+          <p><strong>{{ text.betterCollaboration }}</strong><span>{{ text.betterCollaborationDetail }}</span></p>
+        </article>
+      </div>
+    </div>
+
+    <figure class="health-illustration" aria-hidden="true">
+      <img class="health-panel-image" src="/assets/images/roles/shield-stethoscope-cutout.png" alt="">
+    </figure>
+  </aside>
+
+  <main class="content-area" [attr.lang]="activeLanguage">
+    <header class="topbar">
+      <div class="topbar-actions">
+        <div class="language-selector">
+          <button class="language-button" type="button" aria-label="Select language" [attr.aria-expanded]="isLanguageMenuOpen" (click)="toggleLanguageMenu()">
+            <i class="fa-solid fa-globe"></i><span>{{ text.language }}</span><i class="fa-solid fa-chevron-down chevron" [class.open]="isLanguageMenuOpen"></i>
+          </button>
+          <div *ngIf="isLanguageMenuOpen" class="language-menu" role="menu" aria-label="Choose language">
+            <button *ngFor="let language of languages" type="button" role="menuitemradio" [attr.aria-checked]="activeLanguage === language.code" [class.active]="activeLanguage === language.code" (click)="selectLanguage(language.code)">
+              {{ language.label }}
+            </button>
+          </div>
+        </div>
+        <button class="help-button" type="button"><i class="fa-regular fa-circle-question"></i>{{ text.helpSupport }}</button>
+      </div>
+    </header>
+
+    <section class="role-section" aria-labelledby="page-title">
+      <div class="medical-art" aria-hidden="true">
+        <span class="medical-shield"><i class="fa-solid fa-plus"></i></span>
+        <span class="pulse-line"></span>
+        <i class="fa-solid fa-circle dot-a"></i><i class="fa-solid fa-circle dot-b"></i><i class="fa-solid fa-circle dot-c"></i>
+      </div>
+
+      <p class="eyebrow">{{ text.welcome }}</p>
+      <h1 id="page-title">{{ text.chooseRole }}</h1>
+      <p class="intro">{{ text.intro }}</p>
+
+      <div class="roles-grid">
+        <article class="role-card" *ngFor="let role of localizedRoles; trackBy: trackByRole" [class]="'role-card ' + role.id">
+          <span class="role-icon"><i [ngClass]="['fa-solid', role.icon]"></i><i *ngIf="role.id === 'admin'" class="fa-solid fa-gear admin-gear"></i></span>
+          <h2>{{ role.title }}</h2>
+          <p class="role-description"><ng-container *ngFor="let line of role.description; let last = last">{{ line }}<br *ngIf="!last"></ng-container></p>
+          <button type="button" (click)="selectRole(role)">{{ text.continueAs }} {{ role.title }} <i class="fa-solid fa-chevron-right"></i></button>
+        </article>
+      </div>
+    </section>
+
+    <footer class="security-note">
+      <div class="security-message">
+        <span class="security-icon"><i class="fa-solid fa-shield-heart"></i></span>
+        <p><strong>{{ text.healthDataSafe }}</strong><span>{{ text.securityStandards }}</span></p>
+      </div>
+      <div class="encryption-message">
+        <span class="lock-icon"><i class="fa-solid fa-lock"></i></span>
+        <p><strong>{{ text.encryption }}</strong><span>{{ text.trusted }}</span></p>
+      </div>
+    </footer>
+  </main>
+</div>
