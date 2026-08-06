@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-otp',
   imports: [],
   templateUrl: './otp.html',
-  styleUrl: './otp.css',
+  styleUrls: ['./otp.css'],
 })
 export class Otp {}
+

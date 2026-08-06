@@ -1,1 +1,323 @@
-/* Shared patient-auth layout is defined in src/styles.css. */
+/* Desktop patient-login composition. Scoped to this page so OTP keeps its own layout. */
+:host {
+  display: block;
+}
+
+.patient-login-page {
+  display: grid;
+  height: 100dvh;
+  min-height: 100dvh;
+  grid-template-columns: 36.85% minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  box-sizing: border-box;
+  padding-bottom: 64px;
+  background: #f6f9ff;
+}
+
+.patient-login-page .patient-auth-aside {
+  width: auto;
+  min-width: 0;
+  padding: 20px 50px 27px;
+  background:
+    radial-gradient(circle at 88% 65%, rgba(70, 168, 122, 0.18) 0 3px, transparent 4px),
+    linear-gradient(125deg, #ffffff 0%, #f6faff 59%, #e6f2fe 100%);
+}
+
+.patient-login-page .patient-auth-aside::before {
+  right: 7px;
+  top: 155px;
+  width: 132px;
+  height: 165px;
+  border-width: 7px;
+  border-radius: 0;
+  opacity: 0.62;
+}
+
+.patient-login-page .patient-auth-brand {
+  gap: 13px;
+}
+
+.patient-login-page .patient-auth-brand > span {
+  width: 59px;
+  height: 59px;
+}
+
+.patient-login-page .patient-auth-brand strong {
+  font-size: 31px;
+}
+
+.patient-login-page .patient-auth-brand small {
+  font-size: 18px;
+}
+
+.patient-login-page .patient-auth-copy {
+  margin: 59px 0 27px;
+}
+
+.patient-login-page .patient-auth-copy h1 {
+  font-size: 45px;
+  line-height: 1.21;
+}
+
+.patient-login-page .patient-auth-copy p {
+  max-width: 340px;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.patient-login-page .patient-auth-benefits {
+  gap: 27px;
+}
+
+.patient-login-page .patient-auth-benefits article {
+  gap: 18px;
+}
+
+.patient-login-page .patient-auth-benefits article > i {
+  width: 61px;
+  height: 61px;
+  flex-basis: 61px;
+}
+
+.patient-login-page .patient-auth-benefits strong {
+  font-size: 16px;
+}
+
+.patient-login-page .patient-auth-benefits p span {
+  max-width: 320px;
+  font-size: 13px;
+}
+
+.patient-login-page .patient-auth-family {
+  height: 211px;
+  margin: auto -50px 0;
+  background:
+    linear-gradient(0deg, rgba(198, 221, 198, 0.48), transparent 25%),
+    linear-gradient(90deg, rgba(229, 235, 240, 0.85), transparent 34%, transparent 75%, rgba(221, 239, 222, 0.52));
+}
+
+.patient-login-page .patient-auth-family::before {
+  position: absolute;
+  right: 38px;
+  bottom: -41px;
+  width: 342px;
+  height: 166px;
+  border-radius: 50% 50% 0 0;
+  background: radial-gradient(ellipse at center, rgba(104, 161, 102, 0.34), rgba(104, 161, 102, 0) 69%);
+  content: '';
+}
+
+.patient-login-page .patient-auth-family img {
+  position: absolute;
+  right: 16px;
+  bottom: -98px;
+  width: 386px;
+  max-width: none;
+  opacity: 0.23;
+  filter: saturate(0.8) contrast(0.87);
+}
+
+.patient-login-page .family-illustration-shield {
+  position: absolute;
+  right: 45px;
+  top: 10px;
+  z-index: 1;
+  display: grid;
+  width: 142px;
+  height: 170px;
+  place-items: center;
+  border: 6px solid rgba(100, 157, 233, 0.11);
+  border-radius: 42px 42px 55px 55px;
+  color: rgba(107, 159, 237, 0.15);
+  font-size: 46px;
+  clip-path: polygon(50% 0, 97% 16%, 94% 69%, 50% 100%, 6% 69%, 3% 16%);
+}
+
+.patient-login-page .auth-cross {
+  right: 84px;
+  top: 3px;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.patient-login-page .patient-auth-trust {
+  margin: 0 -20px;
+  padding: 15px 20px;
+  border-radius: 14px;
+}
+
+.patient-login-page .patient-auth-main {
+  width: auto;
+  min-width: 0;
+  padding: 0 28px;
+  background: #f8faff;
+}
+
+.patient-login-page .patient-auth-topbar {
+  height: 88px;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.patient-login-page .patient-auth-card {
+  width: min(910px, 100%);
+  margin: 0 auto;
+  padding: 31px 99px 35px;
+  border-color: #e7ebf2;
+  border-radius: 17px;
+  box-shadow: 0 11px 30px rgba(31, 57, 111, 0.07);
+}
+
+.patient-login-page .auth-welcome-icon {
+  width: 84px;
+  height: 84px;
+  margin-bottom: 13px;
+  font-size: 38px;
+}
+
+.patient-login-page .patient-auth-card h1 {
+  font-size: 28px;
+}
+
+.patient-login-page .auth-subtitle {
+  margin-bottom: 30px;
+}
+
+.patient-login-page .auth-tabs button {
+  height: 58px;
+}
+
+.patient-login-page .auth-login-form {
+  margin-top: 29px;
+}
+
+.patient-login-page .auth-input {
+  height: 57px;
+  margin-bottom: 18px;
+}
+
+.patient-login-page .auth-primary {
+  height: 56px;
+}
+
+.patient-login-page .auth-divider {
+  margin: 33px 0;
+}
+
+.patient-login-page .auth-socials {
+  grid-template-columns: 1fr 1.1fr;
+  gap: 28px;
+}
+
+.patient-login-page .auth-assurance {
+  margin: 30px -34px 28px;
+}
+
+.patient-login-page .patient-auth-footer {
+  height: 64px;
+  gap: min(25vw, 350px);
+  background: #f8faff;
+}
+
+@media (max-width: 900px) {
+  .patient-login-page {
+    display: block;
+    height: auto;
+    min-height: 100dvh;
+    padding-bottom: 0;
+  }
+
+  .patient-login-page .patient-auth-main {
+    min-height: 100dvh;
+    padding: 0 22px;
+  }
+
+  .patient-login-page .patient-auth-card {
+    margin: auto;
+  }
+
+  .patient-login-page .patient-auth-footer {
+    display: none;
+  }
+}
+
+/* Reference-specific imagery and final desktop alignment. */
+.patient-login-page .patient-auth-family > img {
+  display: none;
+}
+
+.patient-login-page .patient-auth-family::after {
+  position: absolute;
+  right: -10px;
+  bottom: -1px;
+  z-index: 2;
+  width: 350px;
+  height: 259px;
+  background: url('/assets/images/roles/family.png') center 28% / cover no-repeat;
+  content: '';
+  filter: saturate(0.88) contrast(0.96);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 90%, transparent 100%);
+}
+
+.patient-login-page .family-illustration-shield {
+  right: 30px;
+  top: 3px;
+  z-index: 1;
+}
+
+.patient-login-page .patient-auth-trust {
+  z-index: 3;
+}
+
+.patient-login-page .patient-auth-trust div {
+  gap: 0;
+}
+
+.patient-login-page .patient-auth-trust b {
+  overflow: hidden;
+  color: transparent;
+  background: url('/assets/images/roles/family.png') 30% 20% / 155px auto no-repeat;
+}
+
+.patient-login-page .patient-auth-trust b:nth-child(2) {
+  background-position: 65% 25%;
+}
+
+.patient-login-page .patient-auth-trust b:nth-child(3) {
+  background-position: 47% 42%;
+}
+
+.patient-login-page .patient-auth-trust b:last-child {
+  color: #1864d6;
+  background: #edf5ff;
+}
+
+.patient-login-page .auth-socials button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.patient-login-page .auth-socials button:nth-child(2) img {
+  width: 22px;
+  height: 22px;
+}
+
+@media (min-width: 901px) {
+  .patient-login-page .patient-auth-main {
+    padding-right: 25px;
+    padding-left: 39px;
+  }
+
+  .patient-login-page .patient-auth-card {
+    width: min(904px, 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .patient-login-page .patient-auth-family::after {
+    width: 300px;
+    height: 220px;
+  }
+}

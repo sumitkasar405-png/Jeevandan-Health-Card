@@ -43,7 +43,7 @@ interface PageCopy {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './role-selection.html',
-  styleUrl: './role-selection.css',
+  styleUrls: ['./role-selection.css'],
 })
 export class RoleSelectionComponent {
   readonly languages: ReadonlyArray<{ code: LanguageCode; label: string }> = [
@@ -185,3 +185,4 @@ export class RoleSelectionComponent {
     return role.id;
   }
 }
+

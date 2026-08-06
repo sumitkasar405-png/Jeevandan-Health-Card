@@ -1,1 +1,142 @@
-<p>login works!</p>
+<main class="pharmacist-login-page">
+  <div class="login-layout">
+    <aside class="pharmacist-showcase" aria-label="Jeevandan pharmacist platform information">
+      <a class="pharmacist-brand" routerLink="/" aria-label="Jeevandan home">
+        <span class="brand-emblem" aria-hidden="true">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </span>
+        <span class="brand-name">
+          <strong>Jeevandan</strong>
+          <span>Digital Health Card</span>
+          <small>Your Health. Our Priority.</small>
+        </span>
+      </a>
+
+      <section class="showcase-copy">
+        <h1>Secure Access for<br />Healthcare Professionals</h1>
+        <p>
+          Jeevandan Digital Health Card is a secure platform designed for pharmacists and
+          healthcare professionals to manage prescriptions, inventory and patient care efficiently.
+        </p>
+      </section>
+
+      <section class="benefit-list" aria-label="Platform benefits">
+        <article class="benefit-item">
+          <span class="benefit-icon secure"><i class="fa-solid fa-shield-halved"></i></span>
+          <p><strong>Secure &amp; Confidential</strong><span>Your data is protected with 256-bit SSL encryption and advanced security protocols.</span></p>
+        </article>
+        <article class="benefit-item">
+          <span class="benefit-icon access"><i class="fa-regular fa-user"></i></span>
+          <p><strong>Role-Based Access</strong><span>Access system features based on your role with complete control and transparency.</span></p>
+        </article>
+        <article class="benefit-item">
+          <span class="benefit-icon time"><i class="fa-regular fa-clock"></i></span>
+          <p><strong>Real-time Management</strong><span>Manage prescriptions, inventory, and records in real-time from anywhere.</span></p>
+        </article>
+        <article class="benefit-item">
+          <span class="benefit-icon privacy"><i class="fa-solid fa-lock"></i></span>
+          <p><strong>Privacy Assured</strong><span>We respect your privacy and ensure your data is never shared with third parties.</span></p>
+        </article>
+      </section>
+
+      <div class="professional-trust">
+        <i class="fa-regular fa-circle-check" aria-hidden="true"></i>
+        <p><strong>Trusted by 1000+ Healthcare Professionals</strong><span>Across India for secure and efficient healthcare management.</span></p>
+      </div>
+    </aside>
+
+    <section class="login-area">
+      <header class="login-topbar">
+        <div class="language-wrap">
+          <button class="language-button" type="button" (click)="languageOpen = !languageOpen" [attr.aria-expanded]="languageOpen">
+            <i class="fa-solid fa-globe"></i><span>English</span><i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="language-menu" *ngIf="languageOpen">
+            <button type="button" (click)="languageOpen = false">English</button>
+            <button type="button" (click)="languageOpen = false">Hindi</button>
+          </div>
+        </div>
+        <a class="help-link" href="mailto:support@jeevandan.in"><i class="fa-regular fa-circle-question"></i>Need Help?</a>
+      </header>
+
+      <section class="login-card" aria-labelledby="login-heading">
+        <div class="login-heading">
+          <span class="lock-orb"><i class="fa-solid fa-lock"></i></span>
+          <div>
+            <h2 id="login-heading">Welcome Back!</h2>
+            <p>Login to your pharmacist account</p>
+          </div>
+        </div>
+
+        <div class="login-tabs" role="tablist" aria-label="Login method">
+          <button type="button" role="tab" [attr.aria-selected]="loginMethod === 'password'" [class.active]="loginMethod === 'password'" (click)="selectLoginMethod('password')">
+            <i class="fa-solid fa-lock"></i> Password Login
+          </button>
+          <button type="button" role="tab" [attr.aria-selected]="loginMethod === 'otp'" [class.active]="loginMethod === 'otp'" (click)="selectLoginMethod('otp')">
+            <i class="fa-solid fa-mobile-screen-button"></i> OTP Login
+          </button>
+        </div>
+
+        <form class="login-form" (ngSubmit)="submitLogin()">
+          <label for="identifier">Email / Mobile Number</label>
+          <div class="input-shell">
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            <input id="identifier" name="identifier" type="text" [(ngModel)]="identifier" autocomplete="username" placeholder="Enter your registered email or mobile number" />
+          </div>
+
+          <ng-container *ngIf="loginMethod === 'password'; else otpLogin">
+            <div class="password-label-row">
+              <label for="password">Password</label>
+              <a href="#password" (click)="$event.preventDefault(); showRegistrationMessage()">Forgot Password?</a>
+            </div>
+            <div class="input-shell">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <input id="password" name="password" [type]="passwordVisible ? 'text' : 'password'" [(ngModel)]="password" autocomplete="current-password" placeholder="Enter your password" />
+              <button class="password-visibility" type="button" (click)="togglePasswordVisibility()" [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+                <i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+              </button>
+            </div>
+          </ng-container>
+
+          <ng-template #otpLogin>
+            <div class="password-label-row">
+              <label for="otp">One-time password</label>
+              <button type="button" class="text-action" (click)="sendOtp()">{{ otpSent ? 'Resend OTP' : 'Send OTP' }}</button>
+            </div>
+            <div class="input-shell">
+              <i class="fa-solid fa-key" aria-hidden="true"></i>
+              <input id="otp" name="otp" type="text" inputmode="numeric" maxlength="6" [(ngModel)]="otp" autocomplete="one-time-code" placeholder="Enter the 6-digit OTP" />
+            </div>
+          </ng-template>
+
+          <div class="login-options">
+            <label class="remember-option"><input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" /><span>Remember me</span></label>
+            <span class="secure-login"><i class="fa-regular fa-circle-check"></i>Secure Login</span>
+          </div>
+
+          <button class="primary-login" type="submit"><i class="fa-solid fa-lock"></i>{{ loginMethod === 'password' ? 'Login Securely' : 'Verify & Login' }}</button>
+        </form>
+
+        <div class="or-divider"><span>OR</span></div>
+        <button class="google-login" type="button" (click)="loginWithGoogle()"><span class="google-letter">G</span>Login with Google</button>
+
+        <div class="security-callout">
+          <span class="security-callout-icon"><i class="fa-regular fa-circle-check"></i></span>
+          <p>We use 256-bit SSL encryption to protect your data and ensure a secure browsing experience.</p>
+          <a href="#security" (click)="$event.preventDefault(); showRegistrationMessage()">Learn more about our<br />Security Policy <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+      </section>
+
+      <p class="registration-prompt">Don't have an account? <a routerLink="/auth/pharmacist/register">Register Now</a></p>
+    </section>
+  </div>
+
+  <footer class="login-footer">
+    <span><i class="fa-regular fa-copyright"></i> 2025 Jeevandan Digital Health Card. All rights reserved.</span>
+    <nav aria-label="Legal links"><a href="#privacy">Privacy Policy</a><i></i><a href="#terms">Terms &amp; Conditions</a><i></i><a href="#contact">Contact Us</a></nav>
+  </footer>
+
+  <div class="login-toast" *ngIf="message" [class.error]="messageIsError" role="status">
+    <i [class]="messageIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ message }}
+  </div>
+</main>

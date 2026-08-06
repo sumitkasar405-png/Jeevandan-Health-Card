@@ -1,1 +1,107 @@
-<p>register works!</p>
+<main class="pharmacist-registration-page">
+  <header class="registration-header">
+    <a class="registration-brand" routerLink="/" aria-label="Jeevandan home">
+      <span class="brand-emblem"><i class="fa-solid fa-heart-pulse"></i></span>
+      <span><strong>Jeevandan</strong><small>Digital Health Card</small></span>
+    </a>
+    <span class="header-divider"></span>
+    <div class="registration-title"><span><i class="fa-solid fa-user-plus"></i></span><div><h1>Pharmacist Registration</h1><p>Create your account to join Jeevandan Digital Health Network</p></div></div>
+    <div class="header-actions"><button type="button"><i class="fa-solid fa-globe"></i> English <i class="fa-solid fa-chevron-down"></i></button><a href="mailto:support@jeevandan.in"><i class="fa-solid fa-headset"></i> Need Help?</a><a class="login-link" routerLink="/auth/pharmacist/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></div>
+  </header>
+
+  <nav class="registration-steps" aria-label="Registration sections">
+    <button *ngFor="let step of steps; let first = first" type="button" [class.active]="first" (click)="scrollTo(step.id)"><i [class]="step.icon"></i>{{ step.label }}</button>
+  </nav>
+
+  <section class="registration-body">
+    <form class="registration-form" (ngSubmit)="submitForReview()">
+      <section class="form-section" id="personal">
+        <h2><span class="section-icon personal"><i class="fa-regular fa-user"></i></span><b>1.</b> Personal Information</h2>
+        <div class="form-grid three-columns">
+          <label class="field"><span>Full Name <em>*</em></span><div><i class="fa-regular fa-user"></i><input name="fullName" [(ngModel)]="form.fullName" placeholder="Enter your full name" /></div></label>
+          <label class="field"><span>Date of Birth <em>*</em></span><div><input name="dateOfBirth" [(ngModel)]="form.dateOfBirth" type="date" /></div></label>
+          <label class="field"><span>Gender <em>*</em></span><div><select name="gender" [(ngModel)]="form.gender"><option value="" disabled>Select gender</option><option>Female</option><option>Male</option><option>Other</option></select></div></label>
+          <label class="field"><span>Mobile Number <em>*</em></span><div class="phone-input"><i class="fa-solid fa-phone"></i><b>+91</b><input name="mobile" [(ngModel)]="form.mobile" inputmode="numeric" maxlength="10" placeholder="Enter mobile number" /></div></label>
+          <label class="field"><span>Email Address <em>*</em></span><div><i class="fa-regular fa-envelope"></i><input name="email" [(ngModel)]="form.email" type="email" placeholder="Enter email address" /></div></label>
+          <label class="field"><span>Alternate Number <small>(Optional)</small></span><div><i class="fa-solid fa-phone"></i><input name="alternateNumber" [(ngModel)]="form.alternateNumber" inputmode="numeric" placeholder="Enter alternate number" /></div></label>
+        </div>
+      </section>
+
+      <section class="form-section" id="professional">
+        <h2><span class="section-icon professional"><i class="fa-regular fa-file-lines"></i></span><b>2.</b> Professional Information</h2>
+        <div class="form-grid three-columns">
+          <label class="field"><span>Pharmacy Registration Number <em>*</em></span><div><input name="registrationNumber" [(ngModel)]="form.registrationNumber" placeholder="Enter registration number" /><i class="fa-regular fa-id-card"></i></div></label>
+          <label class="field"><span>State Pharmacy Council <em>*</em></span><div><select name="pharmacyCouncil" [(ngModel)]="form.pharmacyCouncil"><option value="" disabled>Select state council</option><option>Delhi Pharmacy Council</option><option>Maharashtra State Pharmacy Council</option><option>Karnataka State Pharmacy Council</option></select></div></label>
+          <label class="field"><span>Registration Expiry Date <em>*</em></span><div><input name="registrationExpiry" [(ngModel)]="form.registrationExpiry" type="date" /></div></label>
+          <label class="field"><span>Qualification <em>*</em></span><div><select name="qualification" [(ngModel)]="form.qualification"><option value="" disabled>Select qualification</option><option>D.Pharm</option><option>B.Pharm</option><option>M.Pharm</option></select></div></label>
+          <label class="field"><span>Year of Passing <em>*</em></span><div><select name="passingYear" [(ngModel)]="form.passingYear"><option value="" disabled>Select year</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div></label>
+          <label class="field"><span>Name of Pharmacy/Organization <em>*</em></span><div><input name="organization" [(ngModel)]="form.organization" placeholder="Enter pharmacy / organization name" /></div></label>
+        </div>
+      </section>
+
+      <section class="form-section" id="address">
+        <h2><span class="section-icon address"><i class="fa-solid fa-location-dot"></i></span><b>3.</b> Address Information</h2>
+        <div class="form-grid three-columns address-main-grid">
+          <label class="field"><span>Address Line 1 <em>*</em></span><div><i class="fa-solid fa-house"></i><input name="addressLine1" [(ngModel)]="form.addressLine1" placeholder="Enter address line 1" /></div></label>
+          <label class="field"><span>Address Line 2 <small>(Optional)</small></span><div><input name="addressLine2" [(ngModel)]="form.addressLine2" placeholder="Enter address line 2" /></div></label>
+          <label class="field"><span>Area / Locality <em>*</em></span><div><input name="locality" [(ngModel)]="form.locality" placeholder="Enter area / locality" /></div></label>
+        </div>
+        <div class="form-grid four-columns compact-grid">
+          <label class="field"><span>City <em>*</em></span><div><input name="city" [(ngModel)]="form.city" placeholder="Enter city" /></div></label>
+          <label class="field"><span>State <em>*</em></span><div><select name="state" [(ngModel)]="form.state"><option value="" disabled>Select state</option><option>Delhi</option><option>Maharashtra</option><option>Karnataka</option></select></div></label>
+          <label class="field"><span>District <em>*</em></span><div><select name="district" [(ngModel)]="form.district"><option value="" disabled>Select district</option><option>Central District</option><option>North District</option><option>South District</option></select></div></label>
+          <label class="field"><span>Pincode <em>*</em></span><div><input name="pincode" [(ngModel)]="form.pincode" inputmode="numeric" maxlength="6" placeholder="Enter pincode" /></div></label>
+        </div>
+      </section>
+
+      <section class="form-section" id="shop">
+        <h2><span class="section-icon shop"><i class="fa-solid fa-shop"></i></span><b>4.</b> Medical Shop Information</h2>
+        <div class="form-grid four-columns">
+          <label class="field"><span>Shop / Medical Store Name <em>*</em></span><div><i class="fa-solid fa-shop"></i><input name="shopName" [(ngModel)]="form.shopName" placeholder="Enter shop name" /></div></label>
+          <label class="field"><span>Shop License Number <em>*</em></span><div><i class="fa-regular fa-file-lines"></i><input name="shopLicense" [(ngModel)]="form.shopLicense" placeholder="Enter license number" /></div></label>
+          <label class="field"><span>Shop Type <em>*</em></span><div><select name="shopType" [(ngModel)]="form.shopType"><option value="" disabled>Select shop type</option><option>Retail Pharmacy</option><option>Wholesale Pharmacy</option><option>Hospital Pharmacy</option></select></div></label>
+          <label class="field"><span>Est. Year</span><div><input name="establishmentYear" [(ngModel)]="form.establishmentYear" type="number" min="1900" max="2099" placeholder="YYYY" /></div></label>
+          <label class="field"><span>Shop Address <em>*</em></span><div><input name="shopAddress" [(ngModel)]="form.shopAddress" placeholder="Enter shop address" /></div></label>
+          <label class="field"><span>City <em>*</em></span><div><input name="shopCity" [(ngModel)]="form.shopCity" placeholder="Enter city" /></div></label>
+          <label class="field"><span>Pincode <em>*</em></span><div><input name="shopPincode" [(ngModel)]="form.shopPincode" inputmode="numeric" maxlength="6" placeholder="Enter pincode" /></div></label>
+          <label class="field"><span>Phone Number <em>*</em></span><div class="phone-input"><i class="fa-solid fa-phone"></i><b>+91</b><input name="shopPhone" [(ngModel)]="form.shopPhone" inputmode="numeric" maxlength="10" placeholder="Enter shop phone" /></div></label>
+          <label class="field"><span>GST Number <small>(If Applicable)</small></span><div><input name="gstNumber" [(ngModel)]="form.gstNumber" placeholder="Enter GST number" /></div></label>
+          <label class="field"><span>Timings <em>*</em></span><div><i class="fa-regular fa-clock"></i><input name="timings" [(ngModel)]="form.timings" placeholder="e.g. 9:00 AM - 9:00 PM" /></div></label>
+          <label class="field upload-field"><span>Upload Shop Image <small>(Optional)</small></span><div><label class="file-button" for="shopImage"><i class="fa-solid fa-cloud-arrow-up"></i> {{ shopImageName || 'Choose File' }}</label><input id="shopImage" type="file" accept="image/png,image/jpeg" (change)="onShopImageSelected($event)" /><small>JPG, PNG (Max 2MB)</small></div></label>
+        </div>
+      </section>
+
+      <section class="form-section security-section" id="security">
+        <h2><span class="section-icon security"><i class="fa-solid fa-shield-halved"></i></span><b>5.</b> Account &amp; Security</h2>
+        <div class="account-security-grid">
+          <div class="form-grid two-columns">
+            <label class="field"><span>Password <em>*</em></span><div><i class="fa-solid fa-lock"></i><input name="password" [(ngModel)]="form.password" [type]="passwordVisible ? 'text' : 'password'" placeholder="Create a strong password" /><button type="button" (click)="passwordVisible = !passwordVisible"><i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i></button></div><small class="password-strength">Password Strength: <b [class]="passwordStrength.toLowerCase()">{{ passwordStrength }}</b></small></label>
+            <label class="field"><span>Confirm Password <em>*</em></span><div><i class="fa-solid fa-lock"></i><input name="confirmPassword" [(ngModel)]="form.confirmPassword" [type]="confirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm your password" /><button type="button" (click)="confirmPasswordVisible = !confirmPasswordVisible"><i [class]="confirmPasswordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i></button></div></label>
+          </div>
+          <aside class="password-rules"><strong>Password must contain:</strong><span *ngFor="let valid of passwordChecks; let index = index" [class.valid]="valid"><i [class]="valid ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'"></i>{{ ['At least 8 characters', 'One uppercase letter', 'One lowercase letter', 'One number', 'One special character'][index] }}</span></aside>
+        </div>
+      </section>
+
+      <section class="form-section review-section" id="review">
+        <h2><span class="section-icon review"><i class="fa-regular fa-clipboard"></i></span><b>6.</b> Review &amp; Submit <small>(Documents &amp; Declaration)</small></h2>
+        <p class="documents-label">Documents Required</p>
+        <div class="document-grid">
+          <article class="document-card" *ngFor="let document of documents" [class.uploaded]="documentNames[document.key]">
+            <span class="document-icon"><i [class]="document.icon"></i></span><div><strong>{{ document.title }} <em>*</em></strong><small>{{ documentNames[document.key] || document.detail }}</small><label [for]="document.key"><i class="fa-solid fa-arrow-up-from-bracket"></i>{{ documentNames[document.key] ? 'Replace' : 'Upload' }}</label><input [id]="document.key" type="file" accept=".pdf,image/png,image/jpeg" (change)="onDocumentSelected($event, document.key)" /></div>
+          </article>
+        </div>
+        <label class="terms-option"><input name="acceptTerms" [(ngModel)]="form.acceptTerms" type="checkbox" /> <span>I agree to the <a href="#terms">Terms &amp; Conditions</a> and <a href="#privacy">Privacy Policy</a> <em>*</em></span></label>
+        <div class="form-actions"><button type="button" class="outline-action" (click)="resetForm()"><i class="fa-solid fa-rotate"></i> Reset</button><button type="button" class="outline-action" (click)="cancelRegistration()"><i class="fa-solid fa-xmark"></i> Cancel</button><button type="submit" class="submit-action"><i class="fa-regular fa-paper-plane"></i> Review &amp; Submit</button></div>
+      </section>
+    </form>
+
+    <aside class="registration-sidebar">
+      <section class="sidebar-card shop-summary"><h2><i class="fa-solid fa-shop"></i> Medical Shop At a Glance</h2><dl><div><dt>Shop Name</dt><dd>{{ form.shopName || '-' }}</dd></div><div><dt>Shop Type</dt><dd>{{ form.shopType || '-' }}</dd></div><div><dt>License No.</dt><dd>{{ form.shopLicense || '-' }}</dd></div><div><dt>Shop Address</dt><dd>{{ form.shopAddress || '-' }}</dd></div><div><dt>Timings</dt><dd>{{ form.timings || '-' }}</dd></div></dl></section>
+      <section class="sidebar-card documents-side"><h2><i class="fa-regular fa-file-lines"></i> Documents Required</h2><p *ngFor="let document of documents"><i [class]="document.icon"></i>{{ document.title }}</p></section>
+      <section class="sidebar-card reasons-card"><h2><i class="fa-solid fa-shield-halved"></i> Why Register on Jeevandan?</h2><p><i class="fa-solid fa-check"></i>Create and manage digital prescriptions</p><p><i class="fa-solid fa-check"></i>Connect with doctors and hospitals</p><p><i class="fa-solid fa-check"></i>Access healthcare services easily</p><p><i class="fa-solid fa-check"></i>Secure and verified platform</p><p><i class="fa-solid fa-check"></i>Be a part of trusted health network</p></section>
+      <section class="sidebar-card data-card"><h2><i class="fa-solid fa-lock"></i> Your Data is Secure</h2><p>We use 256-bit SSL encryption to protect your personal information and ensure privacy.</p><i class="data-shield fa-solid fa-shield-halved"></i></section>
+    </aside>
+  </section>
+
+  <div class="registration-toast" *ngIf="toast" [class.error]="toastIsError"><i [class]="toastIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ toast }}</div>
+</main>

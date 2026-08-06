@@ -1,1 +1,269 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="login-shell">
+
+    <!-- ===================== LEFT: BRAND / MARKETING PANEL ===================== -->
+    <aside class="brand-panel">
+      <div class="brand-panel-bg"></div>
+      <div class="brand-panel-content">
+
+        <div class="brand-logo">
+          <img src="assets/images/roles/logo.png" alt="Jeevandan Digital Health Card" class="brand-logo-img" />
+        </div>
+
+        <div class="hero-row">
+          <div class="brand-headline">
+            <span class="line">Welcome to</span>
+            <span class="line accent-blue">Jeevandan</span>
+            <span class="line accent-red">Ambulance <span class="dark">Portal</span></span>
+          </div>
+
+          <div class="emergency-chip">
+            <span class="emergency-chip-icon"><i class="fa-solid fa-shield-halved"></i></span>
+            <div>
+              <strong>Emergency. Anytime. Anywhere.</strong>
+              <small>Jeevandan is with you, every second.</small>
+            </div>
+          </div>
+        </div>
+
+        <p class="brand-copy">
+          Respond faster. Save more lives. Access emergency requests, navigate
+          quickly and deliver critical care on time.
+        </p>
+
+        <ul class="feature-list">
+          <li>
+            <span class="feature-icon warn"><i class="fa-solid fa-bell"></i></span>
+            <span>
+              <strong>Real-time Emergency Requests</strong>
+              <small>Receive and respond to emergencies instantly.</small>
+            </span>
+          </li>
+          <li>
+            <span class="feature-icon blue"><i class="fa-solid fa-location-dot"></i></span>
+            <span>
+              <strong>Live Ambulance Tracking</strong>
+              <small>Navigate with live location &amp; shortest route.</small>
+            </span>
+          </li>
+          <li>
+            <span class="feature-icon teal"><i class="fa-solid fa-shield-heart"></i></span>
+            <span>
+              <strong>Secure &amp; Private</strong>
+              <small>Your data is protected with 256-bit SSL.</small>
+            </span>
+          </li>
+          <li>
+            <span class="feature-icon violet"><i class="fa-solid fa-clipboard-list"></i></span>
+            <span>
+              <strong>Patient Vital Access</strong>
+              <small>View essential patient information securely.</small>
+            </span>
+          </li>
+        </ul>
+
+        <div class="helpline-card">
+          <span class="helpline-icon"><i class="fa-solid fa-phone"></i></span>
+          <div>
+            <strong>In Case of Technical Issue</strong>
+            <small>24/7 Helpline Support</small>
+            <a class="helpline-number" href="tel:18001234567">1800 123 4567</a>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ===================== RIGHT: LOGIN FORM ===================== -->
+    <main class="form-panel">
+
+      <div class="form-panel-topbar">
+        <button type="button" class="lang-select">
+          <i class="fa-solid fa-globe"></i>
+          <span>English</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="new-here">
+          New here?
+          <a routerLink="/auth/ambulance/register">Register Your Ambulance</a>
+        </div>
+      </div>
+
+      <section class="login-card">
+
+        <header class="login-card-header">
+          <span class="login-card-icon"><i class="fa-solid fa-truck-medical"></i></span>
+          <div>
+            <h1>Ambulance Login</h1>
+            <p>Login to access your ambulance dashboard</p>
+          </div>
+        </header>
+
+        <div class="tab-switch" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            class="tab-btn"
+            [class.active]="activeTab === 'otp'"
+            [attr.aria-selected]="activeTab === 'otp'"
+            (click)="selectTab('otp')"
+          >
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            Mobile / OTP Login
+          </button>
+          <button
+            type="button"
+            role="tab"
+            class="tab-btn"
+            [class.active]="activeTab === 'password'"
+            [attr.aria-selected]="activeTab === 'password'"
+            (click)="selectTab('password')"
+          >
+            <i class="fa-solid fa-lock"></i>
+            Email / Password Login
+          </button>
+        </div>
+
+        <!-- ---------- Mobile / OTP tab ---------- -->
+        <form *ngIf="activeTab === 'otp'" (ngSubmit)="verifyLogin()" novalidate>
+
+          <label class="field-label" for="mobileNumber">Registered Mobile Number <span class="req">*</span></label>
+          <div class="mobile-row">
+            <div class="country-code">
+              <span class="flag">🇮🇳</span>
+              <span>{{ countryCode }}</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <input
+              id="mobileNumber"
+              type="tel"
+              inputmode="numeric"
+              maxlength="10"
+              placeholder="Enter registered mobile number"
+              [(ngModel)]="mobileNumber"
+              name="mobileNumber"
+              autocomplete="tel-national"
+            />
+            <button type="button" class="send-otp-btn" (click)="sendOtp()">
+              <span>Send OTP</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+          <p class="privacy-note"><i class="fa-solid fa-shield"></i> We do not share your mobile number with anyone.</p>
+
+          <div class="divider" *ngIf="otpSent"><span>OR</span></div>
+
+          <ng-container *ngIf="otpSent">
+            <div class="otp-row-header">
+              <label class="field-label">Enter OTP <span class="req">*</span></label>
+              <button type="button" class="resend-link" [disabled]="resendSecondsLeft > 0" (click)="resendOtp()">
+                <i class="fa-solid fa-rotate-right"></i>
+                <ng-container *ngIf="resendSecondsLeft > 0; else canResend">Resend OTP in {{ resendLabel }}</ng-container>
+                <ng-template #canResend>Resend OTP</ng-template>
+              </button>
+            </div>
+
+            <div class="otp-boxes">
+              <input
+                *ngFor="let digit of otpDigits; let i = index"
+                #otpBox
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                class="otp-box"
+                [class.filled]="digit"
+                [value]="digit"
+                (input)="onOtpInput(i, $event)"
+                (keydown)="onOtpKeydown(i, $event)"
+                (paste)="onOtpPaste(i, $event)"
+              />
+            </div>
+
+            <label class="remember-row">
+              <input type="checkbox" [(ngModel)]="rememberDevice" name="rememberDevice" />
+              Remember this device for 30 days
+              <i class="fa-solid fa-circle-info" title="You won't be asked for an OTP on this device for 30 days."></i>
+            </label>
+          </ng-container>
+
+          <button type="submit" class="verify-btn">
+            <i class="fa-solid fa-lock"></i>
+            Verify &amp; Login
+          </button>
+        </form>
+
+        <!-- ---------- Email / Password tab ---------- -->
+        <form *ngIf="activeTab === 'password'" (ngSubmit)="verifyLogin()" novalidate>
+          <label class="field-label" for="email">Registered Email <span class="req">*</span></label>
+          <input
+            id="email"
+            type="email"
+            class="text-input"
+            placeholder="Enter your registered email"
+            [(ngModel)]="email"
+            name="email"
+            autocomplete="email"
+          />
+
+          <label class="field-label" for="password">Password <span class="req">*</span></label>
+          <input
+            id="password"
+            type="password"
+            class="text-input"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            autocomplete="current-password"
+          />
+
+          <button type="submit" class="verify-btn">
+            <i class="fa-solid fa-lock"></i>
+            Verify &amp; Login
+          </button>
+        </form>
+
+      </section>
+
+      <footer class="login-footer-strip">
+        <div class="footer-item">
+          <span class="footer-icon green"><i class="fa-solid fa-shield-halved"></i></span>
+          <div>
+            <strong>Secure Login</strong>
+            <small>Your information is protected with 256-bit SSL encryption.</small>
+          </div>
+        </div>
+        <div class="footer-item">
+          <span class="footer-icon blue"><i class="fa-solid fa-headset"></i></span>
+          <div>
+            <strong>Need Help?</strong>
+            <small>Our support team is available 24/7 to assist you.</small>
+          </div>
+        </div>
+        <button type="button" class="contact-support-btn" (click)="contactSupport()">
+          <i class="fa-solid fa-headset"></i>
+          Contact Support
+        </button>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- ===================== FULL-WIDTH PAGE FOOTER ===================== -->
+  <footer class="page-footer">
+    <span>© 2025 Jeevandan Digital Health Card. All rights reserved.</span>
+    <nav class="page-footer-links">
+      <a href="#">Privacy Policy</a>
+      <span class="sep">|</span>
+      <a href="#">Terms &amp; Conditions</a>
+      <span class="sep">|</span>
+      <a href="#">Support</a>
+    </nav>
+  </footer>
+
+  <div class="toast" [class.show]="toastMessage" [class.error]="toastIsError">
+    <i class="fa-solid" [class.fa-circle-check]="!toastIsError" [class.fa-circle-exclamation]="toastIsError"></i>
+    <span>{{ toastMessage }}</span>
+  </div>
+
+</div>

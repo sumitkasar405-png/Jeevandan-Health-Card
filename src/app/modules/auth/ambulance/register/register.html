@@ -1,1 +1,935 @@
-<p>register works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeevandan - Ambulance Registration</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+* , *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #101c52;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #eef3fb;
+}
+a { text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+input, select { font: inherit; }
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== LEFT SIDEBAR ===== */
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  width: 234px;
+  flex: 0 0 234px;
+  padding: 20px 16px;
+  background: linear-gradient(180deg, #0b1a3f 0%, #0e2456 55%, #0b1a3f 100%);
+  color: #dbe4f7;
+  position: relative;
+  overflow: hidden;
+}
+.side-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px 18px;
+}
+.side-brand svg { width: 40px; height: 40px; flex: 0 0 40px; }
+.side-brand strong { display: block; color: #fff; font-size: 17px; letter-spacing: -0.4px; }
+.side-brand span { display: block; color: #35d0a0; font-size: 11px; font-weight: 600; }
+
+.nav-highlight {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  background: linear-gradient(100deg, #1c53c9, #1f6fe0);
+  box-shadow: 0 8px 18px rgba(20, 60, 150, 0.35);
+}
+.nav-highlight .icon-badge {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 15px;
+  color: #fff;
+}
+.nav-highlight strong { display: block; color: #fff; font-size: 13px; }
+.nav-highlight small { display: block; color: #cfe0ff; font-size: 10.5px; margin-top: 2px; }
+
+.side-links {
+  display: grid;
+  gap: 3px;
+  margin-bottom: 18px;
+}
+.side-links button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #b7c4e6;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-align: left;
+}
+.side-links button i { width: 16px; text-align: center; font-size: 13px; color: #7f93c9; }
+.side-links button:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+.side-links button:hover i { color: #6fb2ff; }
+
+.side-stats {
+  display: grid;
+  gap: 10px;
+  padding: 14px 4px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+.side-stats article { display: flex; align-items: center; gap: 11px; }
+.side-stats .icon-badge {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+  font-size: 13px;
+  color: #fff;
+}
+.side-stats article:nth-child(1) .icon-badge { background: linear-gradient(135deg, #1a9d6e, #17b98a); }
+.side-stats article:nth-child(2) .icon-badge { background: linear-gradient(135deg, #1a6fd6, #2d8ff2); }
+.side-stats article:nth-child(3) .icon-badge { background: linear-gradient(135deg, #d5405d, #f0637e); }
+.side-stats strong { display: block; color: #fff; font-size: 12px; }
+.side-stats span { display: block; color: #97a8d4; font-size: 10.5px; margin-top: 1px; }
+
+.side-help {
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+.side-help > strong { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 12.5px; }
+.side-help > strong i { color: #4fa8ff; }
+.side-help > p { margin: 2px 0 10px; color: #93a3cb; font-size: 10.5px; }
+.side-help .contact-line { display: flex; align-items: center; gap: 8px; color: #cddaf5; font-size: 11.5px; margin-bottom: 7px; }
+.side-help .contact-line i { width: 14px; color: #6fb2ff; font-size: 11px; }
+.side-help button {
+  width: 100%;
+  padding: 9px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 7px;
+  background: #1f6fe0;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.side-help button:hover { background: #2a7cf0; }
+
+/* ===== MAIN COLUMN ===== */
+.main-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+
+.top-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 26px;
+  background: linear-gradient(100deg, #eef5ff, #f7fbff 60%, #eef3fb);
+  border-bottom: 1px solid #dfe7f4;
+}
+.top-header .icon-badge {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #1a6fd6, #2d8ff2);
+  color: #fff;
+  font-size: 19px;
+}
+.top-header h1 { margin: 0; font-size: 19px; letter-spacing: -0.4px; }
+.top-header p { margin: 2px 0 0; color: #57668c; font-size: 12px; }
+.top-header .spacer { flex: 1 1 auto; }
+.top-header .pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  border: 1px solid #cfe0f7;
+  background: #fff;
+  color: #14243f;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.top-header .pill i { color: #2d7ef2; }
+.top-header .lang {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #dbe4f2;
+  background: #fff;
+  color: #2a3557;
+  font-size: 11.5px;
+}
+.top-header .lang select { border: 0; background: transparent; outline: 0; color: inherit; }
+.top-header .acct { display: flex; align-items: center; gap: 9px; font-size: 11.5px; color: #2a3557; white-space: nowrap; }
+.top-header .login-btn {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 7px;
+  background: #1a56d6;
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.top-header .login-btn:hover { background: #2464e6; }
+
+.content-row { display: flex; flex: 1 1 auto; min-width: 0; }
+.form-col { flex: 1 1 0; min-width: 0; padding: 20px 20px 0; }
+.tip-col { width: 250px; flex: 0 0 250px; padding: 20px 20px 0 0; display: grid; gap: 14px; align-content: start; }
+
+/* Stepper */
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 22px;
+  margin-bottom: 16px;
+  border: 1px solid #e1e9f4;
+  border-radius: 12px;
+  background: #fff;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+.step .circle {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  border: 2px solid #cdd8ea;
+  color: #7c8aad;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.step strong { display: block; color: #17234a; font-size: 12px; }
+.step span { display: block; color: #7c8aad; font-size: 10px; margin-top: 1px; }
+.step.active .circle { border-color: #1a6fe0; background: #1a6fe0; color: #fff; }
+.step.active strong { color: #1a56d6; }
+.step.done .circle { border-color: #17b98a; background: #17b98a; color: #fff; }
+.step-line { flex: 1 1 auto; height: 2px; margin: 15px 10px 0; background: repeating-linear-gradient(90deg, #cdd8ea 0 6px, transparent 6px 11px); }
+.step-line.done { background: #17b98a; }
+
+.form-card {
+  padding: 15px 20px 17px;
+  margin-bottom: 14px;
+  border: 1px solid #e1e9f4;
+  border-radius: 12px;
+  background: #fff;
+}
+.card-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 13px; }
+.card-heading .icon-badge {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #1a6fd6, #2d8ff2);
+  color: #fff;
+  font-size: 14px;
+}
+.card-heading h2 { margin: 0; font-size: 14px; color: #14243f; }
+.card-heading p { margin: 1px 0 0; color: #7c8aad; font-size: 11px; }
+
+.field-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 22px; }
+.field-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.field { min-width: 0; }
+.field label { display: block; margin-bottom: 5px; color: #17234a; font-size: 11px; font-weight: 600; }
+.field label .req { color: #d73950; }
+.field > span {
+  display: flex;
+  height: 34px;
+  align-items: center;
+  border: 1px solid #d5deea;
+  border-radius: 7px;
+  background: #fff;
+}
+.field > span:focus-within { border-color: #1a6fe0; box-shadow: 0 0 0 3px rgba(26, 111, 224, 0.12); }
+.field > span > i { width: 32px; flex: 0 0 32px; text-align: center; color: #33436a; font-size: 12.5px; }
+.field input, .field select {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #1b274b;
+  font-size: 12px;
+}
+.field input::placeholder { color: #8892a6; }
+.field select { color: #626d82; padding-right: 8px; }
+.field select.filled { color: #1b274b; }
+
+.upload-photo {
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  height: 76px;
+  border: 1px dashed #bdcad9;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fbfdff, #f2f7fd);
+  color: #075fb0;
+  cursor: pointer;
+  text-align: center;
+}
+.upload-photo i { font-size: 18px; }
+.upload-photo strong { font-size: 10.5px; }
+.upload-photo small { color: #657188; font-size: 8.5px; }
+.upload-photo input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.upload-photo.has-file { border-style: solid; border-color: #17b98a; color: #128a67; }
+.upload-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 7px; }
+
+.capability-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 9px; }
+.capability {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid #d9e2ef;
+  border-radius: 8px;
+  background: #fbfdff;
+  font-size: 11px;
+  color: #2a3557;
+  cursor: pointer;
+  user-select: none;
+}
+.capability input { accent-color: #1a6fe0; width: 14px; height: 14px; flex: 0 0 14px; }
+.capability i { color: #1a6fe0; font-size: 12px; }
+.capability.checked { border-color: #1a6fe0; background: #eaf2ff; font-weight: 600; }
+
+.doc-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.doc-slot {
+  padding: 10px 10px 11px;
+  border: 1px dashed #c7d3e4;
+  border-radius: 8px;
+  background: #fbfdff;
+  text-align: center;
+}
+.doc-slot label.name { display: block; margin-bottom: 7px; color: #17234a; font-size: 10.5px; font-weight: 600; text-align: left; }
+.doc-slot .req { color: #d73950; }
+.doc-slot .drop-icon { color: #7c8aad; font-size: 15px; margin-bottom: 4px; }
+.doc-slot button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border: 1px solid #bcd3f5;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a56d6;
+  font-size: 10px;
+  font-weight: 700;
+}
+.doc-slot button:hover { background: #eef5ff; }
+.doc-slot small { display: block; margin-top: 6px; color: #8892a6; font-size: 8.5px; }
+.doc-slot input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.doc-slot.uploaded { border-style: solid; border-color: #17b98a; background: #f0fbf6; }
+.doc-slot.uploaded .filename { display: block; margin-top: 6px; color: #128a67; font-size: 9.5px; font-weight: 700; word-break: break-all; }
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px 4px;
+  margin-bottom: 12px;
+}
+.form-footer label { display: flex; align-items: center; gap: 7px; color: #2a3557; font-size: 11.5px; }
+.form-footer input[type="checkbox"] { width: 15px; height: 15px; accent-color: #1a56d6; }
+.form-footer a { color: #1a56d6; font-weight: 600; }
+.footer-actions { display: flex; gap: 10px; }
+.btn-cancel { padding: 9px 20px; border: 1px solid #cdd8ea; border-radius: 7px; background: #fff; color: #2a3557; font-size: 12px; font-weight: 700; }
+.btn-cancel:hover { background: #f3f6fb; }
+.btn-next {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 22px;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(100deg, #1a56d6, #2d8ff2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(26, 86, 214, 0.25);
+}
+.btn-next:hover { background: linear-gradient(100deg, #1f61ea, #3597fc); }
+
+.page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 26px 20px;
+  color: #8592b0;
+  font-size: 11px;
+  border-top: 1px solid #e1e9f4;
+  margin-top: auto;
+}
+.page-footer .links { display: flex; gap: 16px; }
+.page-footer a { color: #6a7796; }
+.page-footer a:hover { color: #1a56d6; }
+
+/* right column */
+.tip-card { padding: 15px; border-radius: 12px; border: 1px solid #e1e9f4; }
+.tip-card.quote {
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(160deg, #123e8f, #1a6fe0);
+  color: #fff;
+  border: 0;
+}
+.tip-card.quote blockquote { margin: 0; padding: 16px 16px 10px; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.tip-card.quote .scene { position: relative; width: 100%; aspect-ratio: 4 / 2.6; overflow: hidden; }
+.tip-card.quote .scene svg { display: block; width: 100%; height: 100%; }
+
+.tip-card.green { background: #eefaf3; border-color: #c7ecd8; }
+.tip-card.orange { background: #fff8ec; border-color: #f4e2ba; }
+.tip-card.red { background: #fdeff0; border-color: #f5c9cd; }
+.tip-card.blue { background: #eef5ff; border-color: #c9dcf7; }
+
+.tip-card h4 { display: flex; align-items: center; gap: 8px; margin: 0 0 9px; font-size: 12.5px; }
+.tip-card.green h4 { color: #128a56; }
+.tip-card.orange h4 { color: #b5790b; }
+.tip-card.red h4 { color: #d5303f; }
+.tip-card.blue h4 { color: #1a56d6; }
+.tip-card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+.tip-card li { display: flex; align-items: flex-start; gap: 8px; color: #2a3557; font-size: 11px; line-height: 1.4; }
+.tip-card.green li i { color: #17b98a; margin-top: 1px; }
+.tip-card.orange li i { color: #e0a11a; margin-top: 1px; }
+.tip-card.red p { margin: 0; color: #7a2530; font-size: 11px; line-height: 1.5; }
+.tip-card.red .siren { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #e63b4d; color: #fff; margin-bottom: 8px; }
+.tip-card.blue p { margin: 0; color: #2a3557; font-size: 11px; line-height: 1.5; }
+.tip-card.blue .shield { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #1a56d6; color: #fff; margin-bottom: 8px; }
+
+.toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  background: #14243f;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(10, 20, 50, 0.3);
+  transform: translateY(140%);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  z-index: 50;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast i { color: #35d0a0; font-size: 15px; }
+.toast.error i { color: #ff6b7d; }
+
+.field.invalid > span { border-color: #e0475c; box-shadow: 0 0 0 3px rgba(224, 71, 92, 0.12); }
+
+@media (max-width: 1300px) {
+  .tip-col { display: none; }
+}
+@media (max-width: 980px) {
+  .side-nav { display: none; }
+  .field-grid, .field-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .capability-grid { grid-template-columns: repeat(3, 1fr); }
+  .doc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ================= LEFT SIDEBAR ================= -->
+  <aside class="side-nav">
+    <div class="side-brand">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 20 C40 6,15 10,15 30 C15 48,36 60,50 74 C64 60,85 48,85 30 C85 10,60 6,50 20Z" fill="none" stroke="#ffffff" stroke-width="7"/>
+        <rect x="41" y="30" width="18" height="7" rx="2" fill="#ffffff"/>
+        <rect x="46.5" y="24.5" width="7" height="18" rx="2" fill="#ffffff"/>
+        <path d="M22 52 C30 46,34 46,40 52 C46 58,50 58,50 58 C50 58,54 58,60 52 C66 46,70 46,78 52" fill="none" stroke="#2fbf8f" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <span><strong>Jeevandan</strong><span>Digital Health Card</span></span>
+    </div>
+
+    <div class="nav-highlight">
+      <span class="icon-badge"><i class="fa-solid fa-truck-medical"></i></span>
+      <span><strong>Ambulance Network</strong><small>Emergency. Anytime. Anywhere.</small></span>
+    </div>
+
+    <nav class="side-links">
+      <button type="button"><i class="fa-regular fa-circle-question"></i>Why Register?</button>
+      <button type="button"><i class="fa-regular fa-file-lines"></i>Registration Process</button>
+      <button type="button"><i class="fa-regular fa-file"></i>Required Documents</button>
+      <button type="button"><i class="fa-regular fa-circle-question"></i>Support</button>
+    </nav>
+
+    <div class="side-stats">
+      <article><span class="icon-badge"><i class="fa-solid fa-shield-halved"></i></span><span><strong>Verified Network</strong><span>All services verified</span></span></article>
+      <article><span class="icon-badge"><i class="fa-solid fa-bolt"></i></span><span><strong>Fast Response</strong><span>Reach patients faster</span></span></article>
+      <article><span class="icon-badge"><i class="fa-solid fa-heart"></i></span><span><strong>Save More Lives</strong><span>Your service matters</span></span></article>
+    </div>
+
+    <div class="side-help">
+      <strong><i class="fa-solid fa-headset"></i>Need Help?</strong>
+      <p>Our support team is here 24/7</p>
+      <div class="contact-line"><i class="fa-solid fa-phone"></i>1800 123 4567</div>
+      <div class="contact-line"><i class="fa-regular fa-envelope"></i>support@jeevandan.com</div>
+      <button type="button" id="contactSupportBtn">Contact Support</button>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN COLUMN ================= -->
+  <div class="main-col">
+
+    <header class="top-header">
+      <span class="icon-badge"><i class="fa-solid fa-truck-medical"></i></span>
+      <div>
+        <h1>Ambulance Registration</h1>
+        <p>Register your ambulance service to respond to emergencies and save lives.</p>
+      </div>
+      <span class="spacer"></span>
+      <span class="pill"><i class="fa-solid fa-phone"></i>Emergency Helpline 108</span>
+      <label class="lang"><i class="fa-solid fa-globe"></i>
+        <select aria-label="Select language"><option>English</option><option>हिंदी</option><option>मराठी</option></select>
+      </label>
+      <span class="acct">Already have an account?</span>
+      <button class="login-btn" type="button" id="loginBtn">Login</button>
+    </header>
+
+    <div class="content-row">
+      <div class="form-col">
+
+        <!-- Stepper -->
+        <div class="stepper" id="stepper">
+          <button class="step active" data-step="1" type="button"><span class="circle">1</span><span><strong>Service Information</strong><span>Basic details</span></span></button>
+          <span class="step-line"></span>
+          <button class="step" data-step="2" type="button"><span class="circle">2</span><span><strong>Driver Information</strong><span>Driver &amp; contact details</span></span></button>
+          <span class="step-line"></span>
+          <button class="step" data-step="3" type="button"><span class="circle">3</span><span><strong>Ambulance Details</strong><span>Vehicle &amp; equipment</span></span></button>
+          <span class="step-line"></span>
+          <button class="step" data-step="4" type="button"><span class="circle">4</span><span><strong>Documents</strong><span>Upload documents</span></span></button>
+          <span class="step-line"></span>
+          <button class="step" data-step="5" type="button"><span class="circle">5</span><span><strong>Review &amp; Submit</strong><span>Verify &amp; complete</span></span></button>
+        </div>
+
+        <form id="ambulanceForm">
+          <!-- Service Information -->
+          <section class="form-card" data-section="1">
+            <div class="card-heading">
+              <span class="icon-badge"><i class="fa-solid fa-truck-medical"></i></span>
+              <div><h2>Service Information</h2><p>Basic details about your ambulance service</p></div>
+            </div>
+            <div class="field-grid">
+              <div class="field"><label>Service / Organization Name <span class="req">*</span></label><span><i class="fa-regular fa-building"></i><input type="text" name="serviceName" placeholder="Enter ambulance service name" required></span></div>
+              <div class="field"><label>Service Type <span class="req">*</span></label><span><i class="fa-solid fa-truck-medical"></i><select name="serviceType" required><option value="" selected disabled>Select service type</option><option>Basic Ambulance</option><option>Advanced Life Support</option><option>Patient Transport</option><option>Air Ambulance</option></select></span></div>
+              <div class="field"><label>Government / Private <span class="req">*</span></label><span><i class="fa-solid fa-landmark"></i><select name="ownerType" required><option value="" selected disabled>Select type</option><option>Government</option><option>Private</option><option>NGO / Trust</option></select></span></div>
+
+              <div class="field"><label>Organization Email <span class="req">*</span></label><span><i class="fa-regular fa-envelope"></i><input type="email" name="orgEmail" placeholder="Enter organization email" required></span></div>
+              <div class="field"><label>Contact Number <span class="req">*</span></label><span class="phone-input"><i class="fa-solid fa-phone"></i><input type="tel" name="contactNumber" inputmode="numeric" maxlength="10" placeholder="Enter contact number" required></span></div>
+              <div class="field"><label>Emergency Contact Number <span class="req">*</span></label><span class="phone-input"><i class="fa-solid fa-truck-medical"></i><input type="tel" name="emergencyNumber" inputmode="numeric" maxlength="10" placeholder="Enter emergency number" required></span></div>
+
+              <div class="field"><label>State <span class="req">*</span></label><span><i class="fa-solid fa-location-dot"></i><select name="state" required><option value="" selected disabled>Select state</option><option>Maharashtra</option><option>Delhi</option><option>Karnataka</option><option>Gujarat</option><option>Tamil Nadu</option><option>Uttar Pradesh</option></select></span></div>
+              <div class="field"><label>City <span class="req">*</span></label><span><i class="fa-solid fa-city"></i><select name="city" required><option value="" selected disabled>Select city</option><option>Pune</option><option>Mumbai</option><option>Nagpur</option><option>Nashik</option></select></span></div>
+              <div class="field"><label>Full Address <span class="req">*</span></label><span><i class="fa-regular fa-map"></i><input type="text" name="fullAddress" placeholder="Enter full address" required></span></div>
+            </div>
+          </section>
+
+          <!-- Driver Information -->
+          <section class="form-card" data-section="2">
+            <div class="card-heading">
+              <span class="icon-badge"><i class="fa-solid fa-id-card-clip"></i></span>
+              <div><h2>Driver Information</h2><p>Driver &amp; contact person details</p></div>
+            </div>
+            <div class="field-grid cols-4">
+              <div class="field"><label>Driver Full Name <span class="req">*</span></label><span><i class="fa-regular fa-user"></i><input type="text" name="driverName" placeholder="Enter driver full name" required></span></div>
+              <div class="field"><label>Driver Mobile Number <span class="req">*</span></label><span class="phone-input"><i class="fa-solid fa-phone"></i><input type="tel" name="driverMobile" inputmode="numeric" maxlength="10" placeholder="Enter driver mobile number" required></span></div>
+              <div class="field"><label>Driver Email (Optional)</label><span><i class="fa-regular fa-envelope"></i><input type="email" name="driverEmail" placeholder="Enter driver email"></span></div>
+              <div class="field">
+                <label>Upload Driver Photo</label>
+                <label class="upload-photo" for="driverPhoto"><i class="fa-solid fa-file-image"></i><strong>Click to upload photo</strong><small>JPG, PNG (Max. 2MB)</small><input id="driverPhoto" type="file" accept="image/png,image/jpeg" data-upload-label></label>
+              </div>
+
+              <div class="field"><label>Driver License Number <span class="req">*</span></label><span><i class="fa-regular fa-id-card"></i><input type="text" name="licenseNumber" placeholder="Enter license number" required></span></div>
+              <div class="field"><label>License Expiry Date <span class="req">*</span></label><span><i class="fa-regular fa-calendar"></i><input type="date" name="licenseExpiry" required></span></div>
+              <div class="field"><label>Driver Date of Birth <span class="req">*</span></label><span><i class="fa-regular fa-calendar"></i><input type="date" name="driverDob" required></span></div>
+            </div>
+          </section>
+
+          <!-- Ambulance / Vehicle Information -->
+          <section class="form-card" data-section="3">
+            <div class="card-heading">
+              <span class="icon-badge"><i class="fa-solid fa-truck-medical"></i></span>
+              <div><h2>Ambulance / Vehicle Information</h2><p>Vehicle and equipment details</p></div>
+            </div>
+            <div class="field-grid cols-4">
+              <div class="field"><label>Ambulance Number <span class="req">*</span></label><span><i class="fa-solid fa-truck-medical"></i><input type="text" name="ambulanceNumber" placeholder="Enter ambulance number" required></span></div>
+              <div class="field"><label>Vehicle Registration Number <span class="req">*</span></label><span><i class="fa-regular fa-file-lines"></i><input type="text" name="vehicleRegNumber" placeholder="Enter vehicle registration number" required></span></div>
+              <div class="field"><label>Ambulance Type <span class="req">*</span></label><span><i class="fa-solid fa-truck-medical"></i><select name="ambulanceType" required><option value="" selected disabled>Select ambulance type</option><option>Basic Life Support</option><option>Advanced Life Support</option><option>ICU Ambulance</option><option>Neonatal Ambulance</option></select></span></div>
+              <div class="field"><label>Model / Manufacturer (Optional)</label><span><i class="fa-solid fa-truck-medical"></i><input type="text" name="model" placeholder="e.g. Force, Tata, Maruti"></span></div>
+
+              <div class="field"><label>Manufacturing Year (Optional)</label><span><i class="fa-regular fa-calendar"></i><input type="text" name="mfgYear" placeholder="e.g. 2023"></span></div>
+              <div class="field"><label>Color (Optional)</label><span><i class="fa-solid fa-palette"></i><input type="text" name="color" placeholder="e.g. White"></span></div>
+              <div class="field"><label>Chassis Number (Optional)</label><span><i class="fa-solid fa-hashtag"></i><input type="text" name="chassisNumber" placeholder="Enter chassis number"></span></div>
+              <div class="field"><label>Fuel Type (Optional)</label><span><i class="fa-solid fa-gas-pump"></i><select name="fuelType"><option value="" selected disabled>Select fuel type</option><option>Diesel</option><option>Petrol</option><option>CNG</option><option>Electric</option></select></span></div>
+              <div class="field" style="grid-column: 1 / span 1;"><label>GPS Device ID (Optional)</label><span><i class="fa-solid fa-location-crosshairs"></i><input type="text" name="gpsId" placeholder="Enter GPS device ID"></span></div>
+            </div>
+
+            <div class="card-heading" style="margin-top:16px;">
+              <span class="icon-badge"><i class="fa-solid fa-kit-medical"></i></span>
+              <div><h2>Ambulance Capabilities</h2><p>Select the medical facilities available in your ambulance</p></div>
+            </div>
+            <div class="capability-grid">
+              <label class="capability"><input type="checkbox" name="capability" value="BLS"><i class="fa-solid fa-heart-pulse"></i>Basic Life Support (BLS)</label>
+              <label class="capability"><input type="checkbox" name="capability" value="ALS"><i class="fa-solid fa-kit-medical"></i>Advanced Life Support (ALS)</label>
+              <label class="capability"><input type="checkbox" name="capability" value="ICU"><i class="fa-solid fa-bed-pulse"></i>ICU Ambulance</label>
+              <label class="capability"><input type="checkbox" name="capability" value="Neonatal"><i class="fa-solid fa-baby"></i>Neonatal Ambulance</label>
+              <label class="capability"><input type="checkbox" name="capability" value="Air"><i class="fa-solid fa-plane-departure"></i>Air Ambulance</label>
+              <label class="capability"><input type="checkbox" name="capability" value="Other"><i class="fa-solid fa-ellipsis"></i>Other</label>
+            </div>
+          </section>
+
+          <!-- Documents Upload -->
+          <section class="form-card" data-section="4">
+            <div class="card-heading">
+              <span class="icon-badge"><i class="fa-solid fa-file-arrow-up"></i></span>
+              <div><h2>Documents Upload</h2><p>Upload clear and valid documents for verification</p></div>
+            </div>
+            <div class="doc-grid">
+              <div class="doc-slot"><label class="name">Vehicle Registration (RC Book) <span class="req">*</span></label><i class="fa-solid fa-cloud-arrow-up drop-icon"></i><br><button type="button" class="doc-trigger"><i class="fa-solid fa-upload"></i>Upload File</button><input type="file" data-upload-doc accept=".pdf,.jpg,.jpeg,.png"><small>PDF, JPG, PNG (Max. 5MB)</small></div>
+              <div class="doc-slot"><label class="name">Driver License <span class="req">*</span></label><i class="fa-solid fa-cloud-arrow-up drop-icon"></i><br><button type="button" class="doc-trigger"><i class="fa-solid fa-upload"></i>Upload File</button><input type="file" data-upload-doc accept=".pdf,.jpg,.jpeg,.png"><small>PDF, JPG, PNG (Max. 5MB)</small></div>
+              <div class="doc-slot"><label class="name">Organization Certificate (Proof) <span class="req">*</span></label><i class="fa-solid fa-cloud-arrow-up drop-icon"></i><br><button type="button" class="doc-trigger"><i class="fa-solid fa-upload"></i>Upload File</button><input type="file" data-upload-doc accept=".pdf,.jpg,.jpeg,.png"><small>PDF, JPG, PNG (Max. 5MB)</small></div>
+              <div class="doc-slot"><label class="name">Insurance Document <span class="req">*</span></label><i class="fa-solid fa-cloud-arrow-up drop-icon"></i><br><button type="button" class="doc-trigger"><i class="fa-solid fa-upload"></i>Upload File</button><input type="file" data-upload-doc accept=".pdf,.jpg,.jpeg,.png"><small>PDF, JPG, PNG (Max. 5MB)</small></div>
+              <div class="doc-slot"><label class="name">Driver Photo ID (Aadhaar / ID Card) <span class="req">*</span></label><i class="fa-solid fa-cloud-arrow-up drop-icon"></i><br><button type="button" class="doc-trigger"><i class="fa-solid fa-upload"></i>Upload File</button><input type="file" data-upload-doc accept=".pdf,.jpg,.jpeg,.png"><small>PDF, JPG, PNG (Max. 5MB)</small></div>
+            </div>
+          </section>
+
+          <footer class="form-footer">
+            <label><input type="checkbox" id="agreeTerms" required> I agree to the <a href="#terms">Terms &amp; Conditions</a> and <a href="#privacy">Privacy Policy</a></label>
+            <div class="footer-actions">
+              <button class="btn-cancel" type="button" id="cancelBtn">Cancel</button>
+              <button class="btn-next" type="submit" id="saveNextBtn">Save &amp; Next<i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </footer>
+        </form>
+
+        <div class="page-footer">
+          <span>© 2026 Jeevandan Digital Health Card. All rights reserved.</span>
+          <span class="links"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#support">Support</a></span>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT TIP COLUMN ================= -->
+      <aside class="tip-col">
+        <div class="tip-card quote">
+          <blockquote>&ldquo;Your fast response can save a life.&rdquo;</blockquote>
+          <div class="scene">
+            <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0b1c4d"/>
+                  <stop offset="1" stop-color="#173a86"/>
+                </linearGradient>
+                <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
+                  <stop offset="0" stop-color="#ff5566" stop-opacity="0.9"/>
+                  <stop offset="1" stop-color="#ff5566" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+                  <stop offset="0" stop-color="#5aa7ff" stop-opacity="0.9"/>
+                  <stop offset="1" stop-color="#5aa7ff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect x="0" y="0" width="400" height="260" fill="url(#sky)"/>
+              <g opacity="0.5" fill="#22357a">
+                <rect x="0" y="90" width="46" height="110"/>
+                <rect x="50" y="60" width="38" height="140"/>
+                <rect x="330" y="70" width="34" height="130"/>
+                <rect x="368" y="100" width="32" height="100"/>
+              </g>
+              <g opacity="0.35" fill="#ffd76a">
+                <rect x="8" y="105" width="7" height="9"/><rect x="20" y="118" width="7" height="9"/><rect x="8" y="132" width="7" height="9"/>
+                <rect x="58" y="78" width="6" height="8"/><rect x="70" y="92" width="6" height="8"/><rect x="58" y="106" width="6" height="8"/>
+                <rect x="338" y="86" width="6" height="8"/><rect x="350" y="100" width="6" height="8"/>
+                <rect x="376" y="116" width="6" height="8"/><rect x="388" y="130" width="6" height="8"/>
+              </g>
+              <rect x="0" y="196" width="400" height="64" fill="#101f4d"/>
+              <rect x="0" y="196" width="400" height="4" fill="#3a52a0"/>
+              <circle cx="120" cy="160" r="30" fill="url(#glowRed)"/>
+              <circle cx="230" cy="150" r="34" fill="url(#glowBlue)"/>
+              <g transform="translate(95,150)">
+                <rect x="0" y="30" width="190" height="42" rx="6" fill="#f4f6fb"/>
+                <rect x="0" y="6" width="120" height="30" rx="8" fill="#f4f6fb"/>
+                <rect x="8" y="12" width="40" height="20" rx="3" fill="#a9c6ff"/>
+                <rect x="0" y="34" width="190" height="7" fill="#e0475c"/>
+                <rect x="10" y="41" width="170" height="6" fill="#2251b8"/>
+                <rect x="46" y="0" width="20" height="10" rx="2" fill="#e0475c"/>
+                <rect x="46" y="-9" width="20" height="9" rx="2" fill="#2251b8"/>
+                <circle cx="34" cy="76" r="14" fill="#182238"/>
+                <circle cx="34" cy="76" r="6" fill="#5c6a8c"/>
+                <circle cx="156" cy="76" r="14" fill="#182238"/>
+                <circle cx="156" cy="76" r="6" fill="#5c6a8c"/>
+                <rect x="8" y="15" width="34" height="16" rx="2" fill="#9fc2ff" opacity="0.85"/>
+                <text x="150" y="26" font-size="11" fill="#e0475c" font-weight="700" text-anchor="middle">108</text>
+              </g>
+              <circle cx="120" cy="150" r="4" fill="#ff5566"><animate attributeName="opacity" values="1;0.2;1" dur="0.9s" repeatCount="indefinite"/></circle>
+              <circle cx="140" cy="150" r="4" fill="#5aa7ff"><animate attributeName="opacity" values="0.2;1;0.2" dur="0.9s" repeatCount="indefinite"/></circle>
+            </svg>
+          </div>
+        </div>
+
+        <div class="tip-card green">
+          <h4><i class="fa-solid fa-circle-check"></i>Why Register with Jeevandan?</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i>Get emergency requests in real-time</li>
+            <li><i class="fa-solid fa-check"></i>Be part of a verified ambulance network</li>
+            <li><i class="fa-solid fa-check"></i>Connect directly with hospitals &amp; patients</li>
+            <li><i class="fa-solid fa-check"></i>Save more lives with digital support</li>
+          </ul>
+        </div>
+
+        <div class="tip-card orange">
+          <h4><i class="fa-solid fa-file-lines"></i>Required Documents</h4>
+          <ul>
+            <li><i class="fa-solid fa-check"></i>Vehicle Registration (RC Book)</li>
+            <li><i class="fa-solid fa-check"></i>Driver License</li>
+            <li><i class="fa-solid fa-check"></i>Organization Certificate (Proof)</li>
+            <li><i class="fa-solid fa-check"></i>Insurance Document</li>
+            <li><i class="fa-solid fa-check"></i>Driver Photo ID (Aadhaar / ID Card)</li>
+          </ul>
+        </div>
+
+        <div class="tip-card red">
+          <span class="siren"><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <h4 style="margin-bottom:4px;">In Emergency</h4>
+          <p>Call 108 or use the Jeevandan App<br>Help us save lives together!</p>
+        </div>
+
+        <div class="tip-card blue">
+          <span class="shield"><i class="fa-solid fa-lock"></i></span>
+          <h4 style="margin-bottom:4px;">Your Data is Secure</h4>
+          <p>All information is encrypted and kept confidential with 256-bit SSL.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg">Saved</span></div>
+
+<script>
+(function () {
+  var toast = document.getElementById('toast');
+  var toastMsg = document.getElementById('toastMsg');
+  var toastTimer = null;
+
+  function showToast(msg, isError) {
+    toastMsg.textContent = msg;
+    toast.classList.toggle('error', !!isError);
+    toast.querySelector('i').className = isError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check';
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 3200);
+  }
+
+  /* ---------- Stepper: click a step to scroll to its section ---------- */
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var lines = Array.prototype.slice.call(document.querySelectorAll('.step-line'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.form-card[data-section]'));
+
+  function setActiveStep(stepNum) {
+    steps.forEach(function (s) {
+      var n = parseInt(s.dataset.step, 10);
+      s.classList.toggle('active', n === stepNum);
+      s.classList.toggle('done', n < stepNum);
+    });
+    lines.forEach(function (l, i) { l.classList.toggle('done', i < stepNum - 1); });
+  }
+
+  steps.forEach(function (stepBtn) {
+    stepBtn.addEventListener('click', function () {
+      var num = parseInt(stepBtn.dataset.step, 10);
+      var target = num <= 4 ? sections[num - 1] : document.querySelector('.form-footer');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveStep(num);
+    });
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var idx = sections.indexOf(entry.target);
+        if (idx !== -1) setActiveStep(idx + 1);
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(function (sec) { observer.observe(sec); });
+
+  /* ---------- Driver photo upload ---------- */
+  var driverPhotoLabel = document.querySelector('.upload-photo');
+  driverPhotoLabel.addEventListener('change', function (e) {
+    if (!e.target.matches('input[type="file"]')) return;
+    var file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      showToast('Driver photo must be under 2MB', true);
+      e.target.value = '';
+      return;
+    }
+    var reader = new FileReader();
+    reader.onload = function (ev) {
+      driverPhotoLabel.classList.add('has-file');
+      driverPhotoLabel.innerHTML = '<img src="' + ev.target.result + '" alt="Driver photo preview">' +
+        '<input id="driverPhoto" type="file" accept="image/png,image/jpeg">';
+      showToast('Driver photo uploaded');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ---------- Capability checkboxes ---------- */
+  var capLabels = Array.prototype.slice.call(document.querySelectorAll('.capability'));
+  capLabels.forEach(function (label) {
+    var box = label.querySelector('input');
+    label.addEventListener('click', function (e) {
+      setTimeout(function () { label.classList.toggle('checked', box.checked); }, 0);
+    });
+  });
+
+  /* ---------- Document upload slots ---------- */
+  var docSlots = Array.prototype.slice.call(document.querySelectorAll('.doc-slot'));
+  docSlots.forEach(function (slot) {
+    var btn = slot.querySelector('.doc-trigger');
+    var input = slot.querySelector('input[type="file"]');
+    btn.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      var file = input.files[0];
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('File must be under 5MB', true);
+        input.value = '';
+        return;
+      }
+      slot.classList.add('uploaded');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i>Uploaded';
+      var existing = slot.querySelector('.filename');
+      if (!existing) {
+        existing = document.createElement('small');
+        existing.className = 'filename';
+        slot.appendChild(existing);
+      }
+      existing.textContent = file.name;
+      showToast(slot.querySelector('.name').textContent.replace('*', '').trim() + ' uploaded');
+    });
+  });
+
+  /* ---------- Cancel button ---------- */
+  var form = document.getElementById('ambulanceForm');
+  document.getElementById('cancelBtn').addEventListener('click', function () {
+    if (confirm('Discard all entered details and reset the form?')) {
+      form.reset();
+      capLabels.forEach(function (l) { l.classList.remove('checked'); });
+      docSlots.forEach(function (slot) {
+        slot.classList.remove('uploaded');
+        slot.querySelector('.doc-trigger').innerHTML = '<i class="fa-solid fa-upload"></i>Upload File';
+        var f = slot.querySelector('.filename');
+        if (f) f.remove();
+      });
+      driverPhotoLabel.classList.remove('has-file');
+      driverPhotoLabel.innerHTML = '<i class="fa-solid fa-file-image"></i><strong>Click to upload photo</strong><small>JPG, PNG (Max. 2MB)</small><input id="driverPhoto" type="file" accept="image/png,image/jpeg">';
+      setActiveStep(1);
+      showToast('Form reset');
+    }
+  });
+
+  /* ---------- Save & Next: validate required fields ---------- */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var invalidFields = [];
+    Array.prototype.slice.call(form.querySelectorAll('[required]')).forEach(function (el) {
+      var fieldWrap = el.closest('.field');
+      var valid = el.type === 'checkbox' ? el.checked : el.value.trim() !== '';
+      if (fieldWrap) fieldWrap.classList.toggle('invalid', !valid);
+      if (!valid) invalidFields.push(el);
+    });
+
+    var agree = document.getElementById('agreeTerms');
+    var termsOk = agree.checked;
+    agree.parentElement.style.color = termsOk ? '' : '#d73950';
+
+    if (invalidFields.length || !termsOk) {
+      showToast('Please fill all required fields marked *', true);
+      var firstInvalid = invalidFields[0];
+      if (firstInvalid) firstInvalid.closest('.form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    showToast('Section saved — moving to next step');
+    var current = steps.find(function (s) { return s.classList.contains('active'); });
+    var currentNum = current ? parseInt(current.dataset.step, 10) : 1;
+    var nextNum = Math.min(currentNum + 1, 5);
+    setActiveStep(nextNum);
+    var target = nextNum <= 4 ? sections[nextNum - 1] : document.querySelector('.form-footer');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form.addEventListener('input', function (e) {
+    var fieldWrap = e.target.closest('.field');
+    if (fieldWrap) fieldWrap.classList.remove('invalid');
+  });
+  form.addEventListener('change', function (e) {
+    var fieldWrap = e.target.closest('.field');
+    if (fieldWrap) fieldWrap.classList.remove('invalid');
+  });
+
+  Array.prototype.slice.call(form.querySelectorAll('select')).forEach(function (sel) {
+    sel.addEventListener('change', function () { sel.classList.toggle('filled', sel.value !== ''); });
+  });
+
+  document.getElementById('loginBtn').addEventListener('click', function () {
+    showToast('Login page would open here');
+  });
+  document.getElementById('contactSupportBtn').addEventListener('click', function () {
+    showToast('Connecting you to support…');
+  });
+})();
+</script>
+</body>
+</html>

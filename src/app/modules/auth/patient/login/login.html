@@ -1,4 +1,4 @@
-<div class="patient-auth-page">
+<div class="patient-auth-page patient-login-page">
   <aside class="patient-auth-aside" aria-label="Jeevandan patient login benefits">
     <div class="patient-auth-brand"><span class="patient-auth-logo"><img src="/assets/images/roles/logo.png" alt=""></span><div><strong>Jeevandan</strong><small>Digital Health Card</small></div></div>
     <div class="patient-auth-copy"><h1>Your <em>Health.</em><br>Your <span>Control.</span></h1><p>Access your health records securely, anytime, anywhere.</p></div>
@@ -8,7 +8,11 @@
       <article><i class="fa-regular fa-bell"></i><p><strong>Smart Reminders</strong><span>Get reminders for medicines, appointments and vaccines.</span></p></article>
       <article><i class="fa-solid fa-qrcode"></i><p><strong>QR Health Card</strong><span>Show your QR code and share your health data instantly.</span></p></article>
     </div>
-    <div class="patient-auth-family" aria-hidden="true"><i class="fa-solid fa-plus auth-cross"></i><span class="auth-person auth-person-one"><i class="fa-solid fa-user"></i></span><span class="auth-person auth-person-two"><i class="fa-solid fa-user"></i></span><span class="auth-person auth-person-three"><i class="fa-solid fa-child"></i></span><span class="auth-shield"><i class="fa-solid fa-plus"></i></span></div>
+    <div class="patient-auth-family" aria-hidden="true">
+      <i class="fa-solid fa-plus auth-cross"></i>
+      <span class="family-illustration-shield"><i class="fa-solid fa-plus"></i></span>
+      <img src="/assets/images/roles/shield-stethoscope-cutout.png" alt="">
+    </div>
     <div class="patient-auth-trust"><i class="fa-solid fa-shield-heart"></i><p><strong>Trusted by 10,000+ Families</strong><span>Join thousands who trust Jeevandan</span></p><div><b>RK</b><b>AS</b><b>PM</b><b>10K+</b></div></div>
   </aside>
 
@@ -22,7 +26,7 @@
         <ng-container *ngIf="loginMode === 'password'"><label for="login-password">Password</label><div class="auth-input"><i class="fa-solid fa-lock"></i><input id="login-password" [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password"><button class="password-toggle" type="button" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"><i [class]="showPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i></button></div><a class="forgot-link" href="#forgot-password">Forgot password?</a><button class="auth-primary" type="button"><i class="fa-solid fa-right-to-bracket"></i>Login to Your Account</button></ng-container>
         <button *ngIf="loginMode === 'otp'" class="auth-primary" type="button" (click)="sendOtp()"><i class="fa-solid fa-lock"></i>Send OTP</button>
       </div>
-      <div class="auth-divider"><span>or continue with</span></div><div class="auth-socials"><button type="button"><b class="google-letter">G</b>Continue with Google</button><button type="button"><b class="microsoft-mark"><i></i><i></i><i></i><i></i></b>Continue with Microsoft</button></div>
+      <div class="auth-divider"><span>or continue with</span></div><div class="auth-socials"><button type="button"><img src="/assets/images/roles/google.png" alt="" />Continue with Google</button><button type="button"><img src="/assets/images/roles/microsoft.png" alt="" />Continue with Microsoft</button></div>
       <div class="auth-assurance"><article><i class="fa-solid fa-shield-heart"></i><p><strong>Secure &amp; Private</strong><span>Your data is 100% safe and private.</span></p></article><article><i class="fa-solid fa-bolt"></i><p><strong>Quick Access</strong><span>Login in seconds with OTP.</span></p></article><article><i class="fa-solid fa-lock"></i><p><strong>No Password</strong><span>Hassle-free login with OTP.</span></p></article></div>
       <p class="auth-terms">By continuing, you agree to our <a href="#terms">Terms &amp; Conditions</a> and <a href="#privacy">Privacy Policy.</a></p>
     </section>

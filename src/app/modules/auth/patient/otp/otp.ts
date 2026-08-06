@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-otp',
   imports: [RouterLink],
   templateUrl: './otp.html',
-  styleUrl: './otp.css',
+  styleUrls: ['./otp.css'],
 })
 export class Otp {
   moveToNext(event: Event): void {
@@ -26,3 +26,4 @@ export class Otp {
     event.preventDefault();
   }
 }
+

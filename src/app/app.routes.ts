@@ -31,16 +31,28 @@ export const routes: Routes = [
     loadComponent: () => import('./modules/auth/pharmacist/login/login').then((module) => module.Login),
   },
   {
+    path: 'auth/pharmacist/register',
+    loadComponent: () => import('./modules/auth/pharmacist/register/register').then((module) => module.Register),
+  },
+  {
     path: 'auth/laboratory/login',
-    loadComponent: () => import('./modules/auth/laboratory/login/login').then((module) => module.Login),
+    loadComponent: () => import('./modules/auth/laboratory/login/login').then((module) => module.LoginComponent),
   },
   {
     path: 'auth/ambulance/login',
     loadComponent: () => import('./modules/auth/ambulance/login/login').then((module) => module.Login),
   },
   {
+    path: 'auth/ambulance/register',
+    loadComponent: () => import('./modules/auth/ambulance/register/register').then((module) => module.Register),
+  },
+  {
     path: 'auth/admin/login',
     loadComponent: () => import('./modules/auth/admin/login/login').then((module) => module.Login),
+  },
+  {
+    path: 'auth/laboratory/register',
+    loadComponent: () => import('./modules/auth/laboratory/register/register').then((module) => module.RegisterComponent),
   },
   {
     path: '**',
