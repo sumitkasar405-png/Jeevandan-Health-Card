@@ -295,3 +295,39 @@
     display: none;
   }
 }
+/* =========================================================
+   JEEVANDAN LOGO - SIZE FIX
+   ========================================================= */
+
+.patient-login-page .patient-auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.patient-login-page .patient-auth-logo-image {
+  display: block !important;
+
+  width: 54px !important;
+  height: 54px !important;
+
+  min-width: 54px !important;
+  min-height: 54px !important;
+
+  max-width: 54px !important;
+  max-height: 54px !important;
+
+  flex: 0 0 54px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  /* Makes the actual logo inside the PNG appear larger */
+  transform: scale(2.1);
+}

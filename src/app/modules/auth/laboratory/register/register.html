@@ -1,0 +1,390 @@
+<main class="lab-register-page">
+  <div class="register-layout">
+    <aside class="lab-showcase" aria-label="Jeevandan laboratory registration information">
+      <a class="lab-brand" routerLink="/" aria-label="Jeevandan home">
+        <span class="brand-icon">
+          <img src="assets/images/roles/logo.png" alt="Jeevandan logo" />
+        </span>
+        <span class="brand-name">
+          <strong>Jeevandan</strong>
+          <span>Digital Health Card</span>
+        </span>
+      </a>
+
+      <section class="showcase-copy">
+        <h1>Join Jeevandan<br />Laboratory Network</h1>
+        <p>
+          Register your laboratory to manage test reports, patients and laboratory operations digitally and securely.
+        </p>
+      </section>
+
+      <figure class="showcase-image">
+        <img src="assets/images/roles/laboratory2.png" alt="Laboratory equipment - microscope and test tubes" />
+      </figure>
+
+      <section class="benefits-card" aria-label="Why register with us">
+        <h2>Why Register with Us?</h2>
+        <div class="benefit-list">
+          <article class="benefit-item">
+            <span class="benefit-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+            <p><strong>Digital report management</strong><span>Upload and manage lab reports digitally.</span></p>
+          </article>
+          <article class="benefit-item">
+            <span class="benefit-icon"><i class="fa-solid fa-shield-halved"></i></span>
+            <p><strong>Secure &amp; Compliant</strong><span>End-to-end encrypted and fully secure.</span></p>
+          </article>
+          <article class="benefit-item">
+            <span class="benefit-icon"><i class="fa-solid fa-user-group"></i></span>
+            <p><strong>Reach More Patients</strong><span>Connect with a large network of patients.</span></p>
+          </article>
+          <article class="benefit-item">
+            <span class="benefit-icon"><i class="fa-solid fa-chart-line"></i></span>
+            <p><strong>Real-time Dashboard</strong><span>Track reports, analytics and lab activity.</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="help-card" aria-label="Support">
+        <div class="help-heading">
+          <span class="help-icon"><i class="fa-solid fa-headset"></i></span>
+          <div>
+            <strong>Need Help?</strong>
+            <span>Our support team is here to help you.</span>
+          </div>
+        </div>
+        <a class="help-contact" href="tel:+919370443092"><i class="fa-solid fa-phone"></i>+91 93704 43092</a>
+        <a class="help-contact" href="mailto:support@jeevandan.com"><i class="fa-regular fa-envelope"></i>support@jeevandan.com</a>
+        <button type="button" class="contact-support-btn">Contact Support</button>
+      </section>
+    </aside>
+
+    <section class="register-main">
+      <header class="register-topbar">
+        <div>
+          <h1>Laboratory Registration</h1>
+          <p>Create your laboratory account</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="language-wrap">
+            <button
+              class="language-button"
+              type="button"
+              (click)="toggleLanguageMenu()"
+              [attr.aria-expanded]="languageOpen"
+            >
+              <i class="fa-solid fa-globe"></i><span>English</span><i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="language-menu" *ngIf="languageOpen">
+              <button type="button" (click)="closeLanguageMenu()">English</button>
+              <button type="button" (click)="closeLanguageMenu()">Hindi</button>
+            </div>
+          </div>
+          <p class="login-link">
+            Already have an account? <a routerLink="/auth/laboratory/login">Login</a>
+          </p>
+        </div>
+      </header>
+
+      <nav class="step-tracker" aria-label="Registration steps">
+        <div class="step-item" *ngFor="let step of steps">
+          <span class="step-circle" [class.complete]="step.complete">
+            <i class="fa-solid" [ngClass]="step.complete ? 'fa-check' : step.icon"></i>
+          </span>
+          <span class="step-text">
+            <strong>{{ step.title }}</strong>
+            <small>{{ step.subtitle }}</small>
+          </span>
+          <span class="step-check" *ngIf="step.complete"><i class="fa-solid fa-circle-check"></i></span>
+        </div>
+      </nav>
+
+      <div class="register-body">
+        <div class="form-column">
+          <!-- Laboratory Information -->
+          <section id="lab-information" class="form-section">
+            <div class="section-header">
+              <h2><i class="fa-solid fa-flask"></i> LABORATORY INFORMATION</h2>
+              <button type="button" class="edit-link" (click)="goToSection('lab-information')">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="labName">Laboratory Name <span class="req">*</span></label>
+                <input id="labName" name="labName" type="text" [(ngModel)]="lab.name" placeholder="e.g. City Care Diagnostics" />
+              </div>
+              <div class="field">
+                <label for="labType">Laboratory Type <span class="req">*</span></label>
+                <select id="labType" name="labType" [(ngModel)]="lab.type">
+                  <option value="" disabled selected>Select laboratory type</option>
+                  <option value="Pathology Laboratory">Pathology Laboratory</option>
+                  <option value="Diagnostic Center">Diagnostic Center</option>
+                  <option value="Radiology Center">Radiology Center</option>
+                  <option value="Blood Bank">Blood Bank</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="regNumber">Registration Number <span class="req">*</span></label>
+                <input id="regNumber" name="regNumber" type="text" [(ngModel)]="lab.regNumber" placeholder="e.g. LAB/2025/0512" />
+              </div>
+
+              <div class="field">
+                <label for="labEmail">Email Address <span class="req">*</span></label>
+                <input id="labEmail" name="labEmail" type="email" [(ngModel)]="lab.email" placeholder="info@yourlab.com" />
+              </div>
+              <div class="field">
+                <label for="labPhone">Phone Number <span class="req">*</span></label>
+                <div class="phone-row">
+                  <span class="phone-code">{{ lab.phoneCode }}</span>
+                  <input id="labPhone" name="labPhone" type="tel" inputmode="numeric" maxlength="10" [(ngModel)]="lab.phone" placeholder="98xxxxxx98" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="labAltPhone">Alternate Number (If applicable)</label>
+                <div class="phone-row">
+                  <span class="phone-code">{{ lab.altCode }}</span>
+                  <input id="labAltPhone" name="labAltPhone" type="tel" inputmode="numeric" maxlength="10" [(ngModel)]="lab.altPhone" placeholder="98xxxxxx98" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="establishedYear">Established Year <span class="req">*</span></label>
+                <div class="input-with-icon">
+                  <i class="fa-regular fa-calendar"></i>
+                  <input id="establishedYear" name="establishedYear" type="text" inputmode="numeric" maxlength="4" [(ngModel)]="lab.establishedYear" placeholder="2022" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="gstNumber">GST Number (If applicable)</label>
+                <input id="gstNumber" name="gstNumber" type="text" [(ngModel)]="lab.gst" placeholder="27ABCDE1234F1Z5" />
+              </div>
+              <div class="field">
+                <label for="website">Website (If applicable)</label>
+                <input id="website" name="website" type="text" [(ngModel)]="lab.website" placeholder="www.yourlab.com" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Admin Information -->
+          <section id="admin-information" class="form-section">
+            <div class="section-header">
+              <h2><i class="fa-solid fa-user"></i> ADMIN INFORMATION</h2>
+              <button type="button" class="edit-link" (click)="goToSection('admin-information')">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="adminName">Admin Full Name <span class="req">*</span></label>
+                <input id="adminName" name="adminName" type="text" [(ngModel)]="admin.fullName" placeholder="Dr. Rahul Sharma" />
+              </div>
+              <div class="field">
+                <label for="adminEmail">Admin Email <span class="req">*</span></label>
+                <input id="adminEmail" name="adminEmail" type="email" [(ngModel)]="admin.email" placeholder="admin@yourlab.com" />
+              </div>
+              <div class="field">
+                <label for="adminPhone">Admin Phone Number <span class="req">*</span></label>
+                <div class="phone-row">
+                  <span class="phone-code">{{ admin.phoneCode }}</span>
+                  <input id="adminPhone" name="adminPhone" type="tel" inputmode="numeric" maxlength="10" [(ngModel)]="admin.phone" placeholder="98765 43210" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="designation">Designation <span class="req">*</span></label>
+                <input id="designation" name="designation" type="text" [(ngModel)]="admin.designation" placeholder="Laboratory Administrator" />
+              </div>
+              <div class="field">
+                <label for="adminPassword">Password <span class="req">*</span></label>
+                <div class="input-with-icon">
+                  <input
+                    id="adminPassword"
+                    name="adminPassword"
+                    [type]="passwordVisible ? 'text' : 'password'"
+                    [(ngModel)]="admin.password"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="visibility-toggle" (click)="togglePasswordVisibility()" [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+                    <i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
+                <div class="input-with-icon">
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    [type]="confirmPasswordVisible ? 'text' : 'password'"
+                    [(ngModel)]="admin.confirmPassword"
+                    placeholder="Re-enter password"
+                    autocomplete="new-password"
+                  />
+                  <button type="button" class="visibility-toggle" (click)="toggleConfirmPasswordVisibility()" [attr.aria-label]="confirmPasswordVisible ? 'Hide password' : 'Show password'">
+                    <i [class]="confirmPasswordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Address & Location -->
+          <section id="address-location" class="form-section">
+            <div class="section-header">
+              <h2><i class="fa-solid fa-location-dot"></i> ADDRESS &amp; LOCATION</h2>
+              <button type="button" class="edit-link" (click)="goToSection('address-location')">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="addressLine1">Address Line 1 <span class="req">*</span></label>
+                <input id="addressLine1" name="addressLine1" type="text" [(ngModel)]="address.line1" placeholder="123, Health Care Street" />
+              </div>
+              <div class="field">
+                <label for="addressLine2">Address Line 2</label>
+                <input id="addressLine2" name="addressLine2" type="text" [(ngModel)]="address.line2" placeholder="Near City Hospital, Civil Lines" />
+              </div>
+              <div class="field">
+                <label for="landmark">Landmark</label>
+                <input id="landmark" name="landmark" type="text" [(ngModel)]="address.landmark" placeholder="Opp. City Hospital" />
+              </div>
+
+              <div class="field">
+                <label for="city">City <span class="req">*</span></label>
+                <input id="city" name="city" type="text" [(ngModel)]="address.city" placeholder="Pune" />
+              </div>
+              <div class="field">
+                <label for="state">State <span class="req">*</span></label>
+                <input id="state" name="state" type="text" [(ngModel)]="address.state" placeholder="Maharashtra" />
+              </div>
+              <div class="field">
+                <label for="pincode">Pincode <span class="req">*</span></label>
+                <input id="pincode" name="pincode" type="text" inputmode="numeric" maxlength="6" [(ngModel)]="address.pincode" placeholder="411001" />
+              </div>
+
+              <div class="field">
+                <label for="country">Country <span class="req">*</span></label>
+                <input id="country" name="country" type="text" [(ngModel)]="address.country" placeholder="India" />
+              </div>
+              <div class="field">
+                <label for="latitude">Latitude</label>
+                <input id="latitude" name="latitude" type="text" [(ngModel)]="address.latitude" placeholder="18.5204" />
+              </div>
+              <div class="field">
+                <label for="longitude">Longitude</label>
+                <input id="longitude" name="longitude" type="text" [(ngModel)]="address.longitude" placeholder="73.8567" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Documents Uploaded -->
+          <section id="documents-uploaded" class="form-section">
+            <div class="section-header">
+              <h2><i class="fa-solid fa-file-lines"></i> DOCUMENTS UPLOADED</h2>
+              <button type="button" class="edit-link" (click)="goToSection('documents-uploaded')">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="documents-grid">
+              <button
+                type="button"
+                class="document-card"
+                *ngFor="let doc of documents; let i = index"
+                (click)="triggerFileInput(i)"
+              >
+                <span class="document-icon" [ngClass]="doc.colorClass"><i class="fa-solid" [ngClass]="doc.icon"></i></span>
+                <span class="document-text">
+                  <strong>{{ doc.label }}</strong>
+                  <span *ngIf="doc.fileName; else noFile">{{ doc.fileName }}</span>
+                  <ng-template #noFile><span class="placeholder">Click to upload</span></ng-template>
+                  <small *ngIf="doc.fileSize">{{ doc.fileSize }}</small>
+                </span>
+                <span class="document-check" *ngIf="doc.fileName"><i class="fa-solid fa-circle-check"></i></span>
+                <input
+                  #fileInput
+                  type="file"
+                  class="hidden-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  (click)="$event.stopPropagation()"
+                  (change)="onDocumentSelected(i, $event)"
+                />
+              </button>
+            </div>
+          </section>
+
+          <!-- Review & Submit -->
+          <section id="review-submit" class="form-section">
+            <div class="section-header">
+              <h2><i class="fa-solid fa-square-check"></i> REVIEW &amp; SUBMIT</h2>
+              <button type="button" class="edit-link" (click)="goToSection('lab-information')">
+                <i class="fa-solid fa-pen"></i> Edit
+              </button>
+            </div>
+
+            <div class="review-banner">
+              <i class="fa-solid fa-circle-check"></i>
+              <p>
+                All information looks good! Please review all details before submitting.<br />
+                By clicking &ldquo;Submit Registration&rdquo;, you agree to our
+                <a href="#terms">Terms &amp; Conditions</a> and <a href="#privacy">Privacy Policy</a>.
+              </p>
+            </div>
+
+            <div class="review-actions">
+              <button type="button" class="back-button">Back</button>
+              <button type="button" class="submit-button" (click)="submitRegistration()">
+                Submit Registration <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <aside class="side-column">
+          <section class="side-card">
+            <span class="side-icon green"><i class="fa-solid fa-shield-halved"></i></span>
+            <h3>Secure Registration</h3>
+            <p>Your information is protected with 256-bit SSL encryption and kept confidential.</p>
+          </section>
+
+          <section class="side-card">
+            <span class="side-icon purple"><i class="fa-solid fa-file-shield"></i></span>
+            <h3>Required Documents</h3>
+            <ul class="doc-checklist">
+              <li><i class="fa-solid fa-circle-check"></i> Laboratory Registration Certificate</li>
+              <li><i class="fa-solid fa-circle-check"></i> GST Certificate (If applicable)</li>
+              <li><i class="fa-solid fa-circle-check"></i> Address Proof</li>
+              <li><i class="fa-solid fa-circle-check"></i> Lab License / Accreditation</li>
+              <li><i class="fa-solid fa-circle-check"></i> Admin ID Proof</li>
+            </ul>
+          </section>
+
+          <section class="side-card">
+            <span class="side-icon purple"><i class="fa-regular fa-clock"></i></span>
+            <h3>Quick Approval</h3>
+            <p>Our team will verify your details and approve your laboratory within 24-48 working hours.</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <footer class="register-footer">
+    <span>&#169; 2025 Jeevandan Digital Health Card. All rights reserved.</span>
+    <nav aria-label="Legal links">
+      <a href="#privacy">Privacy Policy</a><i></i>
+      <a href="#terms">Terms &amp; Conditions</a><i></i>
+      <a href="#support">Support</a>
+    </nav>
+  </footer>
+
+  <div class="register-toast" *ngIf="message" [class.error]="messageIsError" role="status">
+    <i [class]="messageIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ message }}
+  </div>
+</main>

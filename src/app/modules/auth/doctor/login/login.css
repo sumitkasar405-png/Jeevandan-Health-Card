@@ -201,7 +201,10 @@
   z-index: 2;
   right: 37px;
   bottom: -1px;
-  width: min(83%, 505px);
+  /* Reserves space for the text column (padding + welcome-copy max-width + gap)
+     instead of taking a raw percentage, so the hero photo can never slide
+     underneath the heading/benefits text as the column narrows (e.g. at 100% zoom). */
+  width: clamp(80px, calc(100% - 405px), 505px);
   aspect-ratio: 2 / 3;
   background: url('/assets/images/auth/doctor-login-hero.png') center / 100% 100% no-repeat;
   content: '';

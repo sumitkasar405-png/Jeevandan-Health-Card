@@ -1,0 +1,288 @@
+<main class="lab-login-page">
+  <div class="login-layout">
+    <aside class="lab-showcase" aria-label="Jeevandan laboratory platform information">
+      <a class="lab-brand" routerLink="/" aria-label="Jeevandan home">
+        <span class="brand-icon">
+          <img src="assets/images/roles/logo.png" alt="Jeevandan logo" />
+        </span>
+        <span class="brand-name">
+          <strong>Jeevandan</strong>
+          <span>Digital Health Card</span>
+        </span>
+      </a>
+
+      <span class="portal-badge">LABORATORY PORTAL</span>
+
+      <section class="showcase-copy">
+        <p class="showcase-kicker">Secure. Smart. Simplified.</p>
+        <h1>Manage Reports,<br />Patients &amp; Operations Digitally</h1>
+        <p class="showcase-desc">
+          Join thousands of laboratories using Jeevandan to deliver accurate reports and better care.
+        </p>
+      </section>
+
+      <section class="feature-list" aria-label="Platform features">
+        <article class="feature-item">
+          <span class="feature-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          <p><strong>Secure &amp; Private</strong><span>Your data is protected with advanced encryption</span></p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon"><i class="fa-solid fa-chart-line"></i></span>
+          <p><strong>Digital Reports</strong><span>Access and manage reports anytime, anywhere</span></p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon"><i class="fa-solid fa-user-group"></i></span>
+          <p><strong>Patient Management</strong><span>Streamline patient and sample management</span></p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon"><i class="fa-solid fa-bell"></i></span>
+          <p><strong>Real-time Alerts</strong><span>Get instant notifications and stay updated</span></p>
+        </article>
+      </section>
+
+      <section class="stats-panel" aria-label="Platform statistics">
+        <p class="stats-heading">Trusted by Laboratories Nationwide</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <strong>5000+</strong>
+            <span>Laboratories</span>
+          </div>
+          <div class="stat-item">
+            <strong>2M+</strong>
+            <span>Reports Processed</span>
+          </div>
+          <div class="stat-item">
+            <strong>10M+</strong>
+            <span>Patients Served</span>
+          </div>
+          <div class="stat-item">
+            <strong>99.9%</strong>
+            <span>Uptime</span>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <section class="login-area">
+      <header class="login-topbar">
+        <div class="language-wrap">
+          <button
+            class="language-button"
+            type="button"
+            (click)="toggleLanguageMenu()"
+            [attr.aria-expanded]="languageOpen"
+          >
+            <i class="fa-solid fa-globe"></i><span>English</span><i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="language-menu" *ngIf="languageOpen">
+            <button type="button" (click)="closeLanguageMenu()">English</button>
+            <button type="button" (click)="closeLanguageMenu()">Hindi</button>
+          </div>
+        </div>
+        <p class="register-link">
+          New here? <a routerLink="/auth/laboratory/register">Register your laboratory</a>
+        </p>
+      </header>
+
+      <section class="login-card" aria-labelledby="login-heading">
+        <div class="login-card-header">
+          <div>
+            <h2 id="login-heading">Welcome Back...!</h2>
+            <p>Login to your laboratory account</p>
+          </div>
+          <div class="secure-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>
+              <strong>Secure Login</strong>
+              <small>256-bit SSL Encrypted</small>
+            </span>
+          </div>
+        </div>
+
+        <div class="login-tabs" role="tablist" aria-label="Login method">
+          <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="loginMethod === 'password'"
+            [class.active]="loginMethod === 'password'"
+            (click)="selectLoginMethod('password')"
+          >
+            <i class="fa-regular fa-envelope"></i> Password Login
+          </button>
+          <button
+            type="button"
+            role="tab"
+            [attr.aria-selected]="loginMethod === 'otp'"
+            [class.active]="loginMethod === 'otp'"
+            (click)="selectLoginMethod('otp')"
+          >
+            <i class="fa-solid fa-shield-halved"></i> OTP Login
+          </button>
+        </div>
+
+        <form *ngIf="loginMethod === 'password'; else otpLogin" class="password-form" (ngSubmit)="submitPasswordLogin()">
+          <label for="email">Email / Mobile Number</label>
+          <div class="input-shell">
+            <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              [(ngModel)]="email"
+              autocomplete="username"
+              placeholder="Enter your registered email or mobile number"
+            />
+          </div>
+
+          <div class="password-label-row">
+            <label for="password">Password</label>
+            <a href="#password" (click)="$event.preventDefault()">Forgot Password?</a>
+          </div>
+          <div class="input-shell">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            <input
+              id="password"
+              name="password"
+              [type]="passwordVisible ? 'text' : 'password'"
+              [(ngModel)]="password"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+            />
+            <button
+              class="password-visibility"
+              type="button"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'"
+            >
+              <i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+            </button>
+          </div>
+
+          <div class="login-options">
+            <label class="remember-option">
+              <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" /><span>Remember me</span>
+            </label>
+          </div>
+
+          <button class="primary-action" type="submit"><i class="fa-solid fa-lock"></i>Login Securely</button>
+        </form>
+
+        <ng-template #otpLogin>
+          <div class="otp-section">
+            <h3>Login with OTP</h3>
+            <p class="section-desc">We will send a One Time Password (OTP) to your registered mobile number.</p>
+
+            <ng-container *ngIf="!otpSent">
+              <label for="mobile">Registered Mobile Number</label>
+              <div class="mobile-row">
+                <div class="country-select">
+                  <span class="flag" aria-hidden="true">🇮🇳</span>
+                  <span>{{ countryCode }}</span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="input-shell no-icon">
+                  <input
+                    id="mobile"
+                    name="mobile"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="10"
+                    [(ngModel)]="mobileNumber"
+                    placeholder="Enter your mobile number"
+                  />
+                </div>
+                <button class="send-otp-button" type="button" (click)="sendOtp()">
+                  Send OTP <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </div>
+              <p class="privacy-note">
+                <i class="fa-solid fa-shield-halved"></i> We do not share your mobile number with anyone.
+              </p>
+            </ng-container>
+
+            <ng-container *ngIf="otpSent">
+              <div class="or-divider"><span>OR</span></div>
+
+              <div class="verify-otp-header">
+                <h3>Verify OTP</h3>
+              </div>
+              <p class="section-desc">
+                Enter the 6-digit OTP sent to <strong>{{ maskedMobile }}</strong>
+                <button type="button" class="text-action" (click)="changeNumber()">Change</button>
+              </p>
+
+              <div class="otp-boxes" (paste)="onOtpPaste($event)">
+                <input
+                  *ngFor="let digit of otpDigits; let i = index"
+                  #otpBox
+                  class="otp-box"
+                  type="text"
+                  inputmode="numeric"
+                  maxlength="1"
+                  [value]="digit"
+                  (input)="onOtpInput(i, $event)"
+                  (keydown)="onOtpKeydown(i, $event)"
+                  [attr.aria-label]="'OTP digit ' + (i + 1)"
+                />
+              </div>
+
+              <div class="otp-options">
+                <label class="remember-option">
+                  <input type="checkbox" name="rememberDevice" [(ngModel)]="rememberDevice" />
+                  <span>Remember this device for 30 days</span>
+                  <i class="fa-regular fa-circle-question" title="You won't need to verify OTP on this device for 30 days."></i>
+                </label>
+                <span class="resend-timer" *ngIf="resendSecondsLeft > 0">
+                  <i class="fa-regular fa-clock"></i> Resend OTP in {{ resendLabel }}
+                </span>
+                <button
+                  type="button"
+                  class="resend-link"
+                  *ngIf="resendSecondsLeft === 0"
+                  (click)="resendOtp()"
+                >
+                  <i class="fa-solid fa-rotate-right"></i> Resend OTP
+                </button>
+              </div>
+
+              <button class="primary-action" type="button" (click)="verifyAndLogin()">
+                <i class="fa-solid fa-lock"></i>Verify &amp; Login
+              </button>
+            </ng-container>
+          </div>
+        </ng-template>
+      </section>
+
+      <section class="help-card" aria-label="Support">
+        <div class="help-info">
+          <span class="help-icon"><i class="fa-solid fa-headset"></i></span>
+          <div>
+            <strong>Need Help?</strong>
+            <span>Our support team is available 24/7</span>
+          </div>
+        </div>
+        <div class="help-actions">
+          <button type="button" class="outline-button" (click)="openChat()">
+            <i class="fa-regular fa-comment-dots"></i> Chat with us
+          </button>
+          <a class="outline-button" href="tel:18001234567">
+            <i class="fa-solid fa-phone"></i> 9370443092
+          </a>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <footer class="login-footer">
+    <span>&#169; 2025 Jeevandan Digital Health Card. All rights reserved.</span>
+    <nav aria-label="Legal links">
+      <a href="#privacy">Privacy Policy</a><i></i>
+      <a href="#terms">Terms &amp; Conditions</a><i></i>
+      <a href="#support">Support</a>
+    </nav>
+  </footer>
+
+  <div class="login-toast" *ngIf="message" [class.error]="messageIsError" role="status">
+    <i [class]="messageIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ message }}
+  </div>
+</main>
