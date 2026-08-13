@@ -1,9 +1,17 @@
-<main class="pharmacist-registration-page">
+<main class="registration-container">
   <header class="registration-header">
-    <a class="registration-brand" routerLink="/" aria-label="Jeevandan home">
-      <span class="brand-emblem"><i class="fa-solid fa-heart-pulse"></i></span>
-      <span><strong>Jeevandan</strong><small>Digital Health Card</small></span>
-    </a>
+  <a class="registration-brand" routerLink="/" aria-label="Jeevandan home">
+  <img
+    class="registration-logo-image"
+    src="/assets/images/roles/logo.png"
+    alt="Jeevandan Logo"
+  />
+
+  <span class="registration-brand-text">
+    <strong>Jeevandan</strong>
+    <small>Digital Health Card</small>
+  </span>
+</a>
     <span class="header-divider"></span>
     <div class="registration-title"><span><i class="fa-solid fa-user-plus"></i></span><div><h1>Pharmacist Registration</h1><p>Create your account to join Jeevandan Digital Health Network</p></div></div>
     <div class="header-actions"><button type="button"><i class="fa-solid fa-globe"></i> English <i class="fa-solid fa-chevron-down"></i></button><a href="mailto:support@jeevandan.in"><i class="fa-solid fa-headset"></i> Need Help?</a><a class="login-link" routerLink="/auth/pharmacist/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></div>
@@ -104,4 +112,4 @@
   </section>
 
   <div class="registration-toast" *ngIf="toast" [class.error]="toastIsError"><i [class]="toastIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ toast }}</div>
-</main>
+  </main>
