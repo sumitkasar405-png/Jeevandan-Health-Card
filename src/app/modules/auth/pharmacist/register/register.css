@@ -216,3 +216,185 @@
   .submit-action { min-width: 100% !important; }
   .registration-sidebar { grid-template-columns: 1fr; }
 }
+/* =========================================================
+   FINAL JEEVANDAN LOGO SIZE FIX
+   ========================================================= */
+
+.registration-brand {
+  width: 190px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.registration-logo-image {
+  width: 135px;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+/* Hide old logo/icon if still present */
+.registration-brand .brand-emblem {
+  display: none;
+}
+
+/* Hide duplicate Jeevandan text */
+.registration-brand > span:last-child {
+  display: none;
+}
+
+/* Keep header properly aligned */
+.registration-header {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .registration-logo-image {
+    width: 140px;
+    max-height: 60px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .registration-brand {
+    width: 170px;
+  }
+
+  .registration-logo-image {
+    width: 125px;
+    max-height: 55px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .registration-brand {
+    width: 150px;
+  }
+
+  .registration-logo-image {
+    width: 115px;
+    max-height: 50px;
+  }
+}
+/* =========================================================
+   JEEVANDAN LOGO + BRAND NAME
+   ========================================================= */
+
+.registration-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 200px !important;
+  height: 65px !important;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* Logo */
+.registration-logo-image {
+  display: block !important;
+  width: 58px !important;
+  height: 58px !important;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Brand name beside logo */
+.registration-brand-text {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+/* Jeevandan */
+.registration-brand-text strong {
+  display: block;
+  color: #071f61;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+/* Digital Health Card */
+.registration-brand-text small {
+  display: block;
+  color: #10965e;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Make sure old icon doesn't appear */
+.registration-brand .brand-emblem {
+  display: none !important;
+}
+
+
+/* =========================================================
+   HEADER ALIGNMENT
+   ========================================================= */
+
+.registration-header {
+  display: flex;
+  align-items: center;
+  min-height: 76px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .registration-brand {
+    width: 180px !important;
+  }
+
+  .registration-logo-image {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .registration-brand-text strong {
+    font-size: 18px;
+  }
+
+  .registration-brand-text small {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .registration-brand {
+    width: 165px !important;
+  }
+
+  .registration-logo-image {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .registration-brand-text strong {
+    font-size: 16px;
+  }
+
+  .registration-brand-text small {
+    font-size: 9px;
+  }
+}

@@ -1,1 +1,1297 @@
-<p>register works!</p>
+<div class="doctor-register-page">
+
+  <!-- =====================================================
+       LEFT SIDEBAR
+       ===================================================== -->
+  <aside class="register-sidebar">
+
+    <a class="brand" routerLink="/">
+      <img
+        src="/assets/images/roles/logo.png"
+        alt="Jeevandan Logo"
+        class="brand-logo"
+      />
+
+      <div class="brand-text">
+        <strong>Jeevandan</strong>
+        <span>Digital Health Card</span>
+      </div>
+    </a>
+
+    <div class="sidebar-content">
+
+      <h1>
+        Join Jeevandan<br />
+        as a <span>Doctor</span>
+      </h1>
+
+      <p class="sidebar-description">
+        Be a part of India's secure and<br />
+        smart digital healthcare platform.
+      </p>
+
+      <div class="sidebar-line"></div>
+
+      <!-- Feature -->
+      <div class="sidebar-feature">
+        <div class="feature-icon blue">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+          <strong>Trusted &amp; Secure</strong>
+          <p>
+            Your data is encrypted and<br />
+            protected with advanced security.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="sidebar-feature">
+        <div class="feature-icon green">
+          <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+          <strong>Grow Your Practice</strong>
+          <p>
+            Manage appointments, patients<br />
+            and build your reputation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="sidebar-feature">
+        <div class="feature-icon purple">
+          <i class="fa-solid fa-chart-column"></i>
+        </div>
+
+        <div>
+          <strong>Smart &amp; Efficient</strong>
+          <p>
+            Digital tools to simplify your<br />
+            workflow and save time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature -->
+      <div class="sidebar-feature">
+        <div class="feature-icon orange">
+          <i class="fa-regular fa-clock"></i>
+        </div>
+
+        <div>
+          <strong>24x7 Access</strong>
+          <p>
+            Access your dashboard<br />
+            anytime, anywhere.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Doctor Image -->
+    <img
+      class="sidebar-doctor"
+      src="/assets/images/auth/doctor-login-hero.png"
+      alt="Doctor"
+    />
+
+    <div class="sidebar-decoration shield">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN AREA
+       ===================================================== -->
+  <main class="register-main">
+
+    <!-- Top Bar -->
+    <header class="register-header">
+
+      <div class="page-title">
+        <span class="page-title-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </span>
+
+        <div>
+          <h2>Doctor Registration</h2>
+          <p>Create your account and start caring for your patients</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+
+        <div class="language-wrapper">
+
+          <button
+            type="button"
+            class="language-button"
+            (click)="languageOpen = !languageOpen"
+          >
+            <i class="fa-solid fa-globe"></i>
+            <span>English</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+
+          <div
+            class="language-menu"
+            *ngIf="languageOpen"
+          >
+            <button type="button" (click)="selectLanguage('English')">
+              English
+            </button>
+
+            <button type="button" (click)="selectLanguage('Hindi')">
+              Hindi
+            </button>
+
+            <button type="button" (click)="selectLanguage('Marathi')">
+              Marathi
+            </button>
+          </div>
+
+        </div>
+
+        <a
+          href="mailto:support@jeevandan.in"
+          class="help-link"
+        >
+          <i class="fa-solid fa-headset"></i>
+          Need Help?
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         REGISTRATION FORM
+         ===================================================== -->
+    <form
+      class="registration-layout"
+      (ngSubmit)="registerDoctor()"
+      #doctorForm="ngForm"
+    >
+
+      <!-- =================================================
+           LEFT FORM COLUMN
+           ================================================= -->
+      <div class="form-left">
+
+
+        <!-- ================= PERSONAL INFORMATION ================= -->
+
+        <section class="form-section">
+
+          <div class="section-title">
+            <span class="section-number blue">
+              <i class="fa-solid fa-user"></i>
+            </span>
+
+            <h3>1&nbsp; Personal Information</h3>
+          </div>
+
+          <div class="form-grid three">
+
+            <!-- Full Name -->
+            <div class="form-group">
+
+              <label>
+                Full Name <span>*</span>
+              </label>
+
+              <div class="input-box">
+                <i class="fa-regular fa-user"></i>
+
+                <input
+                  type="text"
+                  name="fullName"
+                  [(ngModel)]="doctor.fullName"
+                  required
+                  placeholder="Enter full name"
+                />
+              </div>
+
+            </div>
+
+
+            <!-- Gender -->
+            <div class="form-group">
+
+              <label>
+                Gender <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="gender"
+                  [(ngModel)]="doctor.gender"
+                  required
+                >
+                  <option value="">Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- DOB -->
+            <div class="form-group">
+
+              <label>
+                Date of Birth <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="date"
+                  name="dob"
+                  [(ngModel)]="doctor.dateOfBirth"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Blood Group -->
+            <div class="form-group">
+
+              <label>Blood Group</label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="bloodGroup"
+                  [(ngModel)]="doctor.bloodGroup"
+                >
+                  <option value="">Select blood group</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- Marital Status -->
+            <div class="form-group">
+
+              <label>Marital Status</label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="maritalStatus"
+                  [(ngModel)]="doctor.maritalStatus"
+                >
+                  <option value="">Select marital status</option>
+                  <option>Single</option>
+                  <option>Married</option>
+                  <option>Divorced</option>
+                  <option>Widowed</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- Nationality -->
+            <div class="form-group">
+
+              <label>
+                Nationality <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="nationality"
+                  [(ngModel)]="doctor.nationality"
+                  required
+                >
+                  <option value="">Select nationality</option>
+                  <option>Indian</option>
+                  <option>Other</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= PROFESSIONAL INFORMATION ================= -->
+
+        <section class="form-section">
+
+          <div class="section-title">
+
+            <span class="section-number green">
+              <i class="fa-solid fa-briefcase-medical"></i>
+            </span>
+
+            <h3>2&nbsp; Professional Information</h3>
+
+          </div>
+
+
+          <div class="form-grid three">
+
+            <!-- Registration Number -->
+            <div class="form-group">
+
+              <label>
+                Medical Registration Number <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="registrationNumber"
+                  [(ngModel)]="doctor.registrationNumber"
+                  required
+                  placeholder="Enter registration number"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Specialization -->
+            <div class="form-group">
+
+              <label>
+                Specialization <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="specialization"
+                  [(ngModel)]="doctor.specialization"
+                  required
+                >
+                  <option value="">Select specialization</option>
+                  <option>General Physician</option>
+                  <option>Cardiologist</option>
+                  <option>Dermatologist</option>
+                  <option>Pediatrician</option>
+                  <option>Orthopedic</option>
+                  <option>Gynecologist</option>
+                  <option>Neurologist</option>
+                  <option>Psychiatrist</option>
+                  <option>Other</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- Experience -->
+            <div class="form-group">
+
+              <label>
+                Experience (Years) <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="number"
+                  name="experience"
+                  [(ngModel)]="doctor.experience"
+                  required
+                  min="0"
+                  placeholder="Enter experience"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Qualification -->
+            <div class="form-group">
+
+              <label>
+                Qualification <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="qualification"
+                  [(ngModel)]="doctor.qualification"
+                  required
+                  placeholder="Enter your highest qualification"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- College -->
+            <div class="form-group">
+
+              <label>
+                College / University <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="college"
+                  [(ngModel)]="doctor.college"
+                  required
+                  placeholder="Enter college / university name"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Passing Year -->
+            <div class="form-group">
+
+              <label>
+                Passing Year <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="passingYear"
+                  [(ngModel)]="doctor.passingYear"
+                  required
+                >
+                  <option value="">Select year</option>
+
+                  <option
+                    *ngFor="let year of passingYears"
+                    [value]="year"
+                  >
+                    {{ year }}
+                  </option>
+
+                </select>
+
+                <i class="fa-solid fa-calendar"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- Consultation Type -->
+            <div class="form-group">
+
+              <label>
+                Consultation Type <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="consultationType"
+                  [(ngModel)]="doctor.consultationType"
+                  required
+                >
+                  <option value="">Select consultation type</option>
+                  <option>In Clinic</option>
+                  <option>Online</option>
+                  <option>Both</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- Fee -->
+            <div class="form-group">
+
+              <label>
+                Consultation Fee (₹) <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="number"
+                  name="consultationFee"
+                  [(ngModel)]="doctor.consultationFee"
+                  required
+                  min="0"
+                  placeholder="Enter consultation fee"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Working At -->
+            <div class="form-group">
+
+              <label>
+                Working At <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="workingAt"
+                  [(ngModel)]="doctor.workingAt"
+                  required
+                >
+                  <option value="">Select hospital / clinic</option>
+                  <option>Hospital</option>
+                  <option>Private Clinic</option>
+                  <option>Medical Center</option>
+                  <option>Self Practice</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT INFORMATION ================= -->
+
+        <section class="form-section">
+
+          <div class="section-title">
+
+            <span class="section-number purple">
+              <i class="fa-solid fa-phone"></i>
+            </span>
+
+            <h3>3&nbsp; Contact Information</h3>
+
+          </div>
+
+
+          <div class="form-grid three">
+
+            <!-- Mobile -->
+            <div class="form-group">
+
+              <label>
+                Mobile Number <span>*</span>
+              </label>
+
+              <div class="mobile-input">
+
+                <span>+91</span>
+
+                <input
+                  type="tel"
+                  name="mobile"
+                  [(ngModel)]="doctor.mobile"
+                  required
+                  maxlength="10"
+                  placeholder="Enter mobile number"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Email -->
+            <div class="form-group">
+
+              <label>
+                Email Address <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <i class="fa-regular fa-envelope"></i>
+
+                <input
+                  type="email"
+                  name="email"
+                  [(ngModel)]="doctor.email"
+                  required
+                  placeholder="Enter email address"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Alternate Mobile -->
+            <div class="form-group">
+
+              <label>
+                Alternate Mobile <small>(Optional)</small>
+              </label>
+
+              <div class="mobile-input">
+
+                <span>+91</span>
+
+                <input
+                  type="tel"
+                  name="alternateMobile"
+                  [(ngModel)]="doctor.alternateMobile"
+                  maxlength="10"
+                  placeholder="Enter alternate number"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= ADDRESS INFORMATION ================= -->
+
+        <section class="form-section">
+
+          <div class="section-title">
+
+            <span class="section-number orange">
+              <i class="fa-solid fa-location-dot"></i>
+            </span>
+
+            <h3>4&nbsp; Address Information</h3>
+
+          </div>
+
+
+          <div class="form-grid three">
+
+            <!-- Address 1 -->
+            <div class="form-group">
+
+              <label>
+                Address Line 1 <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="address1"
+                  [(ngModel)]="doctor.address1"
+                  required
+                  placeholder="Enter address line 1"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Address 2 -->
+            <div class="form-group">
+
+              <label>
+                Address Line 2 <small>(Optional)</small>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="address2"
+                  [(ngModel)]="doctor.address2"
+                  placeholder="Enter address line 2"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- City -->
+            <div class="form-group">
+
+              <label>
+                City <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="city"
+                  [(ngModel)]="doctor.city"
+                  required
+                  placeholder="Enter city"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- State -->
+            <div class="form-group">
+
+              <label>
+                State <span>*</span>
+              </label>
+
+              <div class="input-box select-box">
+
+                <select
+                  name="state"
+                  [(ngModel)]="doctor.state"
+                  required
+                >
+                  <option value="">Select state</option>
+                  <option>Maharashtra</option>
+                  <option>Gujarat</option>
+                  <option>Goa</option>
+                  <option>Karnataka</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Rajasthan</option>
+                  <option>Delhi</option>
+                  <option>Other</option>
+                </select>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+              </div>
+
+            </div>
+
+
+            <!-- District -->
+            <div class="form-group">
+
+              <label>
+                District <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="district"
+                  [(ngModel)]="doctor.district"
+                  required
+                  placeholder="Select district"
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Pincode -->
+            <div class="form-group">
+
+              <label>
+                Pincode <span>*</span>
+              </label>
+
+              <div class="input-box">
+
+                <input
+                  type="text"
+                  name="pincode"
+                  [(ngModel)]="doctor.pincode"
+                  required
+                  maxlength="6"
+                  placeholder="Enter pincode"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- =================================================
+           RIGHT FORM COLUMN
+           ================================================= -->
+
+      <div class="form-right">
+
+
+        <!-- ================= DOCUMENT UPLOAD ================= -->
+
+        <section class="form-section documents-section">
+
+          <div class="section-title">
+
+            <span class="section-number blue">
+              <i class="fa-regular fa-file-lines"></i>
+            </span>
+
+            <h3>5&nbsp; Documents Upload</h3>
+
+          </div>
+
+
+          <div class="documents-grid">
+
+            <!-- Profile -->
+            <div class="document-card">
+
+              <div class="document-icon blue">
+                <i class="fa-solid fa-user"></i>
+              </div>
+
+              <strong>Profile Photo <span>*</span></strong>
+
+              <small>JPG, PNG (Max 2MB)</small>
+
+              <label class="upload-button">
+                Upload
+
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  (change)="onFileSelected($event, 'profilePhoto')"
+                />
+              </label>
+
+              <p
+                class="file-name"
+                *ngIf="files.profilePhoto"
+              >
+                {{ files.profilePhoto.name }}
+              </p>
+
+            </div>
+
+
+            <!-- Medical License -->
+            <div class="document-card">
+
+              <div class="document-icon green">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+
+              <strong>Medical License <span>*</span></strong>
+
+              <small>PDF, JPG (Max 2MB)</small>
+
+              <label class="upload-button">
+                Upload
+
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg"
+                  (change)="onFileSelected($event, 'medicalLicense')"
+                />
+              </label>
+
+              <p
+                class="file-name"
+                *ngIf="files.medicalLicense"
+              >
+                {{ files.medicalLicense.name }}
+              </p>
+
+            </div>
+
+
+            <!-- Aadhaar -->
+            <div class="document-card">
+
+              <div class="document-icon orange">
+                <i class="fa-solid fa-id-card"></i>
+              </div>
+
+              <strong>Aadhaar Card <span>*</span></strong>
+
+              <small>PDF, JPG (Max 2MB)</small>
+
+              <label class="upload-button">
+                Upload
+
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg"
+                  (change)="onFileSelected($event, 'aadhaar')"
+                />
+              </label>
+
+              <p
+                class="file-name"
+                *ngIf="files.aadhaar"
+              >
+                {{ files.aadhaar.name }}
+              </p>
+
+            </div>
+
+
+            <!-- Qualification -->
+            <div class="document-card">
+
+              <div class="document-icon purple">
+                <i class="fa-solid fa-file-certificate"></i>
+              </div>
+
+              <strong>Qualification Certificate <span>*</span></strong>
+
+              <small>PDF, JPG (Max 2MB)</small>
+
+              <label class="upload-button">
+                Upload
+
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg"
+                  (change)="onFileSelected($event, 'qualification')"
+                />
+              </label>
+
+              <p
+                class="file-name"
+                *ngIf="files.qualification"
+              >
+                {{ files.qualification.name }}
+              </p>
+
+            </div>
+
+
+            <!-- Experience -->
+            <div class="document-card">
+
+              <div class="document-icon blue">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+
+              <strong>Experience Certificate</strong>
+
+              <small>PDF, JPG (Max 2MB)</small>
+
+              <label class="upload-button">
+                Upload
+
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg"
+                  (change)="onFileSelected($event, 'experience')"
+                />
+              </label>
+
+              <p
+                class="file-name"
+                *ngIf="files.experience"
+              >
+                {{ files.experience.name }}
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="document-note">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <span>
+              Please ensure all documents are clear and valid.<br />
+              Maximum file size: 2MB per file.
+            </span>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= ACCOUNT SECURITY ================= -->
+
+        <section class="form-section security-section">
+
+          <div class="section-title">
+
+            <span class="section-number green">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+
+            <h3>6&nbsp; Account Security</h3>
+
+          </div>
+
+
+          <!-- Password -->
+
+          <div class="form-group">
+
+            <label>
+              Password <span>*</span>
+            </label>
+
+            <div class="input-box">
+
+              <i class="fa-solid fa-lock"></i>
+
+              <input
+                [type]="passwordVisible ? 'text' : 'password'"
+                name="password"
+                [(ngModel)]="doctor.password"
+                required
+                placeholder="Create a strong password"
+              />
+
+              <button
+                type="button"
+                class="eye-button"
+                (click)="passwordVisible = !passwordVisible"
+              >
+                <i
+                  [class]="passwordVisible
+                    ? 'fa-regular fa-eye-slash'
+                    : 'fa-regular fa-eye'"
+                ></i>
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Confirm Password -->
+
+          <div class="form-group">
+
+            <label>
+              Confirm Password <span>*</span>
+            </label>
+
+            <div class="input-box">
+
+              <i class="fa-solid fa-lock"></i>
+
+              <input
+                [type]="confirmPasswordVisible ? 'text' : 'password'"
+                name="confirmPassword"
+                [(ngModel)]="doctor.confirmPassword"
+                required
+                placeholder="Confirm your password"
+              />
+
+              <button
+                type="button"
+                class="eye-button"
+                (click)="confirmPasswordVisible = !confirmPasswordVisible"
+              >
+                <i
+                  [class]="confirmPasswordVisible
+                    ? 'fa-regular fa-eye-slash'
+                    : 'fa-regular fa-eye'"
+                ></i>
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- Password requirements -->
+
+          <div class="password-note">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            Password must be at least 8 characters long and include
+            uppercase, lowercase, number and special character.
+
+          </div>
+
+
+          <!-- Terms -->
+
+          <label class="terms">
+
+            <input
+              type="checkbox"
+              name="terms"
+              [(ngModel)]="termsAccepted"
+              required
+            />
+
+            <span>
+              I agree to the
+              <a href="#">Terms &amp; Conditions</a>
+              and
+              <a href="#">Privacy Policy</a>
+              of Jeevandan.
+            </span>
+
+          </label>
+
+
+          <!-- Register -->
+
+          <button
+            type="submit"
+            class="register-button"
+            [disabled]="!doctorForm.valid"
+          >
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+            Register as Doctor
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+          </button>
+
+        </section>
+
+      </div>
+
+    </form>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="register-footer">
+
+      <div class="footer-item">
+
+        <span class="footer-icon blue">
+          <i class="fa-solid fa-shield-halved"></i>
+        </span>
+
+        <div>
+          <strong>Your data is safe with us</strong>
+          <p>
+            We follow strict security standards<br />
+            and protect your information.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="footer-divider"></div>
+
+
+      <div class="footer-item">
+
+        <span class="footer-icon lock">
+          <i class="fa-solid fa-lock"></i>
+        </span>
+
+        <div>
+          <strong>256-bit SSL Encryption</strong>
+          <p>
+            All data is encrypted and<br />
+            transmitted securely.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="footer-divider"></div>
+
+
+      <div class="footer-item">
+
+        <span class="footer-icon green">
+          <i class="fa-solid fa-shield-heart"></i>
+        </span>
+
+        <div>
+          <strong>100% Secure &amp; Confidential</strong>
+          <p>
+            We respect your privacy and<br />
+            never share your data.
+          </p>
+        </div>
+
+      </div>
+
+    </footer>
+
+
+    <!-- Toast -->
+
+    <div
+      class="register-toast"
+      *ngIf="message"
+      [class.error]="messageType === 'error'"
+    >
+
+      <i
+        [class]="messageType === 'error'
+          ? 'fa-solid fa-circle-exclamation'
+          : 'fa-solid fa-circle-check'"
+      ></i>
+
+      {{ message }}
+
+    </div>
+
+  </main>
+
+</div>

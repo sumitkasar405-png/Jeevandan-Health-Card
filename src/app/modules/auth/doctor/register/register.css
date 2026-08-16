@@ -1,0 +1,1480 @@
+/* =========================================================
+   JEEVANDAN DOCTOR REGISTRATION
+   ========================================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.doctor-register-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f8fe;
+  color: #102b57;
+  font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+   ========================================================= */
+
+.register-sidebar {
+  width: 280px;
+  min-width: 280px;
+  min-height: 100vh;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 22px 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #eef6ff 0%,
+      #e8f2ff 55%,
+      #dcecff 100%
+    );
+
+  border-right: 1px solid #d9e6f7;
+}
+
+
+/* Brand */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  text-decoration: none;
+  color: inherit;
+
+  position: relative;
+  z-index: 5;
+}
+
+.brand-logo {
+  width: 53px;
+  height: 53px;
+
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text strong {
+  color: #0e418f;
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.brand-text span {
+  color: #0a9b4d;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+
+/* Sidebar content */
+
+.sidebar-content {
+  position: relative;
+  z-index: 4;
+  margin-top: 42px;
+}
+
+.sidebar-content h1 {
+  margin: 0;
+
+  color: #102d62;
+
+  font-size: 26px;
+  line-height: 1.28;
+  font-weight: 750;
+}
+
+.sidebar-content h1 span {
+  color: #1460da;
+}
+
+.sidebar-description {
+  margin: 12px 0 0;
+
+  color: #405a7b;
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.sidebar-line {
+  width: 40px;
+  height: 3px;
+
+  margin: 19px 0 22px;
+
+  background: #1460da;
+  border-radius: 10px;
+}
+
+
+/* Sidebar feature */
+
+.sidebar-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-bottom: 23px;
+}
+
+.feature-icon {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 18px;
+}
+
+.feature-icon.blue {
+  color: #1761d9;
+  background: #e5efff;
+}
+
+.feature-icon.green {
+  color: #15985a;
+  background: #e5f8ef;
+}
+
+.feature-icon.purple {
+  color: #7552d7;
+  background: #f0eaff;
+}
+
+.feature-icon.orange {
+  color: #f09a32;
+  background: #fff0dc;
+}
+
+.sidebar-feature strong {
+  display: block;
+
+  color: #102c58;
+  font-size: 13px;
+  margin-top: 1px;
+}
+
+.sidebar-feature p {
+  margin: 4px 0 0;
+
+  color: #55708f;
+
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+
+/* Doctor */
+
+.sidebar-doctor {
+  position: absolute;
+
+  bottom: -5px;
+  left: 8px;
+
+  width: 225px;
+  max-height: 320px;
+
+  object-fit: contain;
+  object-position: bottom left;
+
+  z-index: 2;
+
+  mix-blend-mode: multiply;
+}
+
+
+/* Decoration */
+
+.sidebar-decoration {
+  position: absolute;
+
+  right: 23px;
+  bottom: 135px;
+
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,.25);
+
+  color: rgba(31,100,210,.35);
+
+  font-size: 26px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.register-main {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 18px 22px 0;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.register-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 55px;
+
+  margin-bottom: 10px;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  color: #1660da;
+  background: #eaf2ff;
+
+  font-size: 20px;
+}
+
+.page-title h2 {
+  margin: 0;
+
+  color: #132e58;
+
+  font-size: 19px;
+}
+
+.page-title p {
+  margin: 3px 0 0;
+
+  color: #647895;
+
+  font-size: 11px;
+}
+
+
+/* Header actions */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.language-wrapper {
+  position: relative;
+}
+
+.language-button {
+  height: 39px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: #fff;
+
+  border: 1px solid #dce5f1;
+  border-radius: 9px;
+
+  color: #19355d;
+
+  cursor: pointer;
+}
+
+.language-button i:first-child {
+  color: #163b6f;
+}
+
+.language-button i:last-child {
+  font-size: 10px;
+}
+
+.language-menu {
+  position: absolute;
+
+  top: 44px;
+  right: 0;
+
+  width: 125px;
+
+  padding: 6px;
+
+  background: #fff;
+
+  border: 1px solid #e0e7f1;
+  border-radius: 9px;
+
+  box-shadow: 0 10px 25px rgba(25,55,95,.12);
+
+  z-index: 20;
+}
+
+.language-menu button {
+  width: 100%;
+
+  padding: 8px;
+
+  border: 0;
+  background: transparent;
+
+  text-align: left;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.language-menu button:hover {
+  background: #f0f5ff;
+}
+
+.help-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #125bd3;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   FORM LAYOUT
+   ========================================================= */
+
+.registration-layout {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(350px, .8fr);
+
+  gap: 12px;
+
+  min-height: 0;
+}
+
+.form-left,
+.form-right {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   FORM SECTION
+   ========================================================= */
+
+.form-section {
+  background: #fff;
+
+  border: 1px solid #dfe7f1;
+  border-radius: 9px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 9px;
+
+  box-shadow: 0 1px 4px rgba(30,60,100,.025);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 10px;
+}
+
+.section-number {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+}
+
+.section-number.blue {
+  color: #1260d9;
+  background: #e9f2ff;
+}
+
+.section-number.green {
+  color: #15985c;
+  background: #e4f8ee;
+}
+
+.section-number.purple {
+  color: #7654d8;
+  background: #f0eaff;
+}
+
+.section-number.orange {
+  color: #ed941f;
+  background: #fff0dd;
+}
+
+.section-title h3 {
+  margin: 0;
+
+  color: #243b5e;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.form-grid {
+  display: grid;
+  gap: 9px 18px;
+}
+
+.form-grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-group {
+  min-width: 0;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #253c5d;
+
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.form-group label span {
+  color: #e04444;
+}
+
+.form-group label small {
+  color: #8090a7;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-box {
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 10px;
+
+  background: #fff;
+
+  border: 1px solid #d8e1ec;
+  border-radius: 6px;
+
+  transition: .2s;
+}
+
+.input-box:focus-within {
+  border-color: #2870dd;
+  box-shadow: 0 0 0 2px rgba(40,112,221,.08);
+}
+
+.input-box > i {
+  color: #8a9bb2;
+  font-size: 12px;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #304763;
+
+  font-size: 10.5px;
+}
+
+.input-box input::placeholder {
+  color: #9aa8ba;
+}
+
+.input-box select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.select-box {
+  position: relative;
+}
+
+.select-box > i {
+  margin-left: auto;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE INPUT
+   ========================================================= */
+
+.mobile-input {
+  height: 34px;
+
+  display: flex;
+
+  border: 1px solid #d8e1ec;
+  border-radius: 6px;
+
+  overflow: hidden;
+}
+
+.mobile-input span {
+  width: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f7f9fc;
+
+  border-right: 1px solid #d8e1ec;
+
+  color: #566c88;
+
+  font-size: 10px;
+}
+
+.mobile-input input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  padding: 0 9px;
+
+  font-size: 10.5px;
+}
+
+
+/* =========================================================
+   DOCUMENTS
+   ========================================================= */
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.document-card {
+  min-height: 140px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 10px 5px;
+
+  text-align: center;
+
+  border: 1px solid #e0e7ef;
+  border-radius: 7px;
+
+  background: #fff;
+}
+
+.document-icon {
+  width: 39px;
+  height: 39px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 7px;
+
+  border-radius: 50%;
+
+  font-size: 16px;
+}
+
+.document-icon.blue {
+  color: #1761da;
+  background: #e8f1ff;
+}
+
+.document-icon.green {
+  color: #15985a;
+  background: #e5f8ee;
+}
+
+.document-icon.orange {
+  color: #ed941f;
+  background: #fff0df;
+}
+
+.document-icon.purple {
+  color: #7955d8;
+  background: #f0eaff;
+}
+
+.document-card strong {
+  color: #273d5d;
+
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+.document-card strong span {
+  color: #e04444;
+}
+
+.document-card small {
+  margin-top: 3px;
+
+  color: #7d8da4;
+
+  font-size: 8px;
+}
+
+.upload-button {
+  margin-top: 9px;
+
+  min-width: 67px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d7e4f4;
+  border-radius: 5px;
+
+  color: #1760d8;
+  background: #fff;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background: #f2f7ff;
+}
+
+.upload-button input {
+  display: none;
+}
+
+.file-name {
+  max-width: 95%;
+
+  margin: 5px 0 0;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: #55708f;
+
+  font-size: 7px;
+}
+
+.document-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  margin-top: 10px;
+  padding: 9px;
+
+  color: #1260d9;
+
+  background: #f1f6ff;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.document-note i {
+  margin-top: 1px;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.security-section {
+  padding-bottom: 12px;
+}
+
+.security-section .form-group {
+  margin-bottom: 9px;
+}
+
+.eye-button {
+  border: 0;
+  background: transparent;
+
+  color: #8191a7;
+
+  cursor: pointer;
+}
+
+.password-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+
+  margin-top: 7px;
+  padding: 8px;
+
+  color: #32966b;
+
+  background: #eaf9f1;
+
+  border-radius: 6px;
+
+  font-size: 8.5px;
+  line-height: 1.4;
+}
+
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+
+  margin: 10px 0;
+
+  color: #475d79;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+.terms input {
+  margin-top: 1px;
+  accent-color: #1762d9;
+}
+
+.terms a {
+  color: #125bd3;
+  font-weight: 600;
+}
+
+.register-button {
+  width: 100%;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border: 0;
+  border-radius: 5px;
+
+  color: #fff;
+  background: #1260dc;
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.register-button:hover:not(:disabled) {
+  background: #084fbf;
+}
+
+.register-button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.register-footer {
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin: 0 -22px;
+
+  padding: 8px 28px;
+
+  background: #fff;
+
+  border-top: 1px solid #dfe7f1;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 16px;
+}
+
+.footer-icon.blue {
+  color: #1260d9;
+  background: #eaf2ff;
+}
+
+.footer-icon.lock {
+  color: #1760d9;
+  background: #eef4ff;
+}
+
+.footer-icon.green {
+  color: #15985a;
+  background: #e5f8ee;
+}
+
+.footer-item strong {
+  display: block;
+
+  color: #263e5f;
+
+  font-size: 10px;
+}
+
+.footer-item p {
+  margin: 3px 0 0;
+
+  color: #6f8199;
+
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 34px;
+
+  background: #e2e8f0;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.register-toast {
+  position: fixed;
+
+  right: 25px;
+  bottom: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 17px;
+
+  color: #147344;
+  background: #e8f8ef;
+
+  border: 1px solid #bde8ce;
+  border-radius: 8px;
+
+  box-shadow: 0 10px 30px rgba(30,60,90,.15);
+
+  font-size: 12px;
+
+  z-index: 100;
+}
+
+.register-toast.error {
+  color: #b42b2b;
+  background: #fff0f0;
+  border-color: #f2c3c3;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1150px) {
+
+  .register-sidebar {
+    width: 240px;
+    min-width: 240px;
+  }
+
+  .registration-layout {
+    grid-template-columns: 1.45fr .85fr;
+  }
+
+  .form-grid.three {
+    gap: 8px 10px;
+  }
+
+  .sidebar-doctor {
+    width: 195px;
+  }
+}
+
+
+@media (max-width: 950px) {
+
+  .doctor-register-page {
+    display: block;
+  }
+
+  .register-sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: 300px;
+  }
+
+  .sidebar-doctor {
+    width: 180px;
+    right: 30px;
+    left: auto;
+  }
+
+  .registration-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .register-main {
+    padding: 15px;
+  }
+
+  .register-footer {
+    margin: 0 -15px;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .register-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .help-link {
+    display: none;
+  }
+
+  .form-grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .documents-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .register-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+}
+/* =========================================================
+   FINAL OVERRIDE - DOCTOR IMAGE WIDTH
+   Add this at the END of register.css
+   ========================================================= */
+
+.doctor-register-hero-image,
+.doctor-hero-image {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  width: 220px !important;
+  max-width: 220px !important;
+  height: auto !important;
+
+  object-fit: contain !important;
+  object-position: bottom center !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 5 !important;
+}
+
+/* Image container */
+.doctor-register-hero,
+.doctor-hero {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .doctor-register-hero-image,
+  .doctor-hero-image {
+    width: 190px !important;
+    max-width: 190px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .doctor-register-hero-image,
+  .doctor-hero-image {
+    width: 160px !important;
+    max-width: 160px !important;
+  }
+}
+/* =========================================================
+   FINAL - DOCTOR IMAGE COVER ONLY RIGHT SIDE
+   ========================================================= */
+
+.doctor-register-hero,
+.doctor-hero {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Doctor image stays only on the RIGHT side of left panel */
+.doctor-register-hero-image,
+.doctor-hero-image {
+  position: absolute !important;
+
+  bottom: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+
+  width: 1650% !important;
+  max-width: 1650% !important;
+  height: 72% !important;
+
+  object-fit: contain !important;
+  object-position: bottom right !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  transform: none !important;
+  z-index: 2 !important;
+}
+
+/* Keep left-side text above the image */
+.doctor-register-hero-copy,
+.doctor-hero-copy,
+.doctor-register-benefits,
+.doctor-hero-benefits,
+.doctor-register-trust,
+.doctor-hero-trust {
+  position: relative !important;
+  z-index: 4 !important;
+}
+
+/* Smaller screens */
+@media (max-width: 1000px) {
+  .doctor-register-hero-image,
+  .doctor-hero-image {
+    width: 52% !important;
+    max-width: 52% !important;
+    height: 65% !important;
+  }
+}
+/* =========================================================
+   DOCTOR IMAGE - LARGE / TOUCH LEFT & RIGHT
+   ========================================================= */
+
+.sidebar-doctor,
+.doctor-hero-image,
+.doctor-register-hero-image {
+  position: absolute !important;
+
+  bottom: 0 !important;
+
+  /* Move image slightly left */
+  left: -22% !important;
+  right: auto !important;
+
+  /* Make the actual doctor much wider */
+  width: 145% !important;
+  max-width: none !important;
+
+  height: 82% !important;
+
+  object-fit: contain !important;
+  object-position: bottom center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  transform: none !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 2 !important;
+}
+
+/* Keep text above image */
+.sidebar-content,
+.doctor-hero-copy,
+.doctor-register-hero-copy,
+.doctor-hero-benefits,
+.doctor-register-benefits,
+.doctor-hero-trust,
+.doctor-register-trust,
+.brand {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    left: -25% !important;
+    width: 150% !important;
+    height: 84% !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    left: -18% !important;
+    width: 135% !important;
+    height: 75% !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 00px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    left: -1% !important;
+    width: 140% !important;
+    height: 60% !important;
+  }
+}
+/* =========================================================
+   DOCTOR IMAGE - CENTER + DOWNWARD
+   ========================================================= */
+
+.register-sidebar {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Doctor image */
+.sidebar-doctor,
+.doctor-hero-image,
+.doctor-register-hero-image {
+  position: absolute !important;
+
+  /* Center horizontally */
+  left: 50% !important;
+  right: auto !important;
+
+  /* Push image downward */
+  bottom: -20px !important;
+  top: auto !important;
+
+  transform: translateX(-50%) !important;
+
+  /* Image size */
+  width: 250px !important;
+  max-width: none !important;
+
+  height: 360px !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+  object-position: center bottom !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 2 !important;
+}
+
+/* Keep sidebar content above image */
+.brand,
+.sidebar-content {
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    width: 250px !important;
+    height: 360px !important;
+
+    left: 50% !important;
+    bottom: -20px !important;
+
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    width: 220px !important;
+    height: 320px !important;
+
+    left: 50% !important;
+    bottom: -15px !important;
+
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .sidebar-doctor,
+  .doctor-hero-image,
+  .doctor-register-hero-image {
+    width: 190px !important;
+    height: 280px !important;
+
+    left: 50% !important;
+    bottom: -10px !important;
+
+    transform: translateX(-50%) !important;
+  }
+}
+/* =========================================================
+   BOTTOM SECURITY FOOTER
+   ========================================================= */
+
+.register-footer {
+  min-height: 78px !important;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 10px 35px !important;
+  margin: 0 !important;
+
+  background: #ffffff;
+  border-top: 1px solid #dfe7f1;
+
+  position: relative;
+  z-index: 10;
+}
+
+/* Each footer item */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 220px;
+}
+
+/* Footer icons */
+.footer-icon {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 17px !important;
+}
+
+/* Blue icon */
+.footer-icon.blue {
+  color: #1260d9;
+  background: #eaf2ff;
+}
+
+/* Lock icon */
+.footer-icon.lock {
+  color: #1760d9;
+  background: #eef4ff;
+}
+
+/* Green icon */
+.footer-icon.green {
+  color: #15985a;
+  background: #e5f8ee;
+}
+
+/* Footer heading */
+.footer-item strong {
+  display: block;
+
+  color: #263e5f;
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+/* Footer description */
+.footer-item p {
+  margin: 4px 0 0;
+
+  color: #6f8199;
+  font-size: 9px !important;
+  line-height: 1.35;
+}
+
+/* Vertical separators */
+.footer-divider {
+  width: 1px;
+  height: 38px;
+
+  background: #dfe6ef;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .register-footer {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 15px;
+    padding: 15px 20px !important;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+
+  .footer-item {
+    min-width: 0;
+  }
+}

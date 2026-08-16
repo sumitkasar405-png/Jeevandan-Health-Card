@@ -1,62 +1,156 @@
-<main class="doctor-login-page">
-  <header class="doctor-header">
-    <a class="doctor-brand" routerLink="/" aria-label="Jeevandan home"><span class="brand-emblem"><i class="fa-solid fa-heart-pulse"></i></span><span><strong>Jeevandan</strong><small>Digital Health Card</small></span></a>
-    <div class="doctor-header-actions">
-      <div class="language-wrap"><button type="button" (click)="languageOpen = !languageOpen" [attr.aria-expanded]="languageOpen"><i class="fa-solid fa-globe"></i> English <i class="fa-solid fa-chevron-down"></i></button><div class="language-menu" *ngIf="languageOpen"><button type="button" (click)="languageOpen = false">English</button><button type="button" (click)="languageOpen = false">Hindi</button></div></div>
-      <a href="mailto:support@jeevandan.in"><i class="fa-solid fa-headset"></i> Need Help?</a>
-    </div>
-  </header>
+<div class="doctor-login-page">
+  <div class="doctor-login-shell">
+    <aside class="doctor-hero" aria-label="Jeevandan doctor platform information">
+      <a class="doctor-brand" routerLink="/" aria-label="Jeevandan home">
+        <img class="doctor-brand-logo" src="/assets/images/roles/logo.png" alt="Jeevandan Logo" />
+        <span class="doctor-brand-name">
+          <strong>Jeevandan</strong>
+          <small>Digital Health Card</small>
+        </span>
+      </a>
 
-  <section class="doctor-login-layout">
-    <aside class="doctor-welcome">
-      <div class="welcome-copy"><h1>Welcome Back<br /><span>Doctor...!</span></h1><p>Access your dashboard, manage patients, appointments and provide better care.</p></div>
-      <div class="doctor-benefits">
-        <article><span class="benefit-icon shield"><i class="fa-solid fa-shield-halved"></i></span><p><strong>Secure &amp; Private</strong><span>Your data is encrypted and protected with advanced security.</span></p></article>
-        <article><span class="benefit-icon doctor"><i class="fa-solid fa-user-doctor"></i></span><p><strong>Access Anywhere</strong><span>Login from anywhere and manage your practice.</span></p></article>
-        <article><span class="benefit-icon chart"><i class="fa-solid fa-chart-column"></i></span><p><strong>Smart &amp; Efficient</strong><span>Digital tools to simplify your workflow and save time.</span></p></article>
+      <div class="doctor-hero-copy">
+        <h1>Welcome Back<br /><span>Doctor...!</span></h1>
+        <p>Access your dashboard, manage patients, appointments and provide better care.</p>
       </div>
-      <div class="doctor-trust"><i class="fa-solid fa-shield-heart"></i><p><strong>Trusted by Thousands</strong><span>Join thousands of verified doctors who trust Jeevandan.</span></p></div>
+
+      <div class="doctor-hero-benefits">
+        <article>
+          <span class="benefit-icon secure"><i class="fa-solid fa-shield-halved"></i></span>
+          <p><strong>Secure &amp; Private</strong><span>Your data is encrypted and protected with advanced security.</span></p>
+        </article>
+        <article>
+          <span class="benefit-icon access"><i class="fa-regular fa-user"></i></span>
+          <p><strong>Access Anywhere</strong><span>Login from anywhere and manage your practice.</span></p>
+        </article>
+        <article>
+          <span class="benefit-icon smart"><i class="fa-solid fa-chart-line"></i></span>
+          <p><strong>Smart &amp; Efficient</strong><span>Digital tools to simplify your workflow and save time.</span></p>
+        </article>
+      </div>
+
+      <div class="doctor-hero-trust">
+        <span class="trust-icon"><i class="fa-solid fa-shield-halved"></i></span>
+        <p><strong>Trusted by Thousands</strong><span>Join thousands of verified doctors who trust Jeevandan.</span></p>
+      </div>
+
+      <img class="doctor-hero-image" src="/assets/images/auth/doctor-login-hero.png" alt="Doctor" />
     </aside>
 
-    <section class="doctor-auth-card" aria-labelledby="doctor-login-title">
-      <div class="auth-heading"><span class="doctor-orb"><i class="fa-regular fa-user"></i><i class="fa-solid fa-stethoscope"></i></span><div><h2 id="doctor-login-title">Doctor Login</h2><p>Login to your account to continue</p></div></div>
-      <div class="method-tabs" role="tablist" aria-label="Doctor login method"><button type="button" role="tab" [class.active]="activeMethod === 'password'" [attr.aria-selected]="activeMethod === 'password'" (click)="selectMethod('password')"><i class="fa-solid fa-lock"></i>Password Login</button><button type="button" role="tab" [class.active]="activeMethod === 'otp'" [attr.aria-selected]="activeMethod === 'otp'" (click)="selectMethod('otp')"><i class="fa-solid fa-mobile-screen-button"></i>OTP Login</button></div>
+    <section class="doctor-login-area">
+      <header class="doctor-login-topbar">
+        <div class="language-wrap">
+          <button class="language-button" type="button" (click)="languageOpen = !languageOpen" [attr.aria-expanded]="languageOpen">
+            <i class="fa-solid fa-globe"></i><span>English</span><i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="language-menu" *ngIf="languageOpen">
+            <button type="button" (click)="languageOpen = false">English</button>
+            <button type="button" (click)="languageOpen = false">Hindi</button>
+          </div>
+        </div>
+        <a class="help-link" href="mailto:support@jeevandan.in"><i class="fa-regular fa-circle-question"></i>Need Help?</a>
+      </header>
 
-      <div class="method-divider"><span>OR</span></div>
-      <div class="login-methods">
-        <form class="password-method" (ngSubmit)="loginWithPassword()">
-          <label for="doctor-id">Email or Registration Number</label>
-          <div class="input-shell"><i class="fa-regular fa-envelope"></i><input id="doctor-id" name="doctorId" [(ngModel)]="emailOrRegistration" autocomplete="username" placeholder="Enter your email or registration number" /></div>
-          <div class="label-row"><label for="doctor-password">Password</label><a href="#password" (click)="$event.preventDefault(); showRegistrationMessage()">Forgot Password?</a></div>
-          <div class="input-shell"><i class="fa-solid fa-lock"></i><input id="doctor-password" name="doctorPassword" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'" autocomplete="current-password" placeholder="Enter your password" /><button type="button" (click)="passwordVisible = !passwordVisible" [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'"><i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i></button></div>
-          <label class="remember-option"><input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" /> Remember me</label>
-          <button type="submit" class="login-button"><span>Login</span><i class="fa-solid fa-chevron-right"></i></button>
-          <div class="small-or"><span>OR</span></div>
-          <button type="button" class="google-button" (click)="loginWithGoogle()"><b>G</b> Login with Google</button>
-        </form>
+      <section class="doctor-login-card" aria-labelledby="doctor-login-heading">
+        <div class="doctor-login-heading">
+          <span class="doctor-avatar"><i class="fa-regular fa-user"></i></span>
+          <div>
+            <h2 id="doctor-login-heading">Doctor Login</h2>
+            <p>Login to your account to continue</p>
+          </div>
+        </div>
 
-        <div class="column-divider"></div>
-        <form class="otp-method" (ngSubmit)="verifyOtp()">
-          <label for="doctor-mobile">Mobile Number</label>
-          <div class="input-shell phone-shell"><i class="fa-solid fa-phone"></i><b>+91 <i class="fa-solid fa-chevron-down"></i></b><input id="doctor-mobile" name="doctorMobile" [(ngModel)]="mobileNumber" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="Enter your mobile number" /></div>
-          <button type="button" class="login-button send-otp" (click)="sendOtp()">Send OTP</button>
-          <div class="otp-info"><i class="fa-regular fa-shield"></i><span>We will send a 6 digit OTP to<br />your registered mobile number</span></div>
-          <label class="otp-label">Enter OTP</label>
-          <div class="otp-inputs"><input *ngFor="let digit of otpDigits; let index = index" #otpBox type="text" inputmode="numeric" maxlength="1" [disabled]="!otpSent" [value]="digit" (input)="onOtpInput(index, $event)" (keydown)="onOtpKeydown(index, $event)" (paste)="onOtpPaste(index, $event)" [attr.aria-label]="'OTP digit ' + (index + 1)" /></div>
-          <p class="resend-line">Didn't receive OTP? <button type="button" [disabled]="resendSecondsLeft > 0" (click)="sendOtp()">Resend OTP</button> <span *ngIf="resendSecondsLeft > 0">({{ resendLabel }})</span></p>
-          <button type="submit" class="verify-button" [class.ready]="otpSent && otpComplete">Verify &amp; Login</button>
-        </form>
-      </div>
-      <p class="registration-prompt">Don't have an account? <button type="button" (click)="showRegistrationMessage()">Register as Doctor</button></p>
+        <div class="doctor-login-tabs" role="tablist" aria-label="Login method">
+          <button type="button" role="tab" [attr.aria-selected]="loginMethod === 'password'" [class.active]="loginMethod === 'password'" (click)="selectLoginMethod('password')">
+            <i class="fa-solid fa-lock"></i> Password Login
+          </button>
+          <button type="button" role="tab" [attr.aria-selected]="loginMethod === 'otp'" [class.active]="loginMethod === 'otp'" (click)="selectLoginMethod('otp')">
+            <i class="fa-solid fa-mobile-screen-button"></i> OTP Login
+          </button>
+        </div>
+
+        <div class="doctor-login-divider"><span>OR</span></div>
+
+        <div class="doctor-login-columns">
+          <form class="password-column" (ngSubmit)="submitPasswordLogin()">
+            <label for="doctor-identifier">Email or Registration Number</label>
+            <div class="input-shell">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <input id="doctor-identifier" name="identifier" type="text" [(ngModel)]="identifier" autocomplete="username" placeholder="Enter your email or registration number" />
+            </div>
+
+            <label for="doctor-password">Password</label>
+            <div class="input-shell">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              <input id="doctor-password" name="password" [type]="passwordVisible ? 'text' : 'password'" [(ngModel)]="password" autocomplete="current-password" placeholder="Enter your password" />
+              <button class="password-visibility" type="button" (click)="togglePasswordVisibility()" [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+                <i [class]="passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
+              </button>
+            </div>
+            <a class="forgot-link" href="#forgot-password" (click)="$event.preventDefault(); showRegistrationMessage()">Forgot Password?</a>
+
+            <label class="remember-option">
+              <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" /><span>Remember me</span>
+            </label>
+
+            <button class="primary-login" type="submit">Login <i class="fa-solid fa-chevron-right"></i></button>
+
+            <div class="or-divider"><span>OR</span></div>
+            <button class="google-login" type="button" (click)="loginWithGoogle()"><span class="google-letter">G</span>Login with Google</button>
+          </form>
+
+          <form class="otp-column" (ngSubmit)="submitOtpLogin()">
+            <label for="doctor-mobile">Mobile Number</label>
+            <div class="mobile-input-row">
+              <span class="country-code"><i class="fa-solid fa-phone"></i> +91 <i class="fa-solid fa-chevron-down"></i></span>
+              <input id="doctor-mobile" name="mobile" type="tel" [(ngModel)]="mobile" placeholder="Enter your mobile number" />
+            </div>
+
+            <button class="send-otp" type="button" (click)="sendOtp()" [disabled]="otpSent">Send OTP</button>
+
+            <div class="otp-note">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              <span>We will send a 6 digit OTP to your registered mobile number</span>
+            </div>
+
+            <label for="doctor-otp-0">Enter OTP</label>
+            <div class="otp-boxes">
+              <input
+                *ngFor="let digit of otpDigits; let i = index"
+                #otpInput
+                [id]="'doctor-otp-' + i"
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                [(ngModel)]="otpDigits[i]"
+                [name]="'otp-' + i"
+                (input)="onOtpInput(i, $event)"
+                (keydown)="onOtpKeydown(i, $event)"
+              />
+            </div>
+
+            <div class="otp-resend">
+              <span>Didn't receive OTP? <button type="button" class="text-action" [disabled]="resendCooldown > 0" (click)="resendOtp()">Resend OTP</button></span>
+              <span class="otp-timer" *ngIf="resendCooldown > 0">({{ formattedCooldown }})</span>
+            </div>
+
+            <button class="verify-login" type="submit" [disabled]="!otpSent">Verify &amp; Login</button>
+          </form>
+        </div>
+      </section>
+
+      <p class="registration-prompt">Don't have an account? <a routerLink="/auth/doctor/register">Register as Doctor</a></p>
     </section>
-  </section>
+  </div>
 
-  <footer class="doctor-security-bar">
+  <footer class="doctor-login-footer">
     <article><span class="footer-icon ssl"><i class="fa-solid fa-shield-halved"></i></span><p><strong>256-bit SSL Encryption</strong><span>All data is encrypted and transmitted securely.</span></p></article>
-    <article><span class="footer-icon secure"><i class="fa-solid fa-shield-check"></i></span><p><strong>100% Secure &amp; Confidential</strong><span>We respect your privacy and never share your data.</span></p></article>
-    <article><span class="footer-icon verified"><i class="fa-solid fa-user-doctor"></i></span><p><strong>Verified Platform</strong><span>Trusted by thousands of doctors and healthcare providers.</span></p></article>
+    <article><span class="footer-icon secure"><i class="fa-solid fa-shield-heart"></i></span><p><strong>100% Secure &amp; Confidential</strong><span>We respect your privacy and never share your data.</span></p></article>
+    <article><span class="footer-icon verified"><i class="fa-regular fa-user"></i></span><p><strong>Verified Platform</strong><span>Trusted by thousands of doctors and healthcare providers.</span></p></article>
     <article><span class="footer-icon support"><i class="fa-solid fa-headset"></i></span><p><strong>24/7 Support</strong><span>Our support team is always here to help you.</span></p></article>
   </footer>
 
-  <div class="doctor-toast" *ngIf="toast" [class.error]="toastIsError" role="status"><i [class]="toastIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ toast }}</div>
-</main>
+  <div class="login-toast" *ngIf="message" [class.error]="messageIsError" role="status">
+    <i [class]="messageIsError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check'"></i>{{ message }}
+  </div>
+</div>
