@@ -1,1 +1,183 @@
-<p>register works!</p>
+<div class="registration-page">
+  <header class="registration-header">
+
+    <!-- Brand -->
+    <div class="brand-section">
+      <div class="logo-placeholder">
+        <img
+          src="assets/images/roles/jeevandan_logo.png"
+          alt="Jeevandan Digital Health Card"
+          class="brand-logo"
+        />
+      </div>
+    </div>
+
+    <div class="page-title-section">
+      <div class="page-title-icon"><i class="fa-solid fa-hospital"></i></div>
+      <div>
+        <h2>Hospital Registration</h2>
+        <p>Register your hospital to join Jeevandan Digital Health Network</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="language-button">
+        <i class="fa-solid fa-globe"></i>
+        <span>English</span>
+        <i class="fa-solid fa-chevron-down small-icon"></i>
+      </button>
+      <button type="button" class="help-button">
+        <i class="fa-solid fa-headset"></i>
+        <span>Need Help?</span>
+      </button>
+      <button type="button" class="login-button"><i class="fa-solid fa-right-to-bracket"></i><span>Login</span></button>
+    </div>
+  </header>
+
+  <main class="registration-content">
+    <form class="registration-form-card" novalidate>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <div class="section-number blue">1</div>
+          <div class="section-heading-icon blue-icon"><i class="fa-solid fa-hospital"></i></div>
+          <h3>Hospital Information</h3>
+        </div>
+
+        <div class="form-grid three-columns">
+          <div class="form-field"><label for="hospitalName">Hospital Name <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-hospital"></i><input id="hospitalName" type="text" placeholder="Enter hospital name"></div></div>
+          <div class="form-field"><label for="hospitalType">Hospital Type <span class="required">*</span></label><div class="input-wrapper select-wrapper"><select id="hospitalType"><option value="">Select hospital type</option><option>Government Hospital</option><option>Private Hospital</option><option>Trust Hospital</option><option>Clinic</option></select><i class="select-arrow fa-solid fa-chevron-down"></i></div></div>
+          <div class="form-field"><label for="registrationNumber">Registration Number <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-file-lines"></i><input id="registrationNumber" type="text" placeholder="Enter registration number"></div></div>
+        </div>
+
+        <div class="form-grid three-columns">
+          <div class="form-field"><label for="establishmentYear">Year of Establishment <span class="required">*</span></label><div class="input-wrapper"><input id="establishmentYear" type="number" placeholder="Select year"><i class="right-icon-svg fa-solid fa-calendar-days"></i></div></div>
+          <div class="form-field"><label for="numberOfBeds">Number of Beds <span class="required">*</span></label><div class="input-wrapper"><input id="numberOfBeds" type="number" placeholder="Enter number of beds"></div></div>
+          <div class="form-field"><label for="hospitalSize">Hospital Size <span class="required">*</span></label><div class="input-wrapper select-wrapper"><select id="hospitalSize"><option value="">Select hospital size</option><option>Small</option><option>Medium</option><option>Large</option></select><i class="select-arrow fa-solid fa-chevron-down"></i></div></div>
+        </div>
+
+        <div class="specialization-area">
+          <label>Specializations Offered <span class="optional-text">(Select all that apply)</span></label>
+          <div class="specialization-list">
+            <button type="button" class="specialization-button"><i class="fa-regular fa-heart"></i>Cardiology</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-brain"></i>Neurology</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-bone"></i>Orthopedics</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-children"></i>Pediatrics</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-venus"></i>Gynecology</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-stethoscope"></i>General Medicine</button>
+            <button type="button" class="specialization-button"><i class="fa-solid fa-ellipsis"></i>Other</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <div class="section-number purple">2</div>
+          <div class="section-heading-icon purple-icon"><i class="fa-solid fa-user"></i></div>
+          <h3>Admin Information</h3>
+        </div>
+
+        <div class="form-grid three-columns">
+          <div class="form-field"><label for="fullName">Full Name <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-user"></i><input id="fullName" type="text" placeholder="Enter full name"></div></div>
+          <div class="form-field"><label for="email">Email Address <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-regular fa-envelope"></i><input id="email" type="email" placeholder="Enter email address"></div></div>
+          <div class="form-field"><label for="mobile">Mobile Number <span class="required">*</span></label><div class="mobile-input-wrapper"><div class="country-code"><span>+91</span><i class="fa-solid fa-chevron-down"></i></div><input id="mobile" type="tel" placeholder="Enter mobile number"></div></div>
+        </div>
+
+        <div class="form-grid password-columns">
+          <div class="form-field"><label for="password">Password <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-lock"></i><input id="password" type="password" placeholder="Create a strong password"><button type="button" class="eye-button"><i class="fa-solid fa-eye"></i></button></div></div>
+          <div class="form-field"><label for="confirmPassword">Confirm Password <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-lock"></i><input id="confirmPassword" type="password" placeholder="Confirm your password"><button type="button" class="eye-button"><i class="fa-solid fa-eye"></i></button></div></div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <div class="section-number green">3</div>
+          <div class="section-heading-icon green-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>Address Information</h3>
+        </div>
+
+        <div class="form-grid three-columns">
+          <div class="form-field"><label for="addressLine1">Address Line 1 <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-house"></i><input id="addressLine1" type="text" placeholder="Enter address line 1"></div></div>
+          <div class="form-field"><label for="addressLine2">Address Line 2 <span class="optional-text">(Optional)</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-file-lines"></i><input id="addressLine2" type="text" placeholder="Enter address line 2"></div></div>
+          <div class="form-field"><label for="city">City <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-hospital"></i><input id="city" type="text" placeholder="Enter city"></div></div>
+        </div>
+
+        <div class="form-grid three-columns">
+          <div class="form-field"><label for="state">State <span class="required">*</span></label><div class="input-wrapper select-wrapper"><select id="state"><option value="">Select state</option><option>Maharashtra</option><option>Delhi</option><option>Gujarat</option><option>Karnataka</option></select><i class="select-arrow fa-solid fa-chevron-down"></i></div></div>
+          <div class="form-field"><label for="district">District <span class="required">*</span></label><div class="input-wrapper select-wrapper"><select id="district"><option value="">Select district</option><option>Mumbai</option><option>Pune</option><option>Nagpur</option></select><i class="select-arrow fa-solid fa-chevron-down"></i></div></div>
+          <div class="form-field"><label for="pincode">Pincode <span class="required">*</span></label><div class="input-wrapper">
+              <i class="input-icon-svg fa-solid fa-location-dot"></i><input id="pincode" type="text" maxlength="6" placeholder="Enter pincode"></div></div>
+        </div>
+      </section>
+
+      <section class="form-section documents-section">
+        <div class="section-heading documents-heading">
+          <div class="section-number orange">4</div>
+          <div class="section-heading-icon orange-icon"><i class="fa-solid fa-folder-open"></i></div>
+          <h3>Documents Upload</h3><span class="section-description">Upload clear and valid documents (Max file size: 2MB each)</span>
+        </div>
+
+        <div class="documents-grid">
+          <div class="document-card"><div class="document-icon green-document">
+              <i class="fa-regular fa-file-lines"></i>
+            </div><div class="document-info"><h4>Hospital Logo <span class="required">*</span></h4><p>JPG, PNG (Max 2MB)</p><button type="button" class="upload-button"><i class="fa-solid fa-arrow-up"></i> Upload</button></div></div>
+          <div class="document-card"><div class="document-icon green-document"><i class="fa-regular fa-file-lines"></i></div><div class="document-info"><h4>Registration Certificate <span class="required">*</span></h4><p>PDF (Max 2MB)</p><button type="button" class="upload-button"><i class="fa-solid fa-arrow-up"></i> Upload</button></div></div>
+          <div class="document-card"><div class="document-icon green-document"><i class="fa-regular fa-file-lines"></i></div><div class="document-info"><h4>Medical License <span class="required">*</span></h4><p>PDF (Max 2MB)</p><button type="button" class="upload-button"><i class="fa-solid fa-arrow-up"></i> Upload</button></div></div>
+          <div class="document-card"><div class="document-icon blue-document">
+              <i class="fa-regular fa-file-lines"></i>
+            </div><div class="document-info"><h4>NABH Certificate <span class="optional-text">(Optional)</span></h4><p>PDF (Max 2MB)</p><button type="button" class="upload-button"><i class="fa-solid fa-arrow-up"></i> Upload</button></div></div>
+          <div class="document-card"><div class="document-icon blue-document"><i class="fa-regular fa-file-lines"></i></div><div class="document-info"><h4>GST Certificate <span class="optional-text">(Optional)</span></h4><p>PDF (Max 2MB)</p><button type="button" class="upload-button"><i class="fa-solid fa-arrow-up"></i> Upload</button></div></div>
+        </div>
+        <div class="upload-note">Supported formats: JPG, PNG, PDF <span>|</span> Max file size: 2MB per file</div>
+      </section>
+
+      <section class="form-section review-section">
+        <div class="section-heading"><div class="section-number pink">5</div><div class="section-heading-icon pink-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Review &amp; Submit</h3></div>
+        <div class="review-bottom">
+          <label class="declaration"><input type="checkbox"><span>I hereby declare that all the information provided is true and correct to the best of my knowledge.</span></label>
+          <div class="form-actions"><button type="reset" class="reset-button"><i class="fa-solid fa-rotate"></i> Reset</button><button type="submit" class="submit-button"><i class="fa-solid fa-paper-plane"></i> Submit Registration</button></div>
+        </div>
+      </section>
+    </form>
+
+    <aside class="registration-sidebar">
+      <div class="sidebar-card progress-card">
+        <h3>Registration Progress</h3>
+        <div class="progress-bar-row"><div class="progress-track"><div class="progress-value"></div></div><span>20% Complete</span></div>
+        <div class="progress-list">
+          <div class="progress-item active"><div class="progress-number">1</div><span>Hospital Information</span></div>
+          <div class="progress-item"><div class="progress-number">2</div><span>Admin Information</span></div>
+          <div class="progress-item"><div class="progress-number">3</div><span>Address Information</span></div>
+          <div class="progress-item"><div class="progress-number">4</div><span>Documents Upload</span></div>
+          <div class="progress-item"><div class="progress-number">5</div><span>Review &amp; Submit</span></div>
+        </div>
+      </div>
+
+      <div class="sidebar-card benefits-card">
+        <div class="sidebar-title"><div class="sidebar-title-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Why Register with Jeevandan?</h3></div>
+        <ul class="benefit-list">
+          <li><span class="check-icon"><i class="fa-solid fa-check"></i></span><span>Get your hospital verified</span></li>
+          <li><span class="check-icon"><i class="fa-solid fa-check"></i></span><span>Manage appointments digitally</span></li>
+          <li><span class="check-icon"><i class="fa-solid fa-check"></i></span><span>Access patient records securely</span></li>
+          <li><span class="check-icon"><i class="fa-solid fa-check"></i></span><span>Connect with doctors &amp; labs</span></li>
+          <li><span class="check-icon"><i class="fa-solid fa-check"></i></span><span>Reach more patients</span></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card security-sidebar-card">
+        <div class="security-sidebar-heading"><div class="security-shield"><i class="fa-solid fa-shield-halved"></i></div><h3>Your Data is Safe</h3></div>
+        <p>We use 256-bit SSL encryption to keep your information secure and confidential.</p>
+        <div class="security-decoration"><i class="fa-solid fa-lock"></i></div>
+      </div>
+    </aside>
+  </main>
+</div>

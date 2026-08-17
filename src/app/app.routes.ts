@@ -55,7 +55,11 @@ export const routes: Routes = [
       import('./modules/auth/hospital/login/login')
         .then((module) => module.Login),
   },
-
+{
+    path: 'auth/hospital/register',
+    loadComponent: () => import('./modules/auth/hospital/register/register').then((module) => module.Register),
+  },
+  
   // ==================== PHARMACIST ====================
 
   {

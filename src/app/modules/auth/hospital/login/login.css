@@ -1,0 +1,981 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #10265c;
+}
+button,
+input {
+  font: inherit;
+}
+.hospital-login-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.left-panel {
+  position: relative;
+  width: 40%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 35px 54px 30px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(225, 240, 255, 0.88) 0%,
+      rgba(183, 218, 250, 0.72) 34%,
+      rgba(4, 42, 88, 0.97) 100%
+    );
+}
+.hospital-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.hospital-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(224, 239, 255, 0.32) 0%,
+      rgba(29, 100, 161, 0.08) 38%,
+      rgba(0, 35, 76, 0.91) 100%
+    );
+}
+.hospital-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+.brand,
+.hero-content,
+.security-card,
+.trusted-card {
+  position: relative;
+  z-index: 2;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 66px;
+}
+.brand-logo {
+  width: 65px;
+  height: 65px;
+  flex: 0 0 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 50%;
+  background: #fdfdfe;
+  padding: 0px;
+}
+.brand-text h2 {
+  color: #0b3685 !important;
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 700;
+    margin: 0;
+}
+.brand-text p {
+  margin-top: 7px;
+  color: #0c8b77;
+  font-size: 15px;
+  font-weight: 600;
+}
+.hero-content {
+  margin-top: 76px;
+}
+.hero-content h1 {
+  color: #092a68;
+  font-size: clamp(32px, 3vw, 43px);
+  line-height: 1.22;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+}
+.hero-content p {
+  margin-top: 18px;
+  color: #0d2b5d;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+.hero-line {
+  width: 48px;
+  height: 3px;
+  margin-top: 24px;
+  background: #075ee9;
+  border-radius: 10px;
+}
+.security-card {
+  position: absolute;
+  left: 54px;
+  right: 54px;
+  bottom: 181px;
+  padding: 20px 24px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: rgba(3, 45, 91, 0.67);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 12px 30px rgba(0, 30, 70, 0.18);
+}
+.security-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.security-main-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+}
+.security-title h3 {
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.security-title p {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.security-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.security-item.last {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+.security-round {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(25, 106, 221, 0.82);
+  color: #ffffff;
+  font-size: 17px;
+}
+.security-item h4 {
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+.security-item p {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 10px;
+  line-height: 1.25;
+}
+.trusted-card {
+  position: absolute;
+  left: 54px;
+  right: 54px;
+  bottom: 55px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 11px;
+  background: rgba(12, 70, 113, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.trusted-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(12, 168, 121, 0.8);
+  color: #ffffff;
+  font-size: 21px;
+}
+.trusted-card h4 {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.trusted-card p {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 10px;
+}
+.right-panel {
+  position: relative;
+  width: 60%;
+  min-height: 100vh;
+  padding: 25px 58px 25px;
+  background: #ffffff;
+}
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+}
+.top-bar button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #09265d;
+  font-size: 14px;
+  font-weight: 600;
+}
+.language-button {
+  min-height: 44px;
+  padding: 0 17px !important;
+  border: 1px solid #d9e0eb !important;
+  border-radius: 9px !important;
+  background: #ffffff !important;
+}
+.language-button > i:first-child {
+  color: #102b65;
+  font-size: 17px;
+}
+.small-icon {
+  margin-left: 3px;
+  font-size: 10px;
+}
+.help-button i {
+  color: #075bdc;
+  font-size: 18px;
+}
+.login-content {
+  width: 100%;
+  max-width: 790px;
+  margin: 26px auto 0;
+}
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-bottom: 28px;
+}
+.hospital-icon-box {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #eff5ff;
+  color: #2b8ce7;
+  font-size: 50px;
+}
+.login-heading-text h2 {
+  color: #09265e;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+.login-heading-text p {
+  margin-top: 10px;
+  color: #4c5872;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.login-tabs {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  border: 1px solid #d6dce7;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 33px;
+}
+.login-tab {
+  width: 50%;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: none;
+  border-right: 1px solid #d6dce7;
+  background: #ffffff;
+  color: #5b6478;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.login-tab:last-child {
+  border-right: none;
+}
+.login-tab.active {
+  color: #075bdc;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px #1766e8;
+}
+.login-tab i {
+  font-size: 18px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.form-group {
+  width: 100%;
+}
+.form-group > label,
+.password-label-row label {
+  display: block;
+  margin-bottom: 11px;
+  color: #10265c;
+  font-size: 15px;
+  font-weight: 700;
+}
+.password-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.password-label-row label {
+  margin-bottom: 11px;
+}
+.forgot-button {
+  border: none;
+  background: transparent;
+  color: #075bdc;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.input-box {
+  width: 100%;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #d6dce6;
+  border-radius: 7px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-box:focus-within {
+  border-color: #3b82ed;
+  box-shadow: 0 0 0 3px rgba(35, 111, 226, 0.08);
+}
+.input-icon {
+  width: 55px;
+  flex: 0 0 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #59657c;
+  font-size: 19px;
+}
+.input-box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 12px 0 0;
+  color: #26334d;
+  background: transparent;
+  font-size: 15px;
+}
+.input-box input::placeholder {
+  color: #6d7586;
+}
+.eye-button {
+  width: 52px;
+  height: 100%;
+  flex: 0 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: #647087;
+  cursor: pointer;
+  font-size: 18px;
+}
+.options {
+  margin-top: -4px;
+}
+.remember-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #59657a;
+  font-size: 14px;
+  cursor: pointer;
+}
+.remember-label input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid #9ca8ba;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+.remember-label input:checked {
+  border-color: #0b61e8;
+  background: #0b61e8;
+}
+.remember-label input:checked::after {
+  content: "✓";
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+.login-button {
+  width: 100%;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 7px;
+  background: #0960e9;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(9, 96, 233, 0.16);
+  transition: 0.2s ease;
+}
+.login-button:hover {
+  background: #0756d3;
+}
+.login-button i {
+  position: absolute;
+  margin-left: 700px;
+}
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 26px 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #e1e5eb;
+}
+.divider span {
+  color: #667085;
+  font-size: 14px;
+}
+.google-button {
+  width: 100%;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  border: 1px solid #d6dce6;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #13285b;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.google-button i {
+  font-size: 19px;
+}
+.privacy-card {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 42px;
+  padding: 14px 20px;
+  border-radius: 9px;
+  background: #eff5ff;
+}
+.privacy-icon {
+  width: 42px;
+  flex: 0 0 42px;
+  color: #1262df;
+  font-size: 34px;
+  text-align: center;
+}
+.privacy-text {
+  flex: 1;
+}
+.privacy-text p {
+  color: #354467;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.privacy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #075bdc;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+.privacy-link i {
+  font-size: 12px;
+}
+.register-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 43px;
+  color: #667085;
+  font-size: 14px;
+}
+.register-section a {
+  color: #075bdc;
+  text-decoration: none;
+  font-weight: 700;
+}
+.register-section a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 1200px) {
+  .left-panel {
+    width: 42%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .right-panel {
+    width: 58%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .security-card {
+    left: 40px;
+    right: 40px;
+  }
+  .trusted-card {
+    left: 40px;
+    right: 40px;
+  }
+  .login-button i {
+    margin-left: 620px;
+  }
+}
+@media (max-width: 992px) {
+  .hospital-login-page {
+    flex-direction: column;
+    overflow: visible;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    min-height: auto;
+  }
+  .left-panel {
+    min-height: 800px;
+  }
+  .right-panel {
+    padding: 35px 25px 45px;
+  }
+  .security-card,
+  .trusted-card {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+  .security-card {
+    margin-top: 60px;
+  }
+  .trusted-card {
+    margin-top: 20px;
+  }
+  .hospital-image {
+    position: absolute;
+  }
+  .login-button i {
+    position: static;
+    margin-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .left-panel {
+    padding: 30px 25px;
+  }
+  .brand-text h2 {
+    font-size: 23px;
+  }
+  .hero-content {
+    margin-top: 50px;
+  }
+  .hero-content h1 {
+    font-size: 31px;
+  }
+  .security-card {
+    left: 0;
+    right: 0;
+  }
+  .trusted-card {
+    left: 0;
+    right: 0;
+  }
+  .right-panel {
+    padding: 25px 18px 35px;
+  }
+  .top-bar {
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .login-header {
+    align-items: flex-start;
+  }
+  .hospital-icon-box {
+    width: 70px;
+    height: 70px;
+    flex-basis: 70px;
+    font-size: 36px;
+  }
+  .login-heading-text h2 {
+    font-size: 25px;
+  }
+  .login-heading-text p {
+    font-size: 13px;
+  }
+  .privacy-card {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .privacy-link {
+    margin-left: 58px;
+  }
+  .register-section {
+    flex-direction: column;
+    margin-top: 30px;
+  }
+}
+/* =========================================================
+   OTP ADDITIONS
+   Keep all your existing login.css above these styles.
+   ========================================================= */
+.otp-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -8px;
+  padding: 11px 14px;
+  border: 1px solid #d7eadf;
+  border-radius: 7px;
+  background: #f1faf5;
+  color: #176b45;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.otp-message i {
+  flex: 0 0 auto;
+  font-size: 17px;
+}
+.otp-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: -8px;
+}
+.resend-button,
+.change-number-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.resend-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #075bdc;
+}
+.change-number-button {
+  color: #667085;
+  text-align: right;
+}
+.resend-button:hover,
+.change-number-button:hover {
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .otp-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .change-number-button {
+    text-align: left;
+  }
+}
+/* =========================================================
+   OTP LOGIN - MOBILE NUMBER
+   ========================================================= */
+.otp-form {
+  gap: 18px;
+}
+.mobile-input-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.country-code-box {
+  height: 53px;
+  min-width: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #d6dce6;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #26334d;
+  font-size: 14px;
+  font-weight: 600;
+}
+.country-code-box .india-flag {
+  font-size: 18px;
+}
+.country-code-box i {
+  margin-left: 2px;
+  color: #647087;
+  font-size: 10px;
+}
+.mobile-number-box {
+  flex: 1;
+}
+.mobile-number-box input {
+  padding-left: 15px;
+}
+.send-otp-button {
+  height: 53px;
+  min-width: 125px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 7px;
+  background: #0960e9;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.send-otp-button:hover {
+  background: #0756d3;
+}
+.send-otp-button i {
+  font-size: 13px;
+}
+/* =========================================================
+   OTP PRIVACY MESSAGE
+   ========================================================= */
+.otp-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -2px;
+  color: #50806b;
+  font-size: 12px;
+}
+.otp-message i {
+  color: #4d9b78;
+  font-size: 14px;
+}
+/* =========================================================
+   OTP VERIFICATION
+   ========================================================= */
+.otp-verification-form {
+  gap: 20px;
+}
+.otp-title {
+  display: block;
+  margin-bottom: 8px;
+  color: #10265c;
+  font-size: 15px;
+  font-weight: 700;
+}
+.otp-subtitle {
+  color: #667085;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.otp-subtitle strong {
+  color: #26334d;
+  font-weight: 600;
+}
+.change-number-button {
+  margin-left: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #075bdc;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.change-number-button:hover {
+  text-decoration: underline;
+}
+/* =========================================================
+   SIX OTP BOXES
+   ========================================================= */
+.otp-boxes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.otp-boxes input {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #d6dce6;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #10265c;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+.otp-boxes input:focus {
+  border-color: #3b82ed;
+  box-shadow: 0 0 0 3px rgba(35, 111, 226, 0.08);
+}
+/* =========================================================
+   OTP BOTTOM ROW
+   ========================================================= */
+
+.otp-bottom-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.otp-bottom-row .remember-label {
+  font-size: 13px;
+}
+.resend-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #075bdc;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.resend-button:hover:not(:disabled) {
+  text-decoration: underline;
+}
+.resend-button:disabled {
+  color: #7b8494;
+  cursor: default;
+}
+.resend-button i {
+  font-size: 11px;
+}
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .mobile-input-row {
+    flex-wrap: wrap;
+  }
+  .country-code-box {
+    flex: 0 0 105px;
+  }
+  .mobile-number-box {
+    flex: 1;
+    min-width: 150px;
+  }
+  .send-otp-button {
+    width: 100%;
+  }
+  .otp-boxes {
+    justify-content: space-between;
+    gap: 7px;
+  }
+  .otp-boxes input {
+    width: 44px;
+    height: 48px;
+  }
+  .otp-bottom-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 400px) {
+  .otp-boxes {
+    gap: 5px;
+  }
+  .otp-boxes input {
+    width: 40px;
+    height: 45px;
+  }
+}

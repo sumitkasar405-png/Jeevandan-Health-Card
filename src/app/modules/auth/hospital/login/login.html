@@ -1,1 +1,522 @@
-<p>login works!</p>
+
+<div class="hospital-login-page">
+
+  <!-- ==================== LEFT PANEL ==================== -->
+  <section class="left-panel">
+
+    <!-- Brand -->
+    <div class="brand">
+      <img
+        src="assets/images/roles/jeevandan_logo.png"
+        class="brand-logo"
+        alt="Jeevandan Logo"
+      />
+
+      <div class="brand-text">
+        <h2>Jeevandan</h2>
+        <p>Digital Health Card</p>
+      </div>
+    </div>
+
+    <!-- Hero text -->
+    <div class="hero-content">
+      <h1>
+        Secure Access for<br />
+        Healthcare Providers
+      </h1>
+
+      <p>
+        Login to your hospital account and manage<br />
+        patients, appointments, staff and more<br />
+        with complete security.
+      </p>
+
+      <div class="hero-line"></div>
+    </div>
+
+    <!-- Hospital image -->
+    <div class="hospital-image">
+      <img
+        src="assets/images/roles/Hospital_building.png"
+        alt="Hospital Building"
+      />
+    </div>
+
+    <!-- Security card -->
+    <div class="security-card">
+      <div class="security-title">
+        <div class="security-main-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div>
+          <h3>Enterprise-Grade Security</h3>
+          <p>
+            We ensure the highest standards of security<br />
+            to protect your data and your patients.
+          </p>
+        </div>
+      </div>
+
+      <div class="security-item">
+        <div class="security-round">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <h4>256-bit SSL Encryption</h4>
+          <p>All data is encrypted in transit and at rest</p>
+        </div>
+      </div>
+
+      <div class="security-item">
+        <div class="security-round">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <div>
+          <h4>Role-Based Access</h4>
+          <p>Secure access based on user permissions</p>
+        </div>
+      </div>
+
+      <div class="security-item">
+        <div class="security-round">
+          <i class="fa-solid fa-desktop"></i>
+        </div>
+        <div>
+          <h4>Account Protection</h4>
+          <p>Multi-layer security to protect your account</p>
+        </div>
+      </div>
+
+      <div class="security-item last">
+        <div class="security-round">
+          <i class="fa-solid fa-building-shield"></i>
+        </div>
+        <div>
+          <h4>Secure &amp; Compliant</h4>
+          <p>We comply with industry best security practices</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trusted card -->
+    <div class="trusted-card">
+      <div class="trusted-icon">
+        <i class="fa-solid fa-shield-heart"></i>
+      </div>
+
+      <div>
+        <h4>Trusted by 1000+ Hospitals</h4>
+        <p>Across India for secure healthcare management</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==================== RIGHT PANEL ==================== -->
+  <section class="right-panel">
+
+    <!-- Top controls -->
+    <div class="top-bar">
+      <button type="button" class="language-button">
+        <i class="fa-solid fa-globe"></i>
+        <span>English</span>
+        <i class="fa-solid fa-chevron-down small-icon"></i>
+      </button>
+
+      <button type="button" class="help-button">
+        <i class="fa-solid fa-headset"></i>
+        <span>Need Help?</span>
+      </button>
+    </div>
+
+    <!-- Login content -->
+    <div class="login-content">
+
+      <!-- Login heading -->
+      <div class="login-header">
+        <div class="hospital-icon-box">
+          <i class="fa-solid fa-hospital"></i>
+        </div>
+
+        <div class="login-heading-text">
+          <h2>Hospital Login</h2>
+          <p>Welcome back! Please login to your hospital account</p>
+        </div>
+      </div>
+
+      <!-- Login tabs -->
+      <div class="login-tabs">
+
+        <!-- Password Login -->
+        <button
+          type="button"
+          class="login-tab"
+          [class.active]="loginMode === 'password'"
+          (click)="selectPasswordLogin()"
+        >
+          <i class="fa-solid fa-lock"></i>
+          <span>Password Login</span>
+        </button>
+
+        <!-- OTP Login -->
+        <button
+          type="button"
+          class="login-tab"
+          [class.active]="loginMode === 'otp'"
+          (click)="selectOtpLogin()"
+        >
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <span>OTP Login</span>
+        </button>
+
+      </div>
+
+      <!-- Password login -->
+      <form
+        *ngIf="loginMode === 'password'"
+        (ngSubmit)="login()"
+        class="login-form"
+      >
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">
+            Hospital Email or Registration Number
+          </label>
+
+          <div class="input-box">
+            <i class="fa-regular fa-envelope input-icon"></i>
+
+            <input
+              id="email"
+              name="email"
+              type="text"
+              [(ngModel)]="email"
+              placeholder="Enter registered email or registration number"
+              autocomplete="username"
+            />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group password-group">
+          <div class="password-label-row">
+            <label for="password">Password</label>
+
+            <button
+              type="button"
+              class="forgot-button"
+              (click)="forgotPassword()"
+            >
+              Forgot Password?
+            </button>
+          </div>
+
+          <div class="input-box">
+            <i class="fa-solid fa-lock input-icon"></i>
+
+            <input
+              id="password"
+              name="password"
+              [type]="showPassword ? 'text' : 'password'"
+              [(ngModel)]="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+
+            <button
+              type="button"
+              class="eye-button"
+              (click)="togglePassword()"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            >
+              <i
+                class="fa-solid"
+                [class.fa-eye]="!showPassword"
+                [class.fa-eye-slash]="showPassword"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember me -->
+        <div class="options">
+          <label class="remember-label">
+            <input
+              type="checkbox"
+              name="rememberMe"
+              [(ngModel)]="rememberMe"
+            />
+            <span>Remember me</span>
+          </label>
+        </div>
+
+        <!-- Login -->
+        <button type="submit" class="login-button">
+          <span>Login Securely</span>
+          <i class="fa-solid fa-shield-halved"></i>
+        </button>
+
+      </form>
+
+      <!-- =========================================================
+           OTP LOGIN
+           ========================================================= -->
+
+      <!-- STEP 1 : ENTER MOBILE NUMBER -->
+      <form
+        *ngIf="loginMode === 'otp' && !otpSent"
+        (ngSubmit)="sendOtp()"
+        class="login-form otp-form"
+      >
+
+        <!-- Registered Mobile Number -->
+        <div class="form-group">
+          <label for="mobileNumber">
+            Registered Mobile Number
+          </label>
+
+          <div class="mobile-input-row">
+
+            <!-- Country Code -->
+            <div class="country-code-box">
+              <span class="india-flag">🇮🇳</span>
+              <span>+91</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="input-box mobile-number-box">
+              <input
+                id="mobileNumber"
+                name="mobileNumber"
+                type="tel"
+                maxlength="10"
+                [(ngModel)]="mobileNumber"
+                placeholder="Enter your mobile number"
+                autocomplete="tel"
+                inputmode="numeric"
+              />
+            </div>
+
+            <!-- Send OTP -->
+            <button
+              type="submit"
+              class="send-otp-button"
+            >
+              <span>Send OTP</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- Privacy message -->
+        <div class="otp-message">
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <span>
+            We do not share your mobile number with anyone.
+          </span>
+        </div>
+
+      </form>
+
+      <!-- =========================================================
+           STEP 2 : VERIFY OTP
+           ========================================================= -->
+
+      <form
+        *ngIf="loginMode === 'otp' && otpSent"
+        (ngSubmit)="verifyOtp()"
+        class="login-form otp-verification-form"
+      >
+
+        <!-- Verify OTP heading -->
+        <div class="otp-verification-header">
+          <div>
+            <label class="otp-title">
+              Verify OTP
+            </label>
+
+            <p class="otp-subtitle">
+              Enter the 6-digit OTP sent to
+              <strong>{{ maskedMobileNumber }}</strong>
+
+              <button
+                type="button"
+                class="change-number-button"
+                (click)="changeOtpNumber()"
+              >
+                Change
+              </button>
+            </p>
+          </div>
+        </div>
+
+        <!-- OTP Boxes -->
+        <div class="otp-boxes">
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[0]"
+            name="otp1"
+            (input)="onOtpInput($event, 0)"
+            (keydown)="onOtpKeyDown($event, 0)"
+          />
+
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[1]"
+            name="otp2"
+            (input)="onOtpInput($event, 1)"
+            (keydown)="onOtpKeyDown($event, 1)"
+          />
+
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[2]"
+            name="otp3"
+            (input)="onOtpInput($event, 2)"
+            (keydown)="onOtpKeyDown($event, 2)"
+          />
+
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[3]"
+            name="otp4"
+            (input)="onOtpInput($event, 3)"
+            (keydown)="onOtpKeyDown($event, 3)"
+          />
+
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[4]"
+            name="otp5"
+            (input)="onOtpInput($event, 4)"
+            (keydown)="onOtpKeyDown($event, 4)"
+          />
+
+          <input
+            #otpInput
+            type="text"
+            maxlength="1"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+            [(ngModel)]="otpDigits[5]"
+            name="otp6"
+            (input)="onOtpInput($event, 5)"
+            (keydown)="onOtpKeyDown($event, 5)"
+          />
+        </div>
+
+        <!-- Remember device + Resend -->
+        <div class="otp-bottom-row">
+          <label class="remember-label">
+            <input
+              type="checkbox"
+              name="rememberDevice"
+              [(ngModel)]="rememberDevice"
+            />
+
+            <span>Remember this device for 30 days</span>
+          </label>
+
+          <button
+            type="button"
+            class="resend-button"
+            [disabled]="resendSeconds > 0"
+            (click)="resendOtp()"
+          >
+            <i class="fa-solid fa-rotate"></i>
+
+            <span *ngIf="resendSeconds > 0">
+              Resend OTP in 00:{{ resendSeconds < 10 ? '0' + resendSeconds : resendSeconds }}
+            </span>
+
+            <span *ngIf="resendSeconds === 0">
+              Resend OTP
+            </span>
+          </button>
+        </div>
+
+        <!-- Verify button -->
+        <button
+          type="submit"
+          class="login-button"
+        >
+          <span>Verify &amp; Login</span>
+          <i class="fa-solid fa-lock"></i>
+        </button>
+
+      </form>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <!-- Google -->
+      <button
+        type="button"
+        class="google-button"
+        (click)="loginWithGoogle()"
+      >
+        <i class="fa-brands fa-google"></i>
+        <span>Login with Google</span>
+      </button>
+
+      <!-- Privacy -->
+      <div class="privacy-card">
+        <div class="privacy-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <div class="privacy-text">
+          <p>
+            We respect your privacy and ensure<br />
+            the security of your hospital data.
+          </p>
+        </div>
+
+        <a href="#" class="privacy-link">
+          Privacy Policy
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </div>
+
+      <!-- Register -->
+      <div class="register-section">
+        <span>Don’t have an account?</span>
+
+        <a routerLink="/auth/hospital/register">
+          Register Your Hospital
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+```
